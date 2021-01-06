@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Portfolio from './portfolio';
+import WorkHistory from './work-history';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Portfolio />
+    <WorkHistory />
   </React.StrictMode>,
   document.getElementById('root')
 );

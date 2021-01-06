@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Portfolio from './portfolio';
+import PortfolioFooter from './portfolio-footer';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Portfolio />
+    <PortfolioFooter />
   </React.StrictMode>,
   document.getElementById('root')
 );

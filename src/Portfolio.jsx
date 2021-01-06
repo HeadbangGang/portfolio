@@ -1,6 +1,10 @@
 import React from 'react'
-import LandingVideo, {testTayden} from 'C:/Users/Tayden/Documents/Portfolio/portfolio/src/shared/components/landing-video/landing-video'
 import PropTypes from 'prop-types'
+import PortfolioHeader from './shared/components/portfolio-header/portfolio-header'
+import ContactInformation from './shared/components/contact-information/contact-information'
+import WorkHistory from './shared/components/work-history/work-history'
+import AboutTayden from './shared/components/about-tayden/about-tayden'
+import PortfolioFooter from './shared/components/portfolio-footer/portfolio-footer'
 
 
 
@@ -8,15 +12,16 @@ export default class Portfolio extends React.Component {
     render () {
         
         return (
-            <h1>
-                <LandingVideo />
-                hello
-            { testTayden() }
-            </h1>
+        <div>
+            <PortfolioHeader />
+            <AboutTayden />
+            <WorkHistory />
+            <ContactInformation />
+            <PortfolioFooter />
+        </div>
         )
     }
 }
 
 Portfolio.propTypes = {
-    testTayden: PropTypes.func
 }
