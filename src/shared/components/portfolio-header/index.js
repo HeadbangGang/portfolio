@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Portfolio from './portfolio';
+import PortfolioHeader from './portfolio-header';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Portfolio />
+    <PortfolioHeader />
   </React.StrictMode>,
   document.getElementById('root')
 );

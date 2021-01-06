@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Portfolio from './portfolio';
+import LanguageMap from './language-map';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Portfolio />
+    <LanguageMap />
   </React.StrictMode>,
   document.getElementById('root')
 );

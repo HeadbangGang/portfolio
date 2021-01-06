@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Portfolio from './portfolio';
+import ContactInformation from './contact-information';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Portfolio />
+    <ContactInformation />
   </React.StrictMode>,
   document.getElementById('root')
 );
