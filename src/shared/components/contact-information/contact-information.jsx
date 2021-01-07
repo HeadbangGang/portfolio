@@ -7,18 +7,16 @@ export default class ContactInformation extends React.Component {
     render () {
         
         return (
-        <div>
+        <div id="contact-information">
             <h2>
                 Contact Information
             </h2>
-            <body>
                 <div>
                 taydengoodeill@gmail.com
                 </div>
                 <div>
                     (503) 569-7894
                 </div>
-            </body>
         </div>
         )
     }
