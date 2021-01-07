@@ -7,7 +7,7 @@ export default class WorkHistory extends React.Component {
     render () {
         
         return (
-        <div>
+        <div id="work-history">
            <h2>
                Work History
            </h2>
