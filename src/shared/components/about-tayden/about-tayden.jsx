@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 
 
@@ -16,7 +15,4 @@ export default class AboutTayden extends React.Component {
         </div>
         )
     }
-}
-
-AboutTayden.propTypes = {
 }
