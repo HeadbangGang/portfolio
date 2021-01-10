@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 
 
@@ -21,7 +20,4 @@ export default class LanguageMap extends React.Component {
         </div>
         )
     }
-}
-
-LanguageMap.propTypes = {
 }

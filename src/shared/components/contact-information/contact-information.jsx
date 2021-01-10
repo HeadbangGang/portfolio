@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import './contact-information.less'
 
 
 
@@ -7,20 +7,19 @@ export default class ContactInformation extends React.Component {
     render () {
         
         return (
-        <div id="contact-information">
-            <h2>
+        <div id="contact-information" className="contact-information-container">
+            <div className="title">
                 Contact Information
-            </h2>
-                <div>
+            </div>
+            <div>
+                <div className="contact-information-contents">
                 taydengoodeill@gmail.com
                 </div>
-                <div>
+                <div className="contact-information-contents">
                     (503) 569-7894
                 </div>
+            </div>
         </div>
         )
     }
-}
-
-ContactInformation.propTypes = {
 }
