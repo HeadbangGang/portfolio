@@ -10,11 +10,15 @@ import './portfolio.less'
 export default class Portfolio extends React.Component {
     render () {
         return (
-        <div className="container-border">
+        <div className="portfolio-container">
+        <div className="portfolio-container__border">
             <PortfolioHeader />
+            <div className="portfolio-container__content-container">
             <AboutTayden />
             <WorkHistory />
+            </div>
             <PortfolioFooter />
+        </div>
         </div>
         )
     }

@@ -1,13 +1,11 @@
 import React from 'react'
-
-
+import './about-tayden.less'
 
 export default class AboutTayden extends React.Component {
     render () {
-        
         return (
-        <div>
-            <h2>
+        <div className="about-tayden">
+            <h2 className="about-tayden__header">
             About Tayden Flitcroft
             </h2>
             <h3>Aspiring Information Technology Professional</h3>
