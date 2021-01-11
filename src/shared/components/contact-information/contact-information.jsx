@@ -5,17 +5,16 @@ import './contact-information.less'
 
 export default class ContactInformation extends React.Component {
     render () {
-        
         return (
         <div id="contact-information" className="contact-information-container">
             <div className="title">
                 Contact Information
             </div>
             <div>
-                <div className="contact-information-contents">
+                <div className={container}>
                 taydengoodeill@gmail.com
                 </div>
-                <div className="contact-information-contents">
+                <div className={container}>
                     (503) 569-7894
                 </div>
             </div>
@@ -23,3 +22,5 @@ export default class ContactInformation extends React.Component {
         )
     }
 }
+
+    const container = 'contact-information-contents'
