@@ -3,6 +3,7 @@ import PortfolioHeader from './shared/components/portfolio-header/portfolio-head
 import WorkHistory from './shared/components/work-history/work-history'
 import AboutTayden from './shared/components/about-tayden/about-tayden'
 import PortfolioFooter from './shared/components/portfolio-footer/portfolio-footer'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './portfolio.less'
 
 
