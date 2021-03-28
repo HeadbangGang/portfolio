@@ -1,24 +1,23 @@
 import React from 'react'
 import SocialMediaIcons from '../social-media-icons/social-media-icons'
+import { Navbar, Nav } from 'react-bootstrap'
 import './portfolio-header.less'
 export default class PortfolioHeader extends React.Component {
     render () {
         return (
-        <div className="portfolio-header">
-
-            <h1>
-                Tayden Flitcroft
-            </h1>
-            <div className="nav-border"></div>
-                <div className="navigation-buttons">
-                 <a className="home" onClick={ () => console.log('Home')} href="#NEED-TO-FILL-IN-FOR-HOME">Home</a> 
-                 <a className="resume-button" href="http://resume.taydenflitcroft.com/" target="_blank" rel="noreferrer">Resume</a>
-                 <a className="work-history" onClick={ () => console.log('Work History')} href="#work-history">Work History</a>
-                 <a className="contact" onClick={ () => console.log('Contact')} href="#contact-information">Contact Info</a>
-            </div>
-            <SocialMediaIcons 
-                 className={'__social-media'}/>
-        </div>
+        <Navbar bg="light" expand="lg">
+  <Navbar.Brand href="#home">Tayden Flitcroft's Portfolio</Navbar.Brand>
+  <Navbar.Toggle aria-controls="basic-navbar-nav" />
+  <Navbar.Collapse id="basic-navbar-nav">
+    <Nav className="mr-auto">
+      <Nav.Link href="#home">Home</Nav.Link>
+      <Nav.Link href="http://resume.taydenflitcroft.com/" target="_blank">Resume</Nav.Link>
+      <Nav.Link href="#work-history">Work History</Nav.Link>
+      <Nav.Link href="#contact-information">Contact Information</Nav.Link>
+    </Nav>
+    <SocialMediaIcons />
+  </Navbar.Collapse>
+</Navbar>
         )
     }
 }

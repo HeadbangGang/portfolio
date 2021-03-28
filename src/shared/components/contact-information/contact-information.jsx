@@ -1,7 +1,7 @@
 import React from 'react'
 import './contact-information.less'
 
-
+const container = 'contact-information-contents'
 
 export default class ContactInformation extends React.Component {
     render () {
@@ -22,5 +22,3 @@ export default class ContactInformation extends React.Component {
         )
     }
 }
-
-    const container = 'contact-information-contents'
