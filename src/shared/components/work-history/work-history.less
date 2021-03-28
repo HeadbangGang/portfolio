@@ -6,8 +6,24 @@
         margin: 35px 0;
     }
 
-    &__content-container {
-        align-items: center;
-        padding: 30px;
+    .content-container {
+        &__row {
+            justify-content: space-evenly;
+        }
+
+        &__column {
+            border: 1px solid black;
+            border-radius: 1%;
+            padding: 10px;
+            margin: 10px;
+
+            .job-title {
+                font-weight: 600;
+            }
+
+            .job-description {
+                font-weight: 300;
+            }
+        }
     }
 }
