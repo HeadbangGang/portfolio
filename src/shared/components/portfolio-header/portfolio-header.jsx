@@ -5,7 +5,7 @@ import './portfolio-header.less'
 export default class PortfolioHeader extends React.Component {
     render () {
         return (
-        <Navbar bg="light" expand="md">
+        <Navbar bg="light" expand="md" collapseOnSelect className="sticky-top">
   <Navbar.Brand href="#home">Tayden Flitcroft's Portfolio</Navbar.Brand>
   <Navbar.Toggle aria-controls="basic-navbar-nav" />
   <Navbar.Collapse id="basic-navbar-nav">

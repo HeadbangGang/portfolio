@@ -1,17 +1,21 @@
-import React from 'react'
-import { Container, Row, Col } from 'react-bootstrap'
+import React, { useState } from 'react'
+import { Container, Row, Col, Modal, Button } from 'react-bootstrap'
+import { Document } from 'react-pdf'
 import './work-history.less'
 
 
-
-export default class WorkHistory extends React.Component {
-    render () {
-        
+const WorkHistory = () => {
+    const [showModal, setShowModal] = useState(false)
         return (
         <div id="work-history" className="work-history">
            <h2 className="work-history__title">
                Work History
            </h2>
+           <button onClick={() => setShowModal(true)}>meow</button>
+           <ResumeModal
+           show={ showModal }
+           onHide={ () => setShowModal(false)}
+           />
            <Container className="content-container">
                <Row className="content-container__row">
                    <Col md className="content-container__column">
@@ -41,4 +45,28 @@ export default class WorkHistory extends React.Component {
            </div>
         )
     }
+
+export const ResumeModal = (props) => {
+    return(
+    <Modal
+    {...props}
+    size="lg"
+    centered
+    backdrop="static"
+  >
+    <Modal.Header>
+      <Modal.Title>
+        Tayden Flitcroft's Resume
+      </Modal.Title>
+    </Modal.Header>
+    <Modal.Body>
+        <Document file="./resume.pdf"></Document>
+    </Modal.Body>
+    <Modal.Footer>
+      <Button variant="secondary" onClick={ props.onHide }>Close</Button>
+    </Modal.Footer>
+  </Modal>
+    )
 }
+
+export default WorkHistory

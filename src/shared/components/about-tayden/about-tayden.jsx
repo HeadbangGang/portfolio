@@ -4,7 +4,7 @@ import './about-tayden.less'
 export default class AboutTayden extends React.Component {
     render () {
         return (
-        <div className="about-tayden">
+        <div className="about-tayden" id="home">
             <h2 className="about-tayden__header">
             About Tayden Flitcroft
             </h2>
