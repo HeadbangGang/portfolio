@@ -1,21 +1,23 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Container, Row, Col, Modal, Button } from 'react-bootstrap'
+import { useSelector, useDispatch } from 'react-redux'
 import { Document } from 'react-pdf'
+import { setShowModal, getShowModal } from '../../../index.js'
 import './work-history.less'
+import { pdfjs } from 'react-pdf';
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
 
 const WorkHistory = () => {
-    const [showModal, setShowModal] = useState(false)
+    const dispatch = useDispatch()
+
+    const showModal = useSelector(getShowModal)
+
         return (
         <div id="work-history" className="work-history">
            <h2 className="work-history__title">
                Work History
            </h2>
-           <button onClick={() => setShowModal(true)}>meow</button>
-           <ResumeModal
-           show={ showModal }
-           onHide={ () => setShowModal(false)}
-           />
            <Container className="content-container">
                <Row className="content-container__row">
                    <Col md className="content-container__column">
@@ -42,6 +44,10 @@ const WorkHistory = () => {
                     </Col>
                 </Row>
             </Container>
+            <ResumeModal
+           show={ showModal }
+           onHide={ () => dispatch(setShowModal(false))}
+           />
            </div>
         )
     }
