@@ -66,7 +66,7 @@ export const WorkHistory = ({ showModal, setShowModal }) => {
             </Container>
             <ResumeModal
                 show={ showModal }
-                onHide={ () => setShowModal(false)}
+                onHide={ () => setShowModal(false) }
             />
         </div>
     )
