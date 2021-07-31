@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import DrawerComponent from './drawer'
@@ -72,7 +73,7 @@ export default function Wrapper (props) {
     const classes = useStyles()
     const [openDrawer, setOpenDrawer] = useState(false)
 
-    const sharedProps = { classes, setOpenDrawer, openDrawer }
+    const sharedProps = { classes, setOpenDrawer, openDrawer, setShowModal: props.setShowModal }
 
     return (
         <div className={ classes.root }>
@@ -85,4 +86,8 @@ export default function Wrapper (props) {
             </main>
         </div>
     )
+}
+
+Wrapper.propTypes={
+    setShowModal: PropTypes.func
 }

@@ -32,7 +32,7 @@ export default function Navbar (props) {
                     <MenuIcon />
                 </IconButton>
                 <Typography variant="h6" noWrap>
-            Tayden Flitcroft
+            Tayden Flitcroft Portfolio
                 </Typography>
             </Toolbar>
         </AppBar>

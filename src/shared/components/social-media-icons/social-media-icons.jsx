@@ -1,34 +1,34 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import facebook_logo from './images/facebook.webp'
-import twitter_logo from './images/twitter.webp'
-import linkedin_logo from './images/linkedin.webp'
+import Facebook from '@material-ui/icons/Facebook'
+import Twitter from '@material-ui/icons/Twitter'
+import LinkedIn from '@material-ui/icons/LinkedIn'
 
 export const socialMediaData = [
     {
         name: 'Facebook',
-        img: facebook_logo,
+        iconComponent: <Facebook style={{ color: '#4267B2' }} />,
         url: 'https://www.facebook.com/tayden.flitcroftgoodeill'
     },
     {
         name: 'Twitter',
-        img: twitter_logo,
+        iconComponent: <Twitter style={{ color: '#1DA1F2' }} />,
         url: 'https://twitter.com/taydenpaul'
     },
     {
         name: 'LinkedIn',
-        img: linkedin_logo,
+        iconComponent: <LinkedIn style={{ color: '#0e76a8' }} />,
         url: 'https://www.linkedin.com/in/tayden-flitcroft-225013147/'
     }
 ]
 
 export default function SocialMediaIcons (props) {
-    const { className, parentClass } = props
+    const { parentClass } = props
 
     return (
         <span className={ parentClass }>
             { socialMediaData.map(data => {
-                <a href={ data.url } target="_blank" rel="noreferrer"><img src={ data.img } alt={ data.alt ?? '' } className={ data.className ?? className } /></a>
+                <a href={ data.url } target="_blank" rel="noreferrer">{ data.iconComponent }</a>
             })}
         </span>
     )

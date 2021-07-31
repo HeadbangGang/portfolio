@@ -9,7 +9,7 @@ import './resume-modal.less'
 export const ResumeModal = (props) => {
 
     ResumeModal.propTypes ={
-        onHide: PropTypes.bool,
+        onHide: PropTypes.func,
     }
 
     return(

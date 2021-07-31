@@ -6,6 +6,8 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './portfolio.less'
 import Projects from './shared/components/projects/projects'
 import Wrapper from './wrapper/wrapper'
+import ResumeModal from './shared/components/resume-modal/resume-modal'
+import { Route, Switch } from 'react-router'
 
 
 
@@ -14,14 +16,25 @@ export const Portfolio = () => {
     const [showModal, setShowModal] = useState(false)
 
     return (
-        <Wrapper>
-            <div className="portfolio-container__content-container">
-                <AboutTayden />
-                <WorkHistory showModal={ showModal } setShowModal={ setShowModal } />
-                <Projects />
-            </div>
+        <>
+            <Wrapper setShowModal={ setShowModal }>
+                <div className="portfolio-container__content-container">
+                    <Switch>
+                        <Route exact path='/'>
+                            <AboutTayden />
+                        </Route>
+                        <Route exact path='/work-history'>
+                            <WorkHistory />
+                        </Route>
+                        <Route exact path='/projects'>
+                            <Projects />
+                        </Route>
+                    </Switch>
+                </div>
+            </Wrapper>
             <PortfolioFooter />
-        </Wrapper>
+            <ResumeModal show={ showModal } onHide={ () => setShowModal(false) } />
+        </>
     )
 }
 

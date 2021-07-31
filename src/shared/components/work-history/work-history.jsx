@@ -1,10 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Container, Row, Col } from 'react-bootstrap'
-import ResumeModal from '../resume-modal/resume-modal'
 import './work-history.less'
 
-export const WorkHistory = ({ showModal, setShowModal }) => {
+export const WorkHistory = () => {
 
     WorkHistory.propTypes = {
         setShowModal: PropTypes.func,
@@ -64,10 +63,6 @@ export const WorkHistory = ({ showModal, setShowModal }) => {
                     </Col>
                 </Row>
             </Container>
-            <ResumeModal
-                show={ showModal }
-                onHide={ () => setShowModal(false) }
-            />
         </div>
     )
 }

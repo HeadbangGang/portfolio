@@ -2,26 +2,20 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { useTheme } from '@material-ui/core/styles'
 import clsx from 'clsx'
-import Drawer from '@material-ui/core/Drawer'
-import List from '@material-ui/core/List'
-import Divider from '@material-ui/core/Divider'
-import IconButton from '@material-ui/core/IconButton'
+import { SwipeableDrawer, List, Divider, IconButton, ListItem, ListItemIcon, ListItemText } from '@material-ui/core'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemIcon from '@material-ui/core/ListItemIcon'
-import ListItemText from '@material-ui/core/ListItemText'
-import InboxIcon from '@material-ui/icons/MoveToInbox'
-import MailIcon from '@material-ui/icons/Mail'
+import { AccountTree, Description, Home, Work } from '@material-ui/icons'
 import { socialMediaData } from '../shared/components/social-media-icons/social-media-icons'
+import { useHistory } from 'react-router'
 
 export default function DrawerComponent (props) {
+    const history = useHistory()
     const theme = useTheme()
     const { classes, openDrawer, setOpenDrawer } = props
 
     return (
-        <Drawer
-            variant="permanent"
+        <SwipeableDrawer
             className={ clsx(classes.drawer, {
                 [classes.drawerOpen]: openDrawer,
                 [classes.drawerClose]: !openDrawer,
@@ -32,40 +26,68 @@ export default function DrawerComponent (props) {
                     [classes.drawerClose]: !openDrawer,
                 }),
             }}
+            open={ openDrawer }
+            onOpen={ () => setOpenDrawer(true) }
+            onClose={ () => setOpenDrawer(false) }
+            variant="permanent"
         >
             <div className={ classes.toolbar }>
                 <IconButton onClick={ () => setOpenDrawer(!openDrawer) }>
                     {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
                 </IconButton>
             </div>
+            <List>
+                <ListItem button onClick={ () => history.replace('/') }>
+                    <ListItemIcon>
+                        <Home style={{ color: 'black' }} />
+                    </ListItemIcon>
+                    <ListItemText primary='Home' />
+                </ListItem>
+            </List>
             <Divider />
             <List>
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                    <ListItem button key={ text }>
-                        <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                        <ListItemText primary={ text } />
-                    </ListItem>
-                ))}
+                <ListItem button onClick={ () => history.replace('/work-history') }>
+                    <ListItemIcon>
+                        <Work />
+                    </ListItemIcon>
+                    <ListItemText primary='Work History' />
+                </ListItem>
+                <ListItem button onClick={ () => history.replace('/projects') }>
+                    <ListItemIcon>
+                        <AccountTree />
+                    </ListItemIcon>
+                    <ListItemText primary='Projects' />
+                </ListItem>
+            </List>
+            <Divider />
+            <List>
+                <ListItem button onClick={ () => props.setShowModal(true) }>
+                    <ListItemIcon>
+                        <Description />
+                    </ListItemIcon>
+                    <ListItemText primary='Resume/CV' />
+                </ListItem>
             </List>
             <Divider />
             <List>
                 {socialMediaData.map((data) => (
-                    <ListItem button key={ data.name }>
-                        <div className='MuiListItemIcon-root'>
-                            <a href={ data.url } rel='noreferrer' target='_blank'>
-                                <img src={ data.img } alt='' />
-                            </a>
-                        </div>
-                        <ListItemText primary={ data.name } />
-                    </ListItem>
+                    <a key={ data.name } href={ data.url } rel='noreferrer' target='_blank' style={{ textDecoration: 'none', color: 'black' }}>
+                        <ListItem button >
+                            <ListItemIcon>
+                                { data.iconComponent }
+                            </ListItemIcon >
+                            <ListItemText primary={ data.name } href={ data.url } rel='noreferrer' target='_blank' />
+                        </ListItem>
+                    </a>
                 ))}
             </List>
-        </Drawer>
+        </SwipeableDrawer>
     )
 }
 
 DrawerComponent.propTypes = {
     classes: PropTypes.object,
     openDrawer: PropTypes.bool,
-    setOpenDrawer: PropTypes.func
+    setOpenDrawer: PropTypes.func,
+    setShowModal: PropTypes.func
 }
