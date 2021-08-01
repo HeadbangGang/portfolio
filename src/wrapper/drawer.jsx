@@ -7,12 +7,10 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 import { AccountTree, Description, Home, Work } from '@material-ui/icons'
 import { socialMediaData } from '../shared/components/social-media-icons/social-media-icons'
-import { useHistory } from 'react-router'
 
 export default function DrawerComponent (props) {
-    const history = useHistory()
     const theme = useTheme()
-    const { classes, openDrawer, setOpenDrawer } = props
+    const { classes, handleClick, openDrawer, setOpenDrawer } = props
 
     return (
         <SwipeableDrawer
@@ -32,12 +30,15 @@ export default function DrawerComponent (props) {
             variant="permanent"
         >
             <div className={ classes.toolbar }>
-                <IconButton onClick={ () => setOpenDrawer(!openDrawer) }>
+                <IconButton onClick={ handleClick }>
                     {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
                 </IconButton>
             </div>
             <List>
-                <ListItem button onClick={ () => history.replace('/') }>
+                <ListItem
+                    button
+                    onClick={ () => handleClick('/') }
+                >
                     <ListItemIcon>
                         <Home style={{ color: 'black' }} />
                     </ListItemIcon>
@@ -46,13 +47,19 @@ export default function DrawerComponent (props) {
             </List>
             <Divider />
             <List>
-                <ListItem button onClick={ () => history.replace('/work-history') }>
+                <ListItem
+                    button
+                    onClick={ () => handleClick('/work-history') }
+                >
                     <ListItemIcon>
                         <Work />
                     </ListItemIcon>
                     <ListItemText primary='Work History' />
                 </ListItem>
-                <ListItem button onClick={ () => history.replace('/projects') }>
+                <ListItem
+                    button
+                    onClick={ () => handleClick('/projects') }
+                >
                     <ListItemIcon>
                         <AccountTree />
                     </ListItemIcon>
@@ -61,7 +68,10 @@ export default function DrawerComponent (props) {
             </List>
             <Divider />
             <List>
-                <ListItem button onClick={ () => props.setShowModal(true) }>
+                <ListItem
+                    button
+                    onClick={ () => handleClick('/resume') }
+                >
                     <ListItemIcon>
                         <Description />
                     </ListItemIcon>
@@ -87,7 +97,7 @@ export default function DrawerComponent (props) {
 
 DrawerComponent.propTypes = {
     classes: PropTypes.object,
+    handleClick: PropTypes.func,
     openDrawer: PropTypes.bool,
-    setOpenDrawer: PropTypes.func,
-    setShowModal: PropTypes.func
+    setOpenDrawer: PropTypes.func
 }

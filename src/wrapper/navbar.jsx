@@ -1,4 +1,3 @@
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
@@ -9,7 +8,7 @@ import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
 
 export default function Navbar (props) {
-    const { classes, openDrawer, setOpenDrawer } = props
+    const { classes, handleClick, openDrawer } = props
 
     return (
         <AppBar
@@ -23,7 +22,7 @@ export default function Navbar (props) {
                 <IconButton
                     color="inherit"
                     aria-label="open drawer"
-                    onClick={ () => setOpenDrawer(!openDrawer) }
+                    onClick={ () => handleClick(null, !openDrawer) }
                     edge="start"
                     className={ clsx(classes.menuButton, {
                         [classes.hide]: openDrawer,
@@ -41,6 +40,6 @@ export default function Navbar (props) {
 
 Navbar.propTypes={
     classes: PropTypes.object,
-    openDrawer: PropTypes.bool,
-    setOpenDrawer: PropTypes.func
+    handleClick: PropTypes.func,
+    openDrawer: PropTypes.bool
 }

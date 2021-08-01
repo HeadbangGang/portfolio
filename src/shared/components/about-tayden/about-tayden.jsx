@@ -1,4 +1,5 @@
 import React from 'react'
+import profilePicture from '../../../media/profile-picture.jpeg'
 import './about-tayden.less'
 
 export default class AboutTayden extends React.Component {
@@ -6,8 +7,11 @@ export default class AboutTayden extends React.Component {
         return (
             <div className="about-tayden" id="home">
                 <h2 className="about-tayden__header">
-                    About Tayden Flitcroft
+                    About Me
                 </h2>
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                    <img src={ profilePicture } alt='' style={{ width: '250px', border: '1px solid black', borderRadius: '50%' }} />
+                </div>
                 <h3>Aspiring Information Technology Professional</h3>
                 <div>Tayden Flitcroft is an current Computer Repair Technician with over 2 years experience in hardware
                     and software repair for both Windows and macOS personal computers. He is a previous undergradutate

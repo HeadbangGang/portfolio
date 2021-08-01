@@ -1,9 +1,12 @@
 
-import React, { useState } from 'react'
-import PropTypes from 'prop-types'
+import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import DrawerComponent from './drawer'
+import useSound from 'use-sound'
+import drawerOpen from '../media/drawer-open.mp3'
+import drawerClose from '../media/drawer-close.mp3'
+import { useHistory } from 'react-router'
 import Navbar from './navbar'
 
 const drawerWidth = 240
@@ -71,12 +74,25 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Wrapper (props) {
     const classes = useStyles()
+    const history = useHistory()
     const [openDrawer, setOpenDrawer] = useState(false)
+    const [soundEffect, setSoundEffect] = useState(drawerOpen)
+    const [play] = useSound(soundEffect)
 
-    const sharedProps = { classes, setOpenDrawer, openDrawer, setShowModal: props.setShowModal }
+    useEffect(() => {
+        openDrawer ? setSoundEffect(drawerOpen) : setSoundEffect(drawerClose)
+    }, [openDrawer])
+
+    const handleClick = (path, drawerStatus) => {
+        setOpenDrawer(drawerStatus ?? false)
+        play()
+        path && history.replace(path)
+    }
+
+    const sharedProps = { classes, handleClick, openDrawer, setOpenDrawer }
 
     return (
-        <div className={ classes.root }>
+        <div className={ classes.root } style={{ overflowX: 'hidden', marginBottom: '50px' }}>
             <CssBaseline />
             <Navbar { ...sharedProps } />
             <DrawerComponent { ...sharedProps } />
@@ -86,8 +102,4 @@ export default function Wrapper (props) {
             </main>
         </div>
     )
-}
-
-Wrapper.propTypes={
-    setShowModal: PropTypes.func
 }
