@@ -77,10 +77,10 @@ export default function Wrapper (props) {
     const history = useHistory()
     const [openDrawer, setOpenDrawer] = useState(false)
     const [soundEffect, setSoundEffect] = useState(drawerOpen)
-    const [play] = useSound(soundEffect)
+    const [play] = useSound(soundEffect, { volume: .5 })
 
     useEffect(() => {
-        openDrawer ? setSoundEffect(drawerOpen) : setSoundEffect(drawerClose)
+        openDrawer ? setSoundEffect(drawerClose) : setSoundEffect(drawerOpen)
     }, [openDrawer])
 
     const handleClick = (path, drawerStatus) => {
