@@ -1,10 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Container, Row, Col } from 'react-bootstrap'
-import ResumeModal from '../resume-modal/resume-modal'
 import './work-history.less'
 
-export const WorkHistory = ({ showModal, setShowModal }) => {
+export const WorkHistory = () => {
 
     WorkHistory.propTypes = {
         setShowModal: PropTypes.func,
@@ -19,10 +18,10 @@ export const WorkHistory = ({ showModal, setShowModal }) => {
             <Container className="content-container">
                 <Row className="content-container__row">
                     <Col md className="content-container__column">
-                        <div className="job-title">Associate Software Engineer</div>
+                        <div className="job-title">Software Engineer</div>
                         <div className="employer">Best Buy</div>
                         <div className="job-description">
-                            Develop front end components and libraries in JavaScript leveraging frameworks like React JS, Redux, Node JS, and so on.
+                            Develop front end components and libraries in JavaScript leveraging frameworks like ReactJS, Redux, NodeJS, and so on.
                             Develop reusable monitoring frameworks that provide insights into the components during runtime.
                             Use modern technology to build accessible, innovative, and highly interactive user interfaces and ensure the technical feasibility of UI/UX designs.
                             Optimize web components for maximum speed and scalability.
@@ -64,10 +63,6 @@ export const WorkHistory = ({ showModal, setShowModal }) => {
                     </Col>
                 </Row>
             </Container>
-            <ResumeModal
-                show={ showModal }
-                onHide={ () => setShowModal(false)}
-            />
         </div>
     )
 }

@@ -1,28 +1,40 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import facebook_logo from './images/facebook.webp'
-import twitter_logo from './images/twitter.webp'
-import linkedin_logo from './images/linkedin.webp'
+import Facebook from '@material-ui/icons/Facebook'
+import Twitter from '@material-ui/icons/Twitter'
+import LinkedIn from '@material-ui/icons/LinkedIn'
 
-export const SocialMediaIcons = (props) => {
-    SocialMediaIcons.propTypes = {
-        alt: PropTypes.string,
-        className: PropTypes.string,
-        img: PropTypes.string,
-        parentClass: PropTypes.string,
-        url: PropTypes.string
+export const socialMediaData = [
+    {
+        name: 'Facebook',
+        iconComponent: <Facebook style={{ color: '#4267B2' }} />,
+        url: 'https://www.facebook.com/tayden.flitcroftgoodeill'
+    },
+    {
+        name: 'Twitter',
+        iconComponent: <Twitter style={{ color: '#1DA1F2' }} />,
+        url: 'https://twitter.com/taydenpaul'
+    },
+    {
+        name: 'LinkedIn',
+        iconComponent: <LinkedIn style={{ color: '#0e76a8' }} />,
+        url: 'https://www.linkedin.com/in/tayden-flitcroft-225013147/'
     }
-   
-    const { alt, className, img, parentClass, url} = props
+]
+
+export default function SocialMediaIcons (props) {
+    const { parentClass } = props
 
     return (
         <span className={ parentClass }>
-            <a href="https://www.facebook.com/tayden.flitcroftgoodeill" target="_blank" rel="noreferrer"><img src={facebook_logo} alt='' className={ className } /></a>
-            <a href="https://twitter.com/taydenpaul" target="_blank" rel="noreferrer"><img src={twitter_logo} alt='' className={ className } /></a>
-            <a href="https://www.linkedin.com/in/tayden-flitcroft-225013147/" target="_blank" rel="noreferrer"><img src={linkedin_logo} alt='' className={ className } /></a>
-            <a href={ url } target="_blank" rel="noreferrer"><img src={ img } alt={ alt } className={ className } /></a>
+            { socialMediaData.map(data => {
+                <a href={ data.url } target="_blank" rel="noreferrer">{ data.iconComponent }</a>
+            })}
         </span>
     )
 }
 
-export default SocialMediaIcons
+SocialMediaIcons.propTypes = {
+    className: PropTypes.string,
+    parentClass: PropTypes.string
+}

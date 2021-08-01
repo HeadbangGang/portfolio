@@ -1,13 +1,17 @@
 import React from 'react'
-import SocialMediaIcons from '../social-media-icons/social-media-icons'
+import { AppBar, Toolbar, Typography } from '@material-ui/core'
 import './portfolio-footer.less'
 
 export const PortfolioFooter = () => {
+    const date = new Date
     return (
-        <span className="footer-container">
-            <SocialMediaIcons parentClass="social-media-footer" />
-            <span>&#169;2020 by Tayden Flitcroft</span>
-        </span>
+        <AppBar position='static' style={{ position: 'fixed', bottom: '0', zIndex: '100' }} color="default">
+            <Toolbar style={{ justifyContent: 'flex-end' }}>
+                <Typography variant="body1" color="inherit" >
+                    { `© ${ date.getFullYear() } Tayden Flitcroft` }
+                </Typography>
+            </Toolbar>
+        </AppBar>
     )
 }
 
