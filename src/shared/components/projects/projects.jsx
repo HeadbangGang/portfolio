@@ -1,17 +1,25 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+import ProjectsCard from './projects-card'
+import projectsData from './projects-data'
+import './projects.less'
 
-export default class Projects extends React.Component {
-    render () {
-        return (
-            <div>
-                Projects
-                <div className="card" style={{ width: '18rem' }}>
-                    {/* <img src="..." class="card-img-top" alt="..."> */}
-                    <div className="card-body">
-                        <p className="card-text">Need to add cards for projects.</p>
-                    </div>
-                </div>
-            </div>
-        )
-    }
+export default function Projects ({ isSmallView }) {
+    return (
+        <div className='projects-wrapper'>
+            { projectsData.map((data) => {
+                return (
+                    <ProjectsCard
+                        key={ data.name }
+                        isSmallView={ isSmallView }
+                        { ...data }
+                    />
+                )
+            })}
+        </div>
+    )
+}
+
+Projects.propTypes = {
+    isSmallView: PropTypes.bool
 }

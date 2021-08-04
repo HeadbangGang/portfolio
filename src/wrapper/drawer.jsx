@@ -5,7 +5,7 @@ import clsx from 'clsx'
 import { SwipeableDrawer, List, Divider, IconButton, ListItem, ListItemIcon, ListItemText } from '@material-ui/core'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
-import { AccountTree, Description, Home, Work } from '@material-ui/icons'
+import { AccountTree, Description, Home, Work, Email } from '@material-ui/icons'
 import { socialMediaData } from '../shared/components/social-media-icons/social-media-icons'
 
 export default function DrawerComponent (props) {
@@ -80,16 +80,30 @@ export default function DrawerComponent (props) {
             </List>
             <Divider />
             <List>
-                {socialMediaData.map((data) => (
+                { socialMediaData.map((data) => (
                     <a key={ data.name } href={ data.url } rel='noreferrer' target='_blank' style={{ textDecoration: 'none', color: 'black' }}>
                         <ListItem button >
                             <ListItemIcon>
                                 { data.iconComponent }
                             </ListItemIcon >
-                            <ListItemText primary={ data.name } href={ data.url } rel='noreferrer' target='_blank' />
+                            <ListItemText primary={ data.name } />
                         </ListItem>
                     </a>
-                ))}
+                )) }
+            </List>
+            <Divider />
+            <List>
+                <a href='mailto:taydengoodeill@gmail.com'>
+                    <ListItem
+                        button
+                        style={{ textDecoration: 'none', color: 'black' }}
+                    >
+                        <ListItemIcon>
+                            <Email />
+                        </ListItemIcon >
+                        <ListItemText primary='Email Me' />
+                    </ListItem>
+                </a>
             </List>
         </SwipeableDrawer>
     )

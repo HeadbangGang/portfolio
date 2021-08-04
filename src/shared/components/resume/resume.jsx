@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import resumePdf from '../../../media/resume.pdf'
 import { SpecialZoomLevel, Viewer } from '@react-pdf-viewer/core'
 
@@ -10,7 +11,12 @@ import '@react-pdf-viewer/print/lib/styles/index.css'
 import '@react-pdf-viewer/full-screen/lib/styles/index.css'
 import '@react-pdf-viewer/default-layout/lib/styles/index.css'
 
-export default function Resume () {
+export default function Resume (props) {
+
+    Resume.propTypes={
+        isSmallView: PropTypes.bool
+    }
+
     const getFilePluginInstance = getFilePlugin({ fileNameGenerator: () => { return 'Flitcroft_Tayden_Resume' } })
     const { DownloadButton } = getFilePluginInstance
     const printPluginInstance = printPlugin()
@@ -24,6 +30,7 @@ export default function Resume () {
         }
     })
     const { EnterFullScreenButton } = fullScreenPluginInstance
+    const plugins = [getFilePluginInstance, printPluginInstance, fullScreenPluginInstance]
 
     return (
         <div
@@ -45,7 +52,7 @@ export default function Resume () {
                     justifyContent: 'flex-end'
                 }}
             >
-                <EnterFullScreenButton />
+                { !props.isSmallView && <EnterFullScreenButton /> }
                 <DownloadButton />
                 <PrintButton />
             </div>
@@ -55,7 +62,7 @@ export default function Resume () {
                     overflow: 'hidden',
                 }}
             >
-                <Viewer fileUrl={ resumePdf } plugins={ [getFilePluginInstance, printPluginInstance, fullScreenPluginInstance] } />
+                <Viewer fileUrl={ resumePdf } plugins={ plugins } />
             </div>
         </div>
     )

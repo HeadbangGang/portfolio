@@ -1,4 +1,5 @@
 import React from 'react'
+import { useMediaQuery } from 'react-responsive'
 import { Worker } from '@react-pdf-viewer/core'
 import AboutTayden from './shared/components/about-tayden/about-tayden'
 import WorkHistory from './shared/components/work-history/work-history'
@@ -13,11 +14,11 @@ import { Route, Switch } from 'react-router'
 
 
 export const Portfolio = () => {
-
+    const isSmallView = useMediaQuery({ query: '(max-width: 1224px)' })
 
     return (
         <Worker workerUrl="https://unpkg.com/pdfjs-dist@2.6.347/build/pdf.worker.min.js">
-            <Wrapper>
+            <Wrapper isSmallView={ isSmallView }>
                 <div className="portfolio-container__content-container">
                     <Switch>
                         <Route exact path='/'>
@@ -27,10 +28,10 @@ export const Portfolio = () => {
                             <WorkHistory />
                         </Route>
                         <Route exact path='/projects'>
-                            <Projects />
+                            <Projects isSmallView={ isSmallView } />
                         </Route>
                         <Route exact path='/resume'>
-                            <Resume />
+                            <Resume isSmallView={ isSmallView } />
                         </Route>
                     </Switch>
                 </div>
