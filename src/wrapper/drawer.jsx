@@ -5,7 +5,7 @@ import clsx from 'clsx'
 import { SwipeableDrawer, List, Divider, IconButton, ListItem, ListItemIcon, ListItemText } from '@material-ui/core'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
-import { AccountTree, Description, Home, Work, Email } from '@material-ui/icons'
+import { AccountTree, Description, Home, Work, Email, GitHub } from '@material-ui/icons'
 import { socialMediaData } from '../shared/components/social-media-icons/social-media-icons'
 
 export default function DrawerComponent (props) {
@@ -65,6 +65,16 @@ export default function DrawerComponent (props) {
                     </ListItemIcon>
                     <ListItemText primary='Projects' />
                 </ListItem>
+                <a href="https://github.com/HeadbangGang" target="_blank" rel="noreferrer" style={{ textDecoration: 'none', color: 'black' }}>
+                    <ListItem
+                        button
+                    >
+                        <ListItemIcon>
+                            <GitHub />
+                        </ListItemIcon>
+                        <ListItemText primary="GitHub" />
+                    </ListItem>
+                </a>
             </List>
             <Divider />
             <List>

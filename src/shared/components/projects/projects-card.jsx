@@ -64,18 +64,16 @@ export default function ProjectsCard (props) {
                     }
                     title={ name }
                 />
-                <a href='#' onClick={ () => setExpanded(!expanded) }>
-                    <CardContent>
-                        <Typography variant="body2" color="textSecondary" component="p">
-                            { `${ name } by Tayden Flitcroft` }
-                            <br />
-                            { 'Hosted at: ' }
-                            <a href={ url } target='_blank' rel="noreferrer">
-                                { url }
-                            </a>
-                        </Typography>
-                    </CardContent>
-                </a>
+                <CardContent>
+                    <Typography variant="body2" color="textSecondary" component="p">
+                        { `${ name } by Tayden Flitcroft` }
+                        <br />
+                        { 'Hosted at: ' }
+                        <a href={ url } target='_blank' rel="noreferrer">
+                            { url }
+                        </a>
+                    </Typography>
+                </CardContent>
                 <CardActions disableSpacing>
                     <IconButton>
                         <ShareIcon />
