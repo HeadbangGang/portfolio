@@ -11,34 +11,32 @@ import Wrapper from './wrapper/wrapper'
 import Resume from './shared/components/resume/resume'
 import { Route, Switch } from 'react-router'
 
-
-
 export const Portfolio = () => {
-    const isSmallView = useMediaQuery({ query: '(max-width: 1224px)' })
+  const isSmallView = useMediaQuery({ query: '(max-width: 1224px)' })
 
-    return (
-        <Worker workerUrl="https://unpkg.com/pdfjs-dist@2.6.347/build/pdf.worker.min.js">
-            <Wrapper isSmallView={ isSmallView }>
-                <div className="portfolio-container__content-container">
-                    <Switch>
-                        <Route exact path='/'>
-                            <AboutTayden />
-                        </Route>
-                        <Route exact path='/work-history'>
-                            <WorkHistory />
-                        </Route>
-                        <Route exact path='/projects'>
-                            <Projects isSmallView={ isSmallView } />
-                        </Route>
-                        <Route exact path='/resume'>
-                            <Resume isSmallView={ isSmallView } />
-                        </Route>
-                    </Switch>
-                </div>
-            </Wrapper>
-            <PortfolioFooter />
-        </Worker>
-    )
+  return (
+    <Worker workerUrl="https://unpkg.com/pdfjs-dist@2.6.347/build/pdf.worker.min.js">
+      <Wrapper isSmallView={ isSmallView }>
+        <div className="portfolio-container__content-container">
+          <Switch>
+            <Route exact path="/">
+              <AboutTayden />
+            </Route>
+            <Route exact path="/work-history">
+              <WorkHistory />
+            </Route>
+            <Route exact path="/projects">
+              <Projects isSmallView={ isSmallView } />
+            </Route>
+            <Route exact path="/resume">
+              <Resume isSmallView={ isSmallView } />
+            </Route>
+          </Switch>
+        </div>
+      </Wrapper>
+      <PortfolioFooter />
+    </Worker>
+  )
 }
 
 export default Portfolio

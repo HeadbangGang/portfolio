@@ -5,21 +5,21 @@ import projectsData from './projects-data'
 import './projects.less'
 
 export default function Projects ({ isSmallView }) {
-    return (
-        <div className='projects-wrapper'>
-            { projectsData.map((data) => {
-                return (
-                    <ProjectsCard
-                        key={ data.name }
-                        isSmallView={ isSmallView }
-                        { ...data }
-                    />
-                )
-            })}
-        </div>
-    )
+  return (
+    <div className="projects-wrapper">
+      { projectsData.map((data) => {
+        return (
+          <ProjectsCard
+            key={ data.name }
+            isSmallView={ isSmallView }
+            { ...data }
+          />
+        )
+      }) }
+    </div>
+  )
 }
 
 Projects.propTypes = {
-    isSmallView: PropTypes.bool
+  isSmallView: PropTypes.bool
 }
