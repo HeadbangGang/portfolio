@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
-const pokedexSample = require('../../../media/pokedex.png')
-const dndSample = require('../../../media/dnd.png')
+const pokedexSample = require('../../media/pokedex.png')
+const dndSample = require('../../media/dnd.png')
 
 const data = [
   {
@@ -16,6 +16,13 @@ const data = [
     name: 'Dungeons and Dragons',
     title: 'Tayden Flitcroft // Dungeons and Dragons',
     url: 'https://www.dnd.taydenflitcroft.com'
+  },
+  {
+    description: '',
+    img: dndSample,
+    name: 'Global Backend',
+    title: 'Tayden Flitcroft // Global Backend',
+    url: 'https://desolate-basin-78066.herokuapp.com'
   }
 ]
 module.exports = data

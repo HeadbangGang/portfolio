@@ -22,7 +22,9 @@ export default function Navbar (props) {
         <IconButton
           color="inherit"
           aria-label="open drawer"
-          onClick={ () => handleClick(null, !openDrawer) }
+          onClick={ () => {
+            handleClick(null, !openDrawer)
+          } }
           edge="start"
           className={ clsx(classes.menuButton, {
             [classes.hide]: openDrawer,
@@ -41,5 +43,6 @@ export default function Navbar (props) {
 Navbar.propTypes = {
   classes: PropTypes.object,
   handleClick: PropTypes.func,
-  openDrawer: PropTypes.bool
+  openDrawer: PropTypes.bool,
+  setOpenDrawer: PropTypes.func
 }

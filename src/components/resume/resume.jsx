@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import resumePdf from '../../../media/resume.pdf'
+import resumePdf from '../../media/resume.pdf'
 import { SpecialZoomLevel, Viewer } from '@react-pdf-viewer/core'
 
 import { getFilePlugin } from '@react-pdf-viewer/get-file'

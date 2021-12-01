@@ -6,7 +6,7 @@ import { Divider, IconButton, List, ListItem, ListItemIcon, ListItemText, Swipea
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 import { AccountTree, Description, Email, GitHub, Home, Work } from '@material-ui/icons'
-import { socialMediaData } from '../shared/components/social-media-icons/social-media-icons'
+import { socialMediaData } from '../social-media-icons/social-media-icons'
 
 export default function DrawerComponent (props) {
   const theme = useTheme()
@@ -25,8 +25,8 @@ export default function DrawerComponent (props) {
         }),
       }}
       open={ openDrawer }
-      onOpen={ () => setOpenDrawer(true) }
-      onClose={ () => setOpenDrawer(false) }
+      onOpen={ () => setOpenDrawer(!openDrawer) }
+      onClose={ () => setOpenDrawer(!openDrawer) }
       variant="permanent"
     >
       <div className={ classes.toolbar }>

@@ -1,11 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
-import CssBaseline from '@material-ui/core/CssBaseline'
 import DrawerComponent from './drawer'
-import useSound from 'use-sound'
-import drawerOpen from '../media/drawer-open.mp3'
-import drawerClose from '../media/drawer-close.mp3'
 import { useHistory } from 'react-router'
 import Navbar from './navbar'
 
@@ -13,9 +9,6 @@ const drawerWidth = 240
 
 export default function Wrapper (props) {
   const useStyles = makeStyles((theme) => ({
-    root: {
-      display: 'flex',
-    },
     appBar: {
       zIndex: theme.zIndex.drawer + 1,
       transition: theme.transitions.create(['width', 'margin'], {
@@ -69,31 +62,23 @@ export default function Wrapper (props) {
     },
     content: {
       flexGrow: 1,
-      padding: !props.isSmallView && theme.spacing(3),
+      height: '100%'
     },
   }))
 
   const history = useHistory()
   const [openDrawer, setOpenDrawer] = useState(false)
-  const [soundEffect, setSoundEffect] = useState(drawerOpen)
-  const [play] = useSound(soundEffect, { volume: 0.5 })
   const classes = useStyles()
 
-  useEffect(() => {
-    openDrawer ? setSoundEffect(drawerClose) : setSoundEffect(drawerOpen)
-  }, [openDrawer])
-
-  const handleClick = (path, drawerStatus) => {
-    setOpenDrawer(drawerStatus ?? false)
-    play()
+  const handleClick = (path, override) => {
+    setOpenDrawer(override || (openDrawer && !openDrawer))
     path && history.replace(path)
   }
 
   const sharedProps = { classes, handleClick, openDrawer, setOpenDrawer }
 
   return (
-    <div className={ classes.root } style={{ overflowX: 'hidden', marginBottom: '50px' }}>
-      <CssBaseline />
+    <div style={{ display: 'flex', overflowX: 'hidden', height: '100%' }}>
       <Navbar { ...sharedProps } />
       <DrawerComponent { ...sharedProps } />
       <main className={ classes.content }>
