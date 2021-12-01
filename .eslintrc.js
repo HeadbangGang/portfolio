@@ -35,10 +35,6 @@ module.exports = {
     'no-dupe-keys': 2,
     'no-duplicate-case': 2,
     'eqeqeq': [2, 'smart'],
-    'linebreak-style': [
-      'error',
-      'unix'
-    ],
     quotes: [
       'error',
       'single'

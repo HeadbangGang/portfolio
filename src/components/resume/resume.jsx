@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import resumePdf from '../../media/resume.pdf'
 import { SpecialZoomLevel, Viewer } from '@react-pdf-viewer/core'
+import './resume.less'
 
 import { getFilePlugin } from '@react-pdf-viewer/get-file'
 import { printPlugin } from '@react-pdf-viewer/print'
@@ -12,10 +13,6 @@ import '@react-pdf-viewer/full-screen/lib/styles/index.css'
 import '@react-pdf-viewer/default-layout/lib/styles/index.css'
 
 export default function Resume (props) {
-  Resume.propTypes = {
-    isSmallView: PropTypes.bool
-  }
-
   const getFilePluginInstance = getFilePlugin({ fileNameGenerator: () => { return 'Flitcroft_Tayden_Resume' } })
   const { DownloadButton } = getFilePluginInstance
   const printPluginInstance = printPlugin()
@@ -32,37 +29,19 @@ export default function Resume (props) {
   const plugins = [getFilePluginInstance, printPluginInstance, fullScreenPluginInstance]
 
   return (
-    <div
-      className="rpv-core__viewer"
-      style={{
-        border: '1px solid rgba(0, 0, 0, 0.3)',
-        display: 'flex',
-        flexDirection: 'column',
-        height: '100%',
-      }}
-    >
-      <div
-        style={{
-          alignItems: 'center',
-          backgroundColor: '#eeeeee',
-          borderBottom: '1px solid rgba(0, 0, 0, 0.3)',
-          display: 'flex',
-          padding: '4px',
-          justifyContent: 'flex-end'
-        }}
-      >
+    <div className="pdf-viewer__container">
+      <div className="pdf-viewer__container-inner">
         { !props.isSmallView && <EnterFullScreenButton /> }
         <DownloadButton />
         <PrintButton />
       </div>
-      <div
-        style={{
-          flex: 1,
-          overflow: 'hidden',
-        }}
-      >
+      <div className="pdf-viewer__document">
         <Viewer fileUrl={ resumePdf } plugins={ plugins } />
       </div>
     </div>
   )
+}
+
+Resume.propTypes = {
+  isSmallView: PropTypes.bool
 }
