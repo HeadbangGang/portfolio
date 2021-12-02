@@ -17,7 +17,6 @@ import {
   Popover,
   Typography
 } from '@material-ui/core'
-// import ShareIcon from '@material-ui/icons/Share'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import OpenInBrowser from '@material-ui/icons/OpenInBrowser'
 import OpenInNew from '@material-ui/icons/OpenInNew'
@@ -75,9 +74,6 @@ export default function ProjectsCard (props) {
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
-          { /* <IconButton>
-            <ShareIcon />
-          </IconButton> */ }
           <IconButton
             className={ clsx(classes.expand, {
               [classes.expandOpen]: expanded,
@@ -140,7 +136,10 @@ export default function ProjectsCard (props) {
 
 ProjectsCard.propTypes = {
   description: PropTypes.string,
-  img: PropTypes.object,
+  img: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.string
+  ]),
   name: PropTypes.string,
   title: PropTypes.string,
   url: PropTypes.string
