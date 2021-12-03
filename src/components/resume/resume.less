@@ -1,0 +1,39 @@
+.resume {
+  &-title {
+    margin: 35px 0;
+    font-size: 40px;
+    text-align: center;
+  }
+}
+
+.pdf-viewer {
+  &__container {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    margin: 24px;
+    width: 100%;
+    max-width: 1000px;
+    place-self: center;
+
+    &-inner {
+      align-items: center;
+      background-color: white;
+      border-bottom: 1px solid black;
+      display: flex;
+      padding: 4px;
+      justify-content: flex-end;
+    }
+  }
+
+  &__document {
+    flex: 1;
+    overflow: hidden;
+  }
+}
+
+.rpv-core {
+  &__inner-page {
+    background-color: lightgrey !important;
+  }
+}
