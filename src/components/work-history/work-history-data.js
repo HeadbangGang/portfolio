@@ -2,7 +2,7 @@ module.exports = [
   {
     title: 'Software Engineer',
     employer: 'Best Buy',
-    description: 'Develop front end components and libraries in JavaScript leveraging frameworks like ReactJS, Redux, NodeJS, and so on. Develop reusable monitoring frameworks that provide insights into the components during runtime. Use modern technology to build accessible, innovative, and highly interactive user interfaces and ensure the technical feasibility of UI/ UX designs. Optimize web components for maximum speed and scalability. Collaborate with team members across various disciplines to solve problems at the scale of one of the top 10 e - commerce websites.'
+    description: 'Develop front end components and libraries in JavaScript leveraging frameworks like ReactJS, Redux, and NodeJS. Develop reusable monitoring frameworks that provide insights into the components during runtime. Use modern technology to build accessible, innovative, and highly interactive user interfaces and ensure the technical feasibility of UI/ UX designs. Optimize web components for maximum speed and scalability. Collaborate with team members across various disciplines to solve problems at the scale of one of the top 10 e‑commerce websites.'
   },
   {
     title: 'Advanced Repair Agent',

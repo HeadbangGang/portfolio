@@ -7,6 +7,9 @@ import './projects.less'
 export default function Projects ({ isSmallView }) {
   return (
     <div className="projects-wrapper">
+      <h1 className="projects-title">
+        Projects
+      </h1>
       { projectsData.map((data) => {
         return (
           <ProjectsCard

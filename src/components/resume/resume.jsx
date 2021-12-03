@@ -29,16 +29,21 @@ export default function Resume (props) {
   const plugins = [getFilePluginInstance, printPluginInstance, fullScreenPluginInstance]
 
   return (
-    <div className="pdf-viewer__container">
-      <div className="pdf-viewer__container-inner">
-        { !props.isSmallView && <EnterFullScreenButton /> }
-        <DownloadButton />
-        <PrintButton />
+    <>
+      <h1 className="resume-title">
+        Resume/CV
+      </h1>
+      <div className="pdf-viewer__container">
+        <div className="pdf-viewer__container-inner">
+          { !props.isSmallView && <EnterFullScreenButton /> }
+          <DownloadButton />
+          <PrintButton />
+        </div>
+        <div className="pdf-viewer__document">
+          <Viewer fileUrl={ resumePdf } plugins={ plugins } />
+        </div>
       </div>
-      <div className="pdf-viewer__document">
-        <Viewer fileUrl={ resumePdf } plugins={ plugins } />
-      </div>
-    </div>
+    </>
   )
 }
 

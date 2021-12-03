@@ -5,9 +5,9 @@ import './work-history.less'
 export const WorkHistory = () => {
   return (
     <div className="work-history">
-      <h2 className="work-history__title">
+      <h1 className="work-history__title">
         Work History
-      </h2>
+      </h1>
       <div className="content-container">
         { workHistoryData.map((item, index) => {
           return (
