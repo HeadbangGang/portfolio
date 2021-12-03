@@ -27,8 +27,8 @@ export default function SocialMediaIcons (props) {
 
   return (
     <span className={ parentClass }>
-      { socialMediaData.map(data => {
-        <a href={ data.url } target="_blank" rel="noreferrer">{ data.iconComponent }</a>
+      { socialMediaData.map((data, index) => {
+        return <a key={ index } href={ data.url } target="_blank" rel="noreferrer">{ data.iconComponent }</a>
       }) }
     </span>
   )

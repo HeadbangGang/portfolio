@@ -18,8 +18,7 @@ const data = [
     url: 'https://www.dnd.taydenflitcroft.com'
   },
   {
-    description: '',
-    img: dndSample,
+    description: 'fdafds',
     name: 'Global Backend',
     title: 'Tayden Flitcroft // Global Backend',
     url: 'https://desolate-basin-78066.herokuapp.com'

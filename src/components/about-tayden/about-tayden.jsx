@@ -4,7 +4,7 @@ import './about-tayden.less'
 
 const AboutTayden = () => {
   return (
-    <div className="about-tayden" id="home">
+    <div className="about-tayden">
       <h1 className="about-tayden__header">
         About Me
       </h1>

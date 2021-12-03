@@ -1,0 +1,14 @@
+source $HOME/.profile
+set -e
+echo "Running Linting."
+npm run Linting
+
+if ["$?" == 0]; then
+    echo "Linting Passed!"
+else
+    echo "Linting failed!"
+    exit 1
+fi
+
+echo "Running Tests"
+npm run test

@@ -2,7 +2,7 @@ const path = require('path')
 const Webpack = require('webpack')
 const autoprefixer = require('autoprefixer')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CopyWebpackPlugin = require(('copy-webpack-plugin'))
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const IS_DEV = process.env.NODE_ENV === 'development'
 
@@ -41,7 +41,7 @@ module.exports = {
     }),
     new CopyWebpackPlugin([
       { from: './assets', to: 'assets' }
-    ]),
+    ])
   ],
   module: {
     rules: [
