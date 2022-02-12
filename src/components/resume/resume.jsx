@@ -1,18 +1,18 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { useContext } from 'react'
+import { UIViewContext } from '../../providers/ui'
 import resumePdf from '../../media/resume.pdf'
 import { SpecialZoomLevel, Viewer } from '@react-pdf-viewer/core'
-import './resume.less'
-
 import { getFilePlugin } from '@react-pdf-viewer/get-file'
 import { printPlugin } from '@react-pdf-viewer/print'
 import { fullScreenPlugin } from '@react-pdf-viewer/full-screen'
-
 import '@react-pdf-viewer/print/lib/styles/index.css'
 import '@react-pdf-viewer/full-screen/lib/styles/index.css'
 import '@react-pdf-viewer/default-layout/lib/styles/index.css'
+import './resume.less'
 
-export default function Resume (props) {
+export default function Resume () {
+  const isSmallView = useContext(UIViewContext)
+
   const getFilePluginInstance = getFilePlugin({ fileNameGenerator: () => { return 'Flitcroft_Tayden_Resume' } })
   const { DownloadButton } = getFilePluginInstance
   const printPluginInstance = printPlugin()
@@ -35,7 +35,7 @@ export default function Resume (props) {
       </h1>
       <div className="pdf-viewer__container">
         <div className="pdf-viewer__container-inner">
-          { !props.isSmallView && <EnterFullScreenButton /> }
+          { !isSmallView && <EnterFullScreenButton /> }
           <DownloadButton />
           <PrintButton />
         </div>
@@ -45,8 +45,4 @@ export default function Resume (props) {
       </div>
     </>
   )
-}
-
-Resume.propTypes = {
-  isSmallView: PropTypes.bool
 }

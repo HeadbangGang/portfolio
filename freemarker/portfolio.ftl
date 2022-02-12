@@ -19,7 +19,5 @@
   </head>
   <body style="margin: 0px; background-color: #e8e8e8; height: 100%">
     <div id="root" style="height: 100%"></div>
-    <script src="/__/firebase/8.8.1/firebase-app.js"></script>
-    <script src="/__/firebase/init.js"></script>
   </body>
 </html>

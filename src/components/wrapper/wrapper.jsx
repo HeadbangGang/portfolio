@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
 import DrawerComponent from './drawer'
 import { useHistory } from 'react-router'
@@ -7,7 +6,7 @@ import Navbar from './navbar'
 
 const drawerWidth = 240
 
-export default function Wrapper (props) {
+export default function Wrapper ({ children }) {
   const useStyles = makeStyles((theme) => ({
     appBar: {
       zIndex: theme.zIndex.drawer + 1,
@@ -83,12 +82,10 @@ export default function Wrapper (props) {
       <DrawerComponent { ...sharedProps } />
       <main className={ classes.content }>
         <div className={ classes.toolbar } />
-        { props.children }
+        <div className="portfolio-container">
+          { children }
+        </div>
       </main>
     </div>
   )
-}
-
-Wrapper.propTypes = {
-  isSmallView: PropTypes.bool
 }

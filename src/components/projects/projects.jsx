@@ -1,10 +1,9 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import ProjectsCard from './projects-card'
 import projectsData from './projects-data'
 import './projects.less'
 
-export default function Projects ({ isSmallView }) {
+export default function Projects () {
   return (
     <div className="projects-wrapper">
       <h1 className="projects-title">
@@ -14,15 +13,10 @@ export default function Projects ({ isSmallView }) {
         return (
           <ProjectsCard
             key={ data.name }
-            isSmallView={ isSmallView }
             { ...data }
           />
         )
       }) }
     </div>
   )
-}
-
-Projects.propTypes = {
-  isSmallView: PropTypes.bool
 }

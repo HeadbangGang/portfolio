@@ -126,7 +126,7 @@ export default function ProjectsCard (props) {
 
 ProjectsCard.propTypes = {
   description: PropTypes.string,
-  img: PropTypes.string,
+  img: PropTypes.object,
   name: PropTypes.string,
   title: PropTypes.string,
   url: PropTypes.string

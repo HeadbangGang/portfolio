@@ -1,24 +1,23 @@
 import React from 'react'
 import profilePicture from '../../media/profile-picture.jpeg'
-import './about-tayden.less'
+import * as styles from './about-tayden.less'
 
 const AboutTayden = () => {
   return (
-    <div className="about-tayden">
-      <h1 className="about-tayden__header">
-        About Me
+    <div className={ styles['about-tayden'] }>
+      <h1 className={ styles['about-tayden__header'] }>
+        About Tayden Flitcroft
       </h1>
-      <div className="about-tayden__img-wrapper">
+      <div className={ styles['about-tayden__img-wrapper'] }>
         <img src={ profilePicture } alt="tayden" />
       </div>
-      <div className="about-tayden__content">
-        <h2>Aspiring Information Technology Professional</h2>
-        <h3>
-          I am a Software Engineer and technology enthusiast with over three years of professional computer hardware and software repair, as well as over a year of software development with a Fortune 500 company.
-          I am a previous undergraduate student of Collin College and graduated in 2018 with a certification in Audio Engineering.
-          I have familiarity with multiple technologies such as HTML, CSS (LESS and SASS), JavaScript, React, Node and Express.
-          I have also dabbled in other scripting languages such as Python, PowerShell and AppleScript.
-        </h3>
+      <div className={ styles['about-tayden__content'] }>
+        <h2>Software Engineer</h2>
+        <div>
+          I am a Software Engineer and technology enthusiast with over four years of professional computer repair and software development experience with a Fortune 500 company.
+          I graduated from Collin College located in Dallas, Texas in 2018 for Audio Engineering.
+          I have familiarity with multiple technologies such as HTML, CSS (LESS and SASS), JavaScript, React, Redux, Node and Express.
+        </div>
       </div>
     </div>
   )

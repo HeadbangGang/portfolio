@@ -57,7 +57,14 @@ module.exports = {
         use: [{
           loader: 'style-loader'
         }, {
-          loader: 'css-loader'
+          loader: 'css-loader',
+          options: {
+            modules: {
+              localIdentName: IS_DEV ? '[local]' : '[sha1:hash:hex:16]',
+            },
+            importLoaders: 2,
+            sourceMap: IS_DEV
+          }
         }, {
           loader: 'less-loader'
         }]

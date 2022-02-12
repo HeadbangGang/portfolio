@@ -2,7 +2,7 @@
 const pokedexSample = require('../../media/pokedex.png')
 const dndSample = require('../../media/dnd.png')
 
-const data = [
+module.exports = [
   {
     description: 'Pokédex is a web app that generates all Pokémon currently included in The Pokémon Company\'s "National Pokédex" by leveraging my "Global Backend" node app. It generates all Pokémon currently released by The Pokémon Company and offers each Pokémon dedicated page that displays which games it was included in as well as an image of what it looked like in the respective version.',
     img: pokedexSample,
@@ -24,4 +24,3 @@ const data = [
     url: 'https://desolate-basin-78066.herokuapp.com'
   }
 ]
-module.exports = data
