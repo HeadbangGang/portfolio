@@ -13,7 +13,7 @@ module.exports = {
     'plugin:jsx-a11y/recommended',
     'standard'
   ],
-  'parser': 'babel-eslint',
+  'parser': '@babel/eslint-parser',
   'parserOptions': {
     'ecmaFeatures': {
       'experimentalObjectRestSpread': true,
