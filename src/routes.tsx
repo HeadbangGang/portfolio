@@ -1,11 +1,16 @@
-import React from 'react'
+import React, { Suspense, lazy, ReactElement } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { PAGE_URL } from './helpers/helpers'
-import Homepage from './components/homepage/homepage'
+import {PAGE_URL, SPINNER_DEFAULT} from './helpers/helpers'
 import Layout from './components/layout/layout'
+import SuspenseLoader from './components/suspense-loader/suspense-loader'
+
+const Homepage = lazy(() => Promise.all([
+    import('./components/homepage/homepage'),
+    new Promise(resolve => setTimeout(resolve, SPINNER_DEFAULT))
+]).then(([moduleExports]) => moduleExports))
 
 interface RoutesInterface {
-    element: React.ReactElement
+    element: ReactElement
     path: string
 }
 
@@ -24,9 +29,11 @@ const RoutesController = () => {
     return (
         <BrowserRouter basename={ PAGE_URL.HOMEPAGE }>
             <Layout>
-                <Routes>
-                    { renderRoutes() }
-                </Routes>
+                <Suspense fallback={ <SuspenseLoader /> }>
+                    <Routes>
+                        { renderRoutes() }
+                    </Routes>
+                </Suspense>
             </Layout>
         </BrowserRouter>
     )

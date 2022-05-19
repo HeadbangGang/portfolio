@@ -2,3 +2,8 @@
   padding: 76px 10px 0;
   height: calc(100% - 76px);
 }
+
+.layout {
+  position: relative;
+  min-height: 100vh;
+}

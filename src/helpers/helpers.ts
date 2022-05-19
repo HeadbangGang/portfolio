@@ -16,3 +16,5 @@ export const LOGO_URLS = {
     'logo-twitter': 'https://twitter.com/TaydenPaul',
     'mail': 'mailto:taydengoodeill@gmail.com'
 }
+
+export const SPINNER_DEFAULT = 750
