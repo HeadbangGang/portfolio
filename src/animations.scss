@@ -1,0 +1,71 @@
+@for $item from 1 through 10 {
+  .roll-up-#{$item} {
+    animation: roll-up calc(500ms * #{$item}) ease-in-out;
+  }
+}
+
+@keyframes roll-up {
+  0% {
+    transform: translateY(25px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@for $item from 1 through 10 {
+  .roll-down-#{$item} {
+    animation: roll-down calc(500ms * #{$item}) ease-in-out;
+  }
+}
+
+@keyframes roll-down {
+  0% {
+    transform: translateY(-25px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@for $item from 1 through 10 {
+  .slide-right-#{$item} {
+    animation: slide-right calc(500ms * #{$item}) ease-in-out;
+  }
+}
+
+@keyframes slide-right {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@for $item from 1 through 10 {
+  .slide-left-#{$item} {
+    animation: slide-left calc(500ms * #{$item}) ease-in-out;
+  }
+}
+
+@keyframes slide-left {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

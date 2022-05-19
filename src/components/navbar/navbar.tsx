@@ -21,10 +21,16 @@ const Navbar = () => {
     useEffect(() => {
         if (showNavigationButtonDropdown) {
             setDropdownClass('visible')
+            // @ts-ignore
+            document.getElementsByClassName('typed-cursor')[0].style.opacity = 0
         }
         if (hasMounted && !showNavigationButtonDropdown) {
             setDropdownClass('closing')
-            setTimeout(() => setDropdownClass('hidden'), 200)
+            setTimeout(() => {
+                setDropdownClass('hidden')
+                // @ts-ignore
+                document.getElementsByClassName('typed-cursor')[0].style.opacity = 'initial'
+            }, 200)
         }
         !hasMounted && setHasMounted(true)
     }, [showNavigationButtonDropdown])
@@ -41,19 +47,19 @@ const Navbar = () => {
     ))
 
     return (
-        <section id="navbar">
-            <div className="navbar__content">
-                <div className="navbar__content__logo">
+        <header>
+            <div className="navbar">
+                <div className="navbar__logo">
                     <button onClick={() => navigate(PAGE_URL.HOMEPAGE)}>
                         <img alt="html-tag" src="assets/media/html-tag.png" />
                     </button>
                 </div>
-                <div className="navbar__content__toggle">
+                <div className="navbar__toggle">
                     <button onClick={() => setShowNavigationDropdown(!showNavigationButtonDropdown)}>
                         <img alt="menu-icon" src="assets/media/menu-icon.png" />
                     </button>
                 </div>
-                <div className="navbar__content__nav-buttons">
+                <div className="navbar__nav-buttons">
                     { navigationButtons }
                 </div>
             </div>
@@ -62,7 +68,7 @@ const Navbar = () => {
                     {navigationButtons}
                 </div>
             }
-        </section>
+        </header>
     )
 }
 

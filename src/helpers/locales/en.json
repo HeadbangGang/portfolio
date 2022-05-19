@@ -1,8 +1,15 @@
 {
   "common": {
-    "name": "Tayden Flitcroft"
   },
   "homepage": {
-    "header": "Hello! My name is {{- myName}} and I am a"
+    "hello": "Hello!",
+    "myNameIs": "My name is Tayden Flitcroft",
+    "iAmA": "I am a ",
+    "subheader": "I have {{- years}}+ years experience as a Software Engineer and a Web App Developer. This website showcases some of my projects.",
+    "viewProjects": "View Projects"
+  },
+  "footer": {
+    "copyright": "&copy; {{- year}}.",
+    "credit": "Designed and Developed by [Tayden Flitcroft](https://github.com/HeadbangGang)"
   }
 }

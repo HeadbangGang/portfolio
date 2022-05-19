@@ -1,0 +1,54 @@
+footer {
+  display: flex;
+  font-family: RobotoCondensed, sans-serif;
+  font-size: 13px;
+  justify-content: space-between;
+  margin: 0 10px;
+  padding: 100px 0 25px;
+  position: relative;
+
+  .credits {
+    padding: 0 12px;
+    width: 100%;
+
+    div:first-of-type {
+      margin-right: 4px;
+    }
+  }
+
+  p {
+    margin: 0;
+  }
+
+  a {
+    color: #6a6ffe;
+    text-decoration: none;
+  }
+
+  .icons {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+
+    svg {
+      color: black;
+      margin: 8px 4px 0;
+    }
+  }
+
+  @media screen and (max-width: 992px) {
+    align-items: center;
+    flex-direction: column;
+    margin: 0;
+    padding-bottom: 50px;
+
+    .credits {
+      display: flex;
+      justify-content: center;
+    }
+
+    .icons {
+      justify-content: center;
+    }
+  }
+}

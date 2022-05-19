@@ -1,22 +1,28 @@
 import React from 'react'
 import Typed from 'typed.js'
+import './typed-wrapper.scss'
+import {I_AM_STRINGS} from '../../helpers/helpers'
 
-const TypedWrapper = (props) => {
-    const elementRef = React.useRef(null)
-    const typedRef = React.useRef(null)
+interface TypedWrapperProps {
+    strings?: string[]
+    smartBackspace?: boolean
+    typeSpeed?: number
+    backSpeed?: number
+    loop?: boolean
+    backDelay?: number
+}
+
+const TypedWrapper = (props: TypedWrapperProps) => {
 
     React.useEffect(() => {
-        typedRef.current = new Typed(elementRef.current, props)
-        return () => {
-            typedRef.current.destroy()
-        }
+        new Typed('#typed', props)
     }, [])
 
-    return <span ref={ elementRef } />
+    return <span id="typed" />
 }
 
 TypedWrapper.defaultProps = {
-    strings: ['Software Engineer', 'Developer', 'Computer Scientist', 'IT Professional', 'Technology Enthusiast'],
+    strings: I_AM_STRINGS,
     smartBackspace: true,
     typeSpeed: 25,
     backSpeed: 50,

@@ -22,6 +22,8 @@ interface I18NProps extends LanguageMapVariableProps {
 
 interface LanguageMapVariableProps {
     myName?: string
+    years?: number
+    year?: number
 }
 
 const mergedLanguageMap = { resources: {} } as LanguageMapInterface

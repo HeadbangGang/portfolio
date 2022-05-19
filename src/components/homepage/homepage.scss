@@ -1,5 +1,83 @@
 .homepage {
-  &__header {
+  position: relative;
+
+  #homepage-header {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    font-family: RobotoCondensed, sans-serif;
+    font-weight: bolder;
+    justify-content: space-evenly;
+    text-align: center;
     text-transform: uppercase;
+
+    div {
+      margin: 10px 0;
+    }
+
+    .hello {
+      font-size: 48px;
+      margin: 35px 0;
+    }
+
+    .my-name-is {
+      font-size: 32px;
+    }
+
+    .i-am-a-engineer {
+      font-size: 32px;
+    }
+
+    .subheader {
+      font-weight: lighter;
+      color: #878787;
+      font-size: 24px;
+      font-family: RobotoCondensed, sans-serif;
+      text-align: center;
+      text-transform: uppercase;
+      max-width: 600px;
+    }
+
+    .view-projects-button {
+      margin-top: 40px;
+      text-align: center;
+
+      button {
+        color: white;
+        background-color: #cf9090;
+        border: 1px solid #cf9090;
+        border-radius: 50px;
+        font-size: 17px;
+        padding: 15px 20px;
+
+        &:active {
+          transform: scale(0.9);
+        }
+      }
+    }
+
+    @media screen and (max-width: 992px) {
+      padding: 75px 0;
+
+      .hello {
+        font-size: 32px;
+      }
+
+      .subheader {
+        font-size: 18px;
+      }
+
+      .my-name-is {
+        font-size: 20px;
+      }
+
+      .i-am-a-engineer {
+        font-size: 20px;
+      }
+    }
+  }
+
+  #about-me {
+    padding: 100px 0;
   }
 }
