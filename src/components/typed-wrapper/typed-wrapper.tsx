@@ -16,7 +16,7 @@ const TypedWrapper = (props) => {
 }
 
 TypedWrapper.defaultProps = {
-    strings: ['Engineer', 'Developer', 'Computer Scientist', 'IT Professional'],
+    strings: ['Software Engineer', 'Developer', 'Computer Scientist', 'IT Professional', 'Technology Enthusiast'],
     smartBackspace: true,
     typeSpeed: 25,
     backSpeed: 50,

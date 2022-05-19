@@ -2,6 +2,7 @@ import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { PAGE_URL } from './helpers/helpers'
 import Homepage from './components/homepage/homepage'
+import Layout from './components/layout/layout'
 
 interface RoutesInterface {
     element: React.ReactElement
@@ -22,9 +23,11 @@ const RoutesController = () => {
 
     return (
         <BrowserRouter basename={ PAGE_URL.HOMEPAGE }>
-            <Routes>
-                { renderRoutes() }
-            </Routes>
+            <Layout>
+                <Routes>
+                    { renderRoutes() }
+                </Routes>
+            </Layout>
         </BrowserRouter>
     )
 }

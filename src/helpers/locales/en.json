@@ -1,0 +1,8 @@
+{
+  "common": {
+    "name": "Tayden Flitcroft"
+  },
+  "homepage": {
+    "header": "Hello! My name is {{- myName}} and I am a"
+  }
+}

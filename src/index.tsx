@@ -1,12 +1,13 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
 import RoutesController from './routes'
-import Layout from './components/layout/layout'
+import UIProvider from './providers/ui'
+import './index.scss'
 
 const root = createRoot(document.getElementById('portfolio'))
 
 root.render(
-    <Layout>
+    <UIProvider>
         <RoutesController />
-    </Layout>
+    </UIProvider>
 )

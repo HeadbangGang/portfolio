@@ -38,11 +38,11 @@ module.exports = {
                 collapseWhitespace: !IS_DEV
             }
         }),
-        // new CopyWebpackPlugin({
-        //     patterns: [
-        //         { from: './assets', to: 'assets' }
-        //     ]
-        // }),
+        new CopyWebpackPlugin({
+            patterns: [
+                { from: './assets', to: 'assets' }
+            ]
+        }),
         new MiniCssExtractPlugin({
             filename: 'css/styles.min.css'
         }),
@@ -52,7 +52,7 @@ module.exports = {
         rules: [
             {
                 test: /\.(t|j)sx?$/,
-                use: { loader: 'ts-loader' },
+                use: { loader: 'babel-loader' },
                 exclude: /node_modules/
             }, {
                 enforce: 'pre',
@@ -64,7 +64,7 @@ module.exports = {
                 use: [
                     MiniCssExtractPlugin.loader,
                     { loader: 'css-loader' },
-                    { loader: 'scss-loader' }
+                    { loader: 'sass-loader' }
                 ]
             }, {
                 test: /\.jpe?g$|\.ico$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$|\.pdf$|\.webp$/,

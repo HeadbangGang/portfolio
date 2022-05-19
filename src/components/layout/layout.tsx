@@ -1,14 +1,15 @@
 import React from 'react'
 import Navbar from '../navbar/navbar'
 import Footer from '../footer/footer'
+import './layout.scss'
 
 const Layout = ({ children }) => {
     return (
         <>
             <Navbar />
-            <div>
+            <section id="main-content">
                 { children }
-            </div>
+            </section>
             <Footer />
         </>
     )

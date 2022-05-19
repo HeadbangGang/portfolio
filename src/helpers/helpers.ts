@@ -1,3 +1,7 @@
 export const PAGE_URL = {
-    HOMEPAGE: '/'
+    CONTACT: '/contact',
+    HOMEPAGE: '/',
+    PROJECTS: '/projects',
+    RESUME: '/resume',
+    WORK_EXPERIENCE: '/work-experience'
 }
