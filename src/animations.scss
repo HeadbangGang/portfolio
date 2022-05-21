@@ -47,7 +47,7 @@
   }
 
   100% {
-    transform: translateX(0);
+    transform: translateX(0%);
     opacity: 1;
   }
 }
@@ -65,7 +65,23 @@
   }
 
   100% {
-    transform: translateX(0);
+    transform: translateX(0%);
     opacity: 1;
+  }
+}
+
+@for $item from 1 through 10 {
+  .spinning-#{$item} {
+    animation: spinning calc(1000ms * #{$item}) linear infinite;
+  }
+}
+
+@keyframes spinning {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(359deg);
   }
 }

@@ -1,5 +1,5 @@
 import React, { Suspense, lazy, ReactElement } from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import {PAGE_URL, SPINNER_DEFAULT} from './helpers/helpers'
 import Layout from './components/layout/layout'
 import SuspenseLoader from './components/suspense-loader/suspense-loader'
@@ -27,15 +27,13 @@ const RoutesController = () => {
     }
 
     return (
-        <BrowserRouter basename={ PAGE_URL.HOMEPAGE }>
-            <Layout>
-                <Suspense fallback={ <SuspenseLoader /> }>
-                    <Routes>
-                        { renderRoutes() }
-                    </Routes>
-                </Suspense>
-            </Layout>
-        </BrowserRouter>
+        <Layout>
+            <Suspense fallback={ <SuspenseLoader /> }>
+                <Routes>
+                    { renderRoutes() }
+                </Routes>
+            </Suspense>
+        </Layout>
     )
 }
 

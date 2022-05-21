@@ -7,17 +7,18 @@
     flex-direction: column;
     font-family: RobotoCondensed, sans-serif;
     font-weight: bolder;
-    justify-content: space-evenly;
+    height: calc(100vh - 76px);
+    justify-content: center;
     text-align: center;
     text-transform: uppercase;
 
     div {
-      margin: 10px 0;
+      margin: 10px;
     }
 
     .hello {
       font-size: 48px;
-      margin: 35px 0;
+      margin: 0 0 35px;
     }
 
     .my-name-is {
@@ -29,13 +30,13 @@
     }
 
     .subheader {
-      font-weight: lighter;
       color: #878787;
-      font-size: 24px;
       font-family: RobotoCondensed, sans-serif;
+      font-size: 24px;
+      font-weight: lighter;
+      max-width: 600px;
       text-align: center;
       text-transform: uppercase;
-      max-width: 600px;
     }
 
     .view-projects-button {
@@ -57,7 +58,8 @@
     }
 
     @media screen and (max-width: 992px) {
-      padding: 75px 0;
+      padding: 0;
+      justify-content: center;
 
       .hello {
         font-size: 32px;
@@ -78,6 +80,42 @@
   }
 
   #about-me {
-    padding: 100px 0;
+    text-transform: uppercase;
+    color: white;
+    height: 80vh;
+
+    .content {
+      display: flex;
+      justify-content: space-evenly;
+      background-color: #000;
+      place-items: center;
+      text-align: center;
+      height: 100%;
+
+      > div {
+        font-family: RobotoCondensed, sans-serif;
+        max-width: 35%;
+
+        &:first-of-type {
+          padding: 0 30px;
+        }
+
+        &:last-of-type {
+          text-align: center;
+        }
+      }
+    }
+
+    @media screen and (max-width: 992px) {
+      align-items: center;
+
+      .content {
+        flex-direction: column;
+
+        > div {
+          max-width: 100%;
+        }
+      }
+    }
   }
 }

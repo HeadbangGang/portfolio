@@ -1,9 +1,11 @@
-import React, {useEffect} from 'react'
+import React, {useContext, useEffect} from 'react'
+import { NavigationContext } from '../../providers/navigation'
 import Navbar from '../navbar/navbar'
 import Footer from '../footer/footer'
 import './layout.scss'
 
 const Layout = ({ children }) => {
+    const { hasMounted } = useContext(NavigationContext)
 
     useEffect(() => {
         setTimeout(() =>{
@@ -17,7 +19,7 @@ const Layout = ({ children }) => {
             <div id="main-content">
                 { children }
             </div>
-            <Footer />
+            { hasMounted && <Footer /> }
         </div>
     )
 }

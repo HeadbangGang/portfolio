@@ -6,7 +6,11 @@
     "myNameIs": "My name is Tayden Flitcroft",
     "iAmA": "I am a ",
     "subheader": "I have {{- years}}+ years experience as a Software Engineer and a Web App Developer. This website showcases some of my projects.",
-    "viewProjects": "View Projects"
+    "viewProjects": "View Projects",
+    "aboutMe": {
+      "header": "## About Me",
+      "aboutMe": "I am a Software Engineer located in San Antonio, Texas. I have worked with many different technologies including JavaScript, Node.js, Python, React and others."
+    }
   },
   "footer": {
     "copyright": "&copy; {{- year}}.",

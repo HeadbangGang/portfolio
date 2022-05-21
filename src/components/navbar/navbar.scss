@@ -1,6 +1,6 @@
 header {
   background: #f5f5f5;
-  border: 1px solid #d3d3d3;
+  border-bottom: 1px solid #d3d3d3;
   height: 75px;
   position: fixed;
   top: 0;
@@ -77,6 +77,7 @@ header {
       @for $num from 0 through 4 {
         .navigation-button-#{$num} {
           color: #838181;
+          font-size: 15px;
           height: 50px;
 
           &:hover {
