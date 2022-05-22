@@ -7,7 +7,10 @@ export const PAGE_URL = {
 }
 
 export const I_AM_STRINGS = ['Software Engineer', 'Developer', 'Computer Scientist', 'IT Professional', 'Technology Enthusiast']
-export const ION_LOGOS = ['logo-github', 'logo-linkedin', 'logo-facebook', 'logo-twitter', 'mail']
+export const SOCIAL_MEDIA_LOGOS = ['logo-github', 'logo-linkedin', 'logo-facebook', 'logo-twitter', 'mail']
+
+export const TECHNOLOGIES_LOGOS = ['logos:typescript-icon', 'logos:jenkins', 'logos:react', 'logos:sass', 'bxl:github', 'logos:grunt', 'logos:handlebars', 'logos:nextjs', 'vscode-icons:file-type-node', 'logos:express']
+export const TECHNOLOGIES_PER_ROW = 5
 
 export const LOGO_URLS = {
     'logo-github': 'https://www.github.com/HeadbangGang',

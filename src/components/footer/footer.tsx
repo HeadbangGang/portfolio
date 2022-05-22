@@ -1,12 +1,12 @@
 import React from 'react'
 import I18N from '../I18N/i18n'
 import './footer.scss'
-import {ION_LOGOS, LOGO_URLS} from '../../helpers/helpers'
+import {SOCIAL_MEDIA_LOGOS, LOGO_URLS} from '../../helpers/helpers'
 
 const Footer = () => {
     const date = new Date()
 
-    const renderIcons = ION_LOGOS.map(logo => (
+    const renderIcons = SOCIAL_MEDIA_LOGOS.map(logo => (
         <a href={LOGO_URLS[logo]} key={ logo } rel="noreferrer" target="_blank">
             <span className="iconify" data-icon={`ion:${ logo }`} data-width="22" data-height="22" />
         </a>

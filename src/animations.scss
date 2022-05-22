@@ -85,3 +85,19 @@
     transform: rotate(359deg);
   }
 }
+
+@for $item from 1 through 10 {
+  .fade-in-#{$item} {
+    animation: spinning calc(500ms * #{$item}) linear;
+  }
+}
+
+@keyframes spinning {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

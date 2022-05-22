@@ -87,12 +87,13 @@
     .content {
       display: flex;
       justify-content: space-evenly;
-      background-color: #000;
+      background-color: #1f6a73;
       place-items: center;
       text-align: center;
       height: 100%;
+      flex-direction: column;
 
-      > div {
+      > div:nth-of-type(2) {
         font-family: RobotoCondensed, sans-serif;
         max-width: 35%;
 
@@ -112,10 +113,18 @@
       .content {
         flex-direction: column;
 
-        > div {
+        > div:nth-of-type(2) {
           max-width: 100%;
+          padding: 0 10px;
         }
       }
     }
   }
+}
+
+.logos {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
 }
