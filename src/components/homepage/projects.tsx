@@ -11,9 +11,12 @@ const Projects = () => {
     if (isEmpty(projectData)) return null
 
     const renderProjectCards = () => {
-        return projectData.data.map((data: ProjectDataObject, idx: number) => (
-            <ProjectsCard { ...data } key={ idx }/>
-        ))
+        return projectData.data.map((data: ProjectDataObject, idx: number) => {
+            if (!data.image) return null
+            data.image = require(`/assets/media/${data.title.replaceAll(' ', '-').toLowerCase()}.png`)
+            return <ProjectsCard { ...data } key={ idx }/>
+        }
+        )
     }
 
     return (

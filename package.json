@@ -4,6 +4,7 @@
   "description": "Tayden Flitcroft's Portfolio",
   "main": "index.tsx",
   "scripts": {
+    "analyze": "webpack --json > stats.json && webpack-bundle-analyzer stats.json",
     "build": "rimraf dist && webpack",
     "clean": "rimraf node_modules package-lock.json",
     "lint:css": "stylelint '**/*.scss' --color --fix",
@@ -59,6 +60,7 @@
     "stylelint-scss": "^4.2.0",
     "typescript": "^4.6.4",
     "webpack": "^5.72.1",
+    "webpack-bundle-analyzer": "^4.5.0",
     "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^4.9.0"
   }

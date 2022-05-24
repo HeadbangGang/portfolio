@@ -27,3 +27,6 @@ debug.log
 .vscode
 .idea
 firebase-mock-data
+
+ui-debug.log
+package-lock.json

@@ -10,7 +10,9 @@ const ContactMe = () => {
             <div className="content">
                 <I18N blockLevel className="contact-me-disclaimer" name="homepage.contactMe.disclaimer" />
                 <div>
-                    <button onClick={() => navigate('/contact')}>Contact Me</button>
+                    <button onClick={() => navigate('/contact')}>
+                        <I18N name="homepage.contactMe.contactMe" />
+                    </button>
                 </div>
             </div>
         </section>

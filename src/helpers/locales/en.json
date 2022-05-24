@@ -11,11 +11,16 @@
       "header": "## About Me",
       "aboutMe": "I am a Software Engineer located in San Antonio, Texas. I have worked with many different technologies; JavaScript, TypeScript, Node.js, React,  and SASS are just a few examples. I have experience working on both personal as well as enterprise-level projects."
     },
-    "projects": {
-      "header": "## Latest Projects"
-    },
     "contactMe": {
+      "contactMe": "Contact Me",
       "disclaimer": "If I sound like a good fit for your company; Please contact me by clicking below."
+    },
+    "projects": {
+      "header": "## Latest Projects",
+      "viewDemo": "View Demo",
+      "viewRepo": "View Repository",
+      "viewRepoSV": "View Repo",
+      "viewDetails": "View Details"
     }
   },
   "footer": {
