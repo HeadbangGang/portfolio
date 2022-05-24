@@ -6,6 +6,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
+const mockRoutes = require('./mock-routes.ts')
 
 const IS_DEV = process.env.NODE_ENV === 'development'
 
@@ -24,7 +25,11 @@ module.exports = {
         allowedHosts: ['0.0.0.0', 'dev.taydenflitcroft.com'],
         historyApiFallback: true,
         hot: true,
-        port: 3000
+        port: 3000,
+        setupMiddlewares: (middlewares, { app }) => {
+            mockRoutes(app)
+            return middlewares
+        }
     },
     plugins: [
         new Webpack.LoaderOptionsPlugin({

@@ -3,56 +3,56 @@ import I18N from '../I18N/i18n'
 import isVisible from '../../helpers/isVisible'
 import {UIContext} from '../../providers/ui'
 import {TECHNOLOGIES_LOGOS, TECHNOLOGIES_PER_ROW} from '../../helpers/helpers'
+import {Icon} from '@iconify/react'
 
 const AboutMe = () => {
-    const logoRef = useRef(null)
     const aboutMeRef = useRef(null)
 
-    const [logoAnimationTriggered, setLogoAnimationTriggered] = useState(false)
-    const [aboutMeAnimationTriggered, setAboutMeAnimationTriggered] = useState(false)
+    const [animationStarted, setAnimationStarted] = useState<boolean>(false)
+    const [animationCompleted, setAnimationCompleted] = useState<boolean>(false)
 
-    const isLogoVisible = isVisible(logoRef)
     const isAboutMeVisible = isVisible(aboutMeRef)
 
     const { isSmallView } = useContext(UIContext)
 
     useEffect(() => {
-        aboutMeRef.current.addEventListener('animationend', handleAboutMeListener)
-        logoRef.current.addEventListener('animationend', handleLogoListener)
+        aboutMeRef.current.addEventListener('animationstart', handleAnimationStart)
+        aboutMeRef.current.addEventListener('animationend', handleAnimationEnd)
     }, [])
 
-    const handleAboutMeListener = () => {
-        setAboutMeAnimationTriggered(true)
-        aboutMeRef.current.removeEventListener('animationend', handleAboutMeListener)
+    const handleAnimationStart = () => setAnimationStarted(true)
+
+    const handleAnimationEnd = () => {
+        setAnimationCompleted(true)
+        aboutMeRef.current.removeEventListener('animationstart', handleAnimationStart)
+        aboutMeRef.current.removeEventListener('animationend', handleAnimationEnd)
     }
 
-    const handleLogoListener = () => {
-        setLogoAnimationTriggered(true)
-        logoRef.current.removeEventListener('animationend', handleLogoListener)
-    }
+    const shouldShowAnimation = isAboutMeVisible || animationStarted
+    const shouldDisplayContent = animationStarted && animationCompleted
 
     const aboutMeClassName = () => {
-        if (aboutMeAnimationTriggered) return ''
+        if (shouldDisplayContent) return ''
 
-        if (isAboutMeVisible) {
+        if (shouldShowAnimation) {
             return 'fade-in-3'
         }
         return 'hidden'
     }
 
     const topLogoClassName = () => {
-        if (logoAnimationTriggered) return ''
+        if (shouldDisplayContent) return ''
 
-        if (isLogoVisible) {
+        if (shouldShowAnimation) {
             return 'roll-up-3'
         }
         return 'hidden'
     }
 
     const bottomLogoClassName = () => {
-        if (logoAnimationTriggered) return ''
+        if (shouldDisplayContent) return ''
 
-        if (isLogoVisible) {
+        if (shouldShowAnimation) {
             return 'roll-down-3'
         }
         return 'hidden'
@@ -64,7 +64,7 @@ const AboutMe = () => {
             logos.push(TECHNOLOGIES_LOGOS[i])
         }
         return logos.map(logo => {
-            return <span className="iconify" data-icon={ logo } data-width={ isSmallView ? 50 : 100 } key={ logo }></span>
+            return <Icon icon={ logo } width={ isSmallView ? 50 : 100 } key={ logo }/>
         })
     }
 
@@ -74,14 +74,13 @@ const AboutMe = () => {
             logos.push(TECHNOLOGIES_LOGOS[i])
         }
         return logos.map(logo => {
-            return <span className="iconify" data-icon={ logo } data-width={ isSmallView ? 50 : 100 } key={ logo }></span>
-        })
+            return <Icon icon={ logo } width={ isSmallView ? 50 : 100 } key={ logo }/> })
     }
 
     return (
         <section id="about-me">
             <div className="content">
-                <div className={ `${topLogoClassName()} logos` } ref={ logoRef }>
+                <div className={ `${topLogoClassName()} logos` }>
                     { renderLogosGroup1() }
                 </div>
                 <div className={ aboutMeClassName() } ref={ aboutMeRef }>
