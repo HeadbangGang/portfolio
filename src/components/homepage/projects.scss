@@ -12,6 +12,15 @@
     text-align: center;
   }
 
+  .subheader > h3 {
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 400;
+    width: 80vw;
+    margin: 25px auto;
+    text-align: center;
+  }
+
   div[class='project-card animate-start']:nth-of-type(odd) {
     animation: slide-right 1000ms ease-in-out;
 

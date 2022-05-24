@@ -11,9 +11,6 @@
       "destination": "/index.html"
     } ]
   },
-  "storage": {
-    "rules": "storage.rules"
-  },
   "emulators": {
     "hosting": {
       "port": 5001

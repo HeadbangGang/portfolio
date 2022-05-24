@@ -17,6 +17,7 @@
     },
     "projects": {
       "header": "## Latest Projects",
+      "subHeader": "### Below are a few personal projects that I have each been created for a different need. They all include many diverse technologies such as **React**, **Redux**, **Hooks**, **Docker Containers**, **OAuth**, and more.",
       "viewDemo": "View Demo",
       "viewRepo": "View Repository",
       "viewRepoSV": "View Repo",

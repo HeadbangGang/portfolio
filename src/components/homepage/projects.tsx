@@ -22,6 +22,7 @@ const Projects = () => {
     return (
         <section id="projects">
             <I18N className="header" markdown name="homepage.projects.header" />
+            <I18N className="subheader" markdown name="homepage.projects.subHeader" />
             <div className="project-card__container">
                 { renderProjectCards() }
             </div>
