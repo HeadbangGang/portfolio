@@ -2,9 +2,10 @@ import React, {useContext, useEffect, useState} from 'react'
 import I18N from '../I18N/i18n'
 import {BaseUrlContext} from '../../providers/base-url'
 import {validateEmail, validateName, validateSubject, validateMessage} from '../../helpers/validators'
-import './contact.scss'
 import {NavigationContext} from '../../providers/navigation'
 import {Icon} from '@iconify/react'
+import {LOW_CHARACTER_THRESHOLD, MAX_MESSAGE_LENGTH} from '../../helpers/helpers'
+import './contact.scss'
 
 const Contact = () => {
     const [senderName, setSenderName] = useState<string>('')
@@ -22,6 +23,9 @@ const Contact = () => {
 
     const baseUrl = useContext(BaseUrlContext)
     const { setHasMounted } = useContext(NavigationContext)
+
+    const messageCharactersLeft = MAX_MESSAGE_LENGTH - emailMessage.length
+    const lowRemainingCharacters = messageCharactersLeft <= LOW_CHARACTER_THRESHOLD
 
     useEffect(() => {
         setHasMounted(true)
@@ -160,7 +164,8 @@ const Contact = () => {
                     {emailSubjectErrorMessage && <InlineError errorMessage={ emailSubjectErrorMessage } />}
                 </div>
                 <div className="input-wrapper roll-up-4">
-                    <textarea aria-label="message content" onChange={ handleMessage } placeholder="Message" required value={emailMessage}/>
+                    <textarea aria-label="message content" onChange={ handleMessage } placeholder="Message" maxLength={ MAX_MESSAGE_LENGTH } required value={emailMessage}/>
+                    <div className={`message-content-counter ${lowRemainingCharacters ? 'low-count' : ''}`}>{messageCharactersLeft}</div>
                     {emailMessageErrorMessage && <InlineError errorMessage={ emailMessageErrorMessage }/>}
                 </div>
                 <div className="roll-up-5 copy-of-message">

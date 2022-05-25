@@ -21,6 +21,16 @@
 
       textarea {
         min-height: 30vh;
+
+        & + .message-content-counter {
+          text-align: right;
+          opacity: .5;
+        }
+
+        & + .low-count {
+          color: red;
+          opacity: 1;
+        }
       }
 
       input,

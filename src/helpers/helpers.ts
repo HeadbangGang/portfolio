@@ -22,6 +22,9 @@ export const LOGO_URLS = {
 
 export const SPINNER_DEFAULT = 750
 
+export const MAX_MESSAGE_LENGTH = 300
+export const LOW_CHARACTER_THRESHOLD = 25
+
 export const isEmpty = (obj) => {
     return !!(obj === undefined || obj === null || typeof obj !== 'object' || !Object.keys(obj).length)
 }
