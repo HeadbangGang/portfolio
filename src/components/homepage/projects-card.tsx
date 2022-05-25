@@ -40,7 +40,6 @@ const ProjectsCard = ({ title, demoUrl, projectUrl, image }: Props) => {
         projectCardRef.current.removeEventListener('animationend', handleAnimationEnd)
     }
 
-
     const isProjectCardVisible = isVisible(projectCardRef)
 
     const shouldShowAnimation = isProjectCardVisible || animationStarted

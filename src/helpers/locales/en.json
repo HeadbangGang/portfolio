@@ -15,7 +15,10 @@
     "submit": "Submit",
     "sentSuccess": "Sent Successfully",
     "sentFail": "Error Occured. Try Again.",
-    "sending": ". . . Sending"
+    "sending": ". . . Sending",
+    "location": "San Antonio, Texas",
+    "email": "tayden.contact@gmail.com",
+    "phoneNumber": "+1 503 569 7894"
   },
   "homepage": {
     "hello": "Hello!",

@@ -6,6 +6,7 @@ import {NavigationContext} from '../../providers/navigation'
 import {Icon} from '@iconify/react'
 import {LOW_CHARACTER_THRESHOLD, MAX_MESSAGE_LENGTH} from '../../helpers/helpers'
 import './contact.scss'
+import {UIContext} from '../../providers/ui'
 
 const Contact = () => {
     const [senderName, setSenderName] = useState<string>('')
@@ -23,6 +24,7 @@ const Contact = () => {
 
     const baseUrl = useContext(BaseUrlContext)
     const { setHasMounted } = useContext(NavigationContext)
+    const { isSmallView } = useContext(UIContext)
 
     const messageCharactersLeft = MAX_MESSAGE_LENGTH - emailMessage.length
     const lowRemainingCharacters = messageCharactersLeft <= LOW_CHARACTER_THRESHOLD
@@ -105,8 +107,8 @@ const Contact = () => {
                     setFormSubmitSuccess(emailSentSuccess)
                     if (emailSentSuccess) {
                         resetForm()
-                        setTimeout(() => setFormSubmitSuccess(null), 3000)
                     }
+                    setTimeout(() => setFormSubmitSuccess(null), 3000)
                 })
                 .catch(() => setFormSubmitSuccess(false))
                 .finally(() => setCallInProgress(false))
@@ -148,6 +150,24 @@ const Contact = () => {
         )
     }
 
+    const renderContactCards = () => {
+        return [
+            { icon: 'ant-design:phone-filled', name: 'contact.phoneNumber'},
+            {icon: 'ion:mail', name: 'contact.email' },
+            {icon: 'ci:location', name: 'contact.location'}
+        ].map(({ icon, name}: { icon: string, name: string}, idx: number) => {
+            const animationClassname = isSmallView ? 'roll-up' : 'slide-right'
+            return (
+                <div className={`card ${animationClassname}-${idx + 2}`} key={ idx }>
+                    <div className="card__content">
+                        <Icon icon={icon} width="100"/>
+                        <I18N blockLevel name={name}/>
+                    </div>
+                </div>
+            )
+        })
+    }
+
     return (
         <div className="contact">
             <div className="contact__header">
@@ -157,20 +177,20 @@ const Contact = () => {
             <form onSubmit={async (e:React.FormEvent) => await handleSendContactRequest(e) }>
                 <div className="input-wrapper roll-up-1">
                     <input aria-label="full name" autoComplete="name" onChange={ handleSenderName } placeholder="Full Name" required value={senderName}/>
-                    {senderNameErrorMessage && <InlineError errorMessage={ senderNameErrorMessage } />}
+                    <InlineError errorMessage={ senderNameErrorMessage } />
                 </div>
                 <div className="input-wrapper roll-up-2">
                     <input aria-label="email address" autoComplete="email" onChange={ handleEmailAddress } placeholder="Email Address" required value={returnEmail}/>
-                    {returnEmailErrorMessage && <InlineError errorMessage={ returnEmailErrorMessage } /> }
+                    <InlineError errorMessage={ returnEmailErrorMessage } />
                 </div>
                 <div className="input-wrapper roll-up-3">
                     <input aria-label="subject" onChange={ handleSubject } placeholder="Subject" required value={emailSubject}/>
-                    {emailSubjectErrorMessage && <InlineError errorMessage={ emailSubjectErrorMessage } />}
+                    <InlineError errorMessage={ emailSubjectErrorMessage } />
                 </div>
                 <div className="input-wrapper roll-up-4">
                     <textarea aria-label="message content" onChange={ handleMessage } placeholder="Message" maxLength={ MAX_MESSAGE_LENGTH } required value={emailMessage}/>
                     <div className={`message-content-counter ${lowRemainingCharacters ? 'low-count' : ''}`}>{messageCharactersLeft}</div>
-                    {emailMessageErrorMessage && <InlineError errorMessage={ emailMessageErrorMessage }/>}
+                    <InlineError errorMessage={ emailMessageErrorMessage }/>
                 </div>
                 <div className="roll-up-5 copy-of-message">
                     <input checked={ sendConfirmationEmail } id="send-confirmation-email" onChange={() => setSendConfirmationEmail(!sendConfirmationEmail)} type="checkbox" />
@@ -182,13 +202,18 @@ const Contact = () => {
                     { renderSubmitButton() }
                 </div>
             </form>
+            <div className="contact__cards">
+                { renderContactCards() }
+            </div>
         </div>
     )
 }
 
+
 export default Contact
 
 const InlineError = ({ errorMessage }) => {
+    if (!errorMessage) return null
     return (
         <div className="inline-error">
             <Icon icon="bxs:error-alt" />
