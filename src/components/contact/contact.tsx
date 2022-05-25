@@ -18,7 +18,7 @@ const Contact = () => {
     const [emailMessageErrorMessage, setEmailMessageErrorMessage] = useState<string>('')
     const [sendConfirmationEmail, setSendConfirmationEmail] = useState<boolean>(true)
     const [callInProgress, setCallInProgress] = useState<boolean>(false)
-    const [formSubmitSuccess, setFormSubmitSuccess] = useState(false)
+    const [formSubmitSuccess, setFormSubmitSuccess] = useState<boolean|null>(null)
     const [messagesSent, setMessagesSent] = useState<number>(0)
 
     const baseUrl = useContext(BaseUrlContext)
@@ -105,7 +105,7 @@ const Contact = () => {
                     setFormSubmitSuccess(emailSentSuccess)
                     if (emailSentSuccess) {
                         resetForm()
-                        setTimeout(() => setFormSubmitSuccess(false), 3000)
+                        setTimeout(() => setFormSubmitSuccess(null), 3000)
                     }
                 })
                 .catch(() => setFormSubmitSuccess(false))
@@ -131,7 +131,7 @@ const Contact = () => {
                 </button>
             )
         }
-        if (!formSubmitSuccess && messagesSent) {
+        if (formSubmitSuccess === false && messagesSent) {
             return (
                 <button className="success" type="submit">
                     <div className="roll-down-1 sent-success">
