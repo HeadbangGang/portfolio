@@ -19,7 +19,6 @@ const Layout = ({ children }) => {
     }, [])
 
     useEffect(() => {
-        console.log(location.hash)
         if (location.hash) {
             const element = document.getElementById(location.hash.slice(1))
             if (element) {
