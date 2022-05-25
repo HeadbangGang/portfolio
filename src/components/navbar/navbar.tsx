@@ -19,22 +19,27 @@ const Navbar = () => {
     const { isSmallView } = useContext(UIContext)
 
     useEffect(() => {
+        const cursor = document.getElementsByClassName('typed-cursor') as HTMLCollectionOf<HTMLElement>
         if (showNavigationButtonDropdown) {
             setDropdownClass('visible')
-            // @ts-ignore
-            document.getElementsByClassName('typed-cursor')[0].style.opacity = 0
+            if (cursor.length) {
+                cursor[0].style.opacity = '0'
+            }
         }
         if (hasMounted && !showNavigationButtonDropdown) {
             setDropdownClass('closing')
             setTimeout(() => {
                 setDropdownClass('hidden')
-                // @ts-ignore
-                document.getElementsByClassName('typed-cursor')[0].style.opacity = 'initial'
+                if (cursor.length) cursor[0].style.opacity = 'initial'
             }, 200)
         }
         !hasMounted && setHasMounted(true)
     }, [showNavigationButtonDropdown])
 
+    const handleOnClick = (onClick) => {
+        setShowNavigationDropdown(false)
+        onClick()
+    }
 
     const navigationButtons = [
         { text: 'Home', onClick: () => navigate(PAGE_URL.HOMEPAGE) },
@@ -43,7 +48,7 @@ const Navbar = () => {
         { text: 'Projects', onClick: () => navigate(PAGE_URL.PROJECTS) },
         { text: 'Contact', onClick: () => navigate(PAGE_URL.CONTACT) }
     ].map((attr: NavigationButtonsInterface, idx: number) => (
-        <button className={ `navigation-button-${idx}`} { ...attr } key={ idx }>{ attr.text }</button>
+        <button className={ `navigation-button-${idx}`} onClick={() => handleOnClick(attr.onClick)} key={ idx }>{ attr.text }</button>
     ))
 
     return (

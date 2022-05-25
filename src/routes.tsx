@@ -9,6 +9,11 @@ const Homepage = lazy(() => Promise.all([
     new Promise(resolve => setTimeout(resolve, SPINNER_DEFAULT))
 ]).then(([moduleExports]) => moduleExports))
 
+const Contact = lazy(() => Promise.all([
+    import('./components/contact/contact'),
+    new Promise(resolve => setTimeout(resolve, SPINNER_DEFAULT))
+]).then(([moduleExports]) => moduleExports))
+
 interface RoutesInterface {
     element: ReactElement
     path: string
@@ -17,6 +22,7 @@ interface RoutesInterface {
 const RoutesController = () => {
     const ROUTES = [
         { element: <Homepage />, path: PAGE_URL.HOMEPAGE },
+        { element: <Contact />, path: PAGE_URL.CONTACT },
         { element: <Homepage />, path: '*' }
     ]
 

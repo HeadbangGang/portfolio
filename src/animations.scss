@@ -123,10 +123,9 @@
   right: 0;
   bottom: 0;
   text-align: center;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgb(0 0 0 / 70%);
   opacity: 0;
   transition: opacity 400ms;
-
 
   &:hover {
     opacity: 1;

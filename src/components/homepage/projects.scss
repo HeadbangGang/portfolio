@@ -21,7 +21,7 @@
     text-align: center;
   }
 
-  div[class='project-card animate-start']:nth-of-type(odd) {
+  div[class="project-card animate-start"]:nth-of-type(odd) {
     animation: slide-right 1000ms ease-in-out;
 
     @media screen and (max-width: 992px) {
@@ -29,7 +29,7 @@
     }
   }
 
-  div[class='project-card animate-start']:nth-of-type(even) {
+  div[class="project-card animate-start"]:nth-of-type(even) {
     animation: slide-left 1000ms ease-in-out;
 
     @media screen and (max-width: 992px) {
@@ -57,13 +57,13 @@
     }
 
     &__title {
-      color: #ffffff ;
+      color: #fff;
       font-size: 48px;
       font-weight: 700;
       left: 50%;
       position: absolute;
       top: 25%;
-      transform: translate(-50%, -50%) ;
+      transform: translate(-50%, -50%);
       width: 100%;
     }
 
@@ -145,7 +145,7 @@
           }
 
           &:active {
-            transform: scale(1)
+            transform: scale(1);
           }
         }
       }

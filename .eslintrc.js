@@ -61,6 +61,7 @@ module.exports = {
             ignorePattern: '.*<p .*</p>|[\\s\\w\\d]*|[\\s\\w\\d]*|\\w*: \\w*|const [\\W\\s\\w\\d]* = [\\S\\W\\s\\w\\d\\(\\)]*|const [\\W\\s\\w\\d]* = [\\w\\W\\d\\D\\s\\S]*\\([\\S\\W\\s\\w\\d]*\\)'
         }],
         'no-unused-vars': 'off',
+        'no-undef': 'off',
         '@typescript-eslint/no-unused-vars': 'error'
     },
     overrides: [

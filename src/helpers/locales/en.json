@@ -1,5 +1,21 @@
 {
   "common": {
+    "validators": {
+      "namePresence": "Please enter your full name.",
+      "emailPresence": "Please enter your email address.",
+      "emailFormat": "Please enter a valid email address.",
+      "subjectPresence": "Please enter a subject.",
+      "messagePresence": "Please enter a message."
+    }
+  },
+  "contact": {
+    "header": "# Contact Me",
+    "subHeader": "Fill out the form below and I will get back to you within 24 hours. I look forward to speaking with you.",
+    "copyOfMessage": "Receive copy of message",
+    "submit": "Submit",
+    "sentSuccess": "Sent Successfully",
+    "sentFail": "Error Occured. Try Again.",
+    "sending": ". . . Sending"
   },
   "homepage": {
     "hello": "Hello!",
@@ -9,7 +25,7 @@
     "viewProjects": "View Projects",
     "aboutMe": {
       "header": "## About Me",
-      "aboutMe": "I am a Software Engineer located in San Antonio, Texas. I have worked with many different technologies; JavaScript, TypeScript, Node.js, React,  and SASS are just a few examples. I have experience working on both personal as well as enterprise-level projects."
+      "aboutMe": "I am a Software Engineer located in San Antonio, Texas. I have worked with many different technologies; JavaScript, TypeScript, Node.js, React, and SASS are just a few examples. I have experience working on both personal as well as enterprise-level projects."
     },
     "contactMe": {
       "contactMe": "Contact Me",

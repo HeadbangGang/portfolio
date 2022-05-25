@@ -30,3 +30,5 @@ firebase-mock-data
 
 ui-debug.log
 package-lock.json
+.firebase
+stats.json

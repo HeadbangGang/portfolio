@@ -1,0 +1,189 @@
+import React, {useContext, useEffect, useState} from 'react'
+import I18N from '../I18N/i18n'
+import {BaseUrlContext} from '../../providers/base-url'
+import {validateEmail, validateName, validateSubject, validateMessage} from '../../helpers/validators'
+import './contact.scss'
+import {NavigationContext} from '../../providers/navigation'
+import {Icon} from '@iconify/react'
+
+const Contact = () => {
+    const [senderName, setSenderName] = useState<string>('')
+    const [senderNameErrorMessage, setSenderNameErrorMessage] = useState<string>('')
+    const [returnEmail, setReturnEmail] = useState<string>('')
+    const [returnEmailErrorMessage, setReturnEmailErrorMessage] = useState<string>('')
+    const [emailSubject, setEmailSubject] = useState<string>('')
+    const [emailSubjectErrorMessage, setEmailSubjectErrorMessage] = useState<string>('')
+    const [emailMessage, setEmailMessage] = useState<string>('')
+    const [emailMessageErrorMessage, setEmailMessageErrorMessage] = useState<string>('')
+    const [sendConfirmationEmail, setSendConfirmationEmail] = useState<boolean>(true)
+    const [callInProgress, setCallInProgress] = useState<boolean>(false)
+    const [formSubmitSuccess, setFormSubmitSuccess] = useState(false)
+    const [messagesSent, setMessagesSent] = useState<number>(0)
+
+    const baseUrl = useContext(BaseUrlContext)
+    const { setHasMounted } = useContext(NavigationContext)
+
+    useEffect(() => {
+        setHasMounted(true)
+    }, [])
+
+    const scrollToFirstError = () => document.getElementsByClassName('inline-error')?.[0]?.scrollIntoView({behavior: 'smooth', inline: 'center', block: 'center'})
+
+    useEffect(() => {
+        scrollToFirstError()
+    }, [senderNameErrorMessage, returnEmailErrorMessage, emailMessageErrorMessage, emailSubjectErrorMessage])
+
+    const validate = () => {
+        const senderNameError = validateName(senderName)
+        const returnEmailError = validateEmail(returnEmail)
+        const emailSubjectError = validateSubject(emailSubject)
+        const emailMessageError = validateMessage(emailMessage)
+
+        if (senderNameError) setSenderNameErrorMessage(senderNameError)
+        if (returnEmailError) setReturnEmailErrorMessage(returnEmailError)
+        if (emailSubjectError) setEmailSubjectErrorMessage(emailSubjectError)
+        if (emailMessageError) setEmailMessageErrorMessage(emailMessageError)
+
+        scrollToFirstError()
+
+        return !(senderNameError || returnEmailError || emailSubjectError || emailMessageError)
+    }
+
+    const handleSenderName = event => {
+        const { value } = event.currentTarget
+        senderNameErrorMessage && setSenderNameErrorMessage('')
+        if (/^$|^[a-z ,.'-]+$/i.test(value)) {
+            setSenderName(value)
+        }
+    }
+    const handleEmailAddress = event => {
+        returnEmailErrorMessage && setReturnEmailErrorMessage('')
+        setReturnEmail(event.currentTarget.value)
+    }
+    const handleSubject = event => {
+        emailSubjectErrorMessage && setEmailSubjectErrorMessage('')
+        setEmailSubject(event.currentTarget.value)
+    }
+    const handleMessage = event => {
+        emailMessageErrorMessage && setEmailMessageErrorMessage('')
+        setEmailMessage(event.currentTarget.value)
+    }
+
+    const resetForm = () => {
+        setSenderName('')
+        setReturnEmail('')
+        setEmailMessage('')
+        setEmailSubject('')
+    }
+
+    const handleSendContactRequest = async (e) => {
+        e.preventDefault()
+
+        if (validate() && !formSubmitSuccess) {
+            setCallInProgress(true)
+            setMessagesSent(messagesSent + 1)
+            await fetch(`${baseUrl}/contact`, {
+                method: 'POST',
+                body: JSON.stringify({
+                    emailSubject,
+                    emailMessage,
+                    returnEmail,
+                    sendConfirmationEmail,
+                    senderName
+                })
+            })
+                .then(res => res.json())
+                .then(({ emailSentSuccess }) => {
+                    setFormSubmitSuccess(emailSentSuccess)
+                    if (emailSentSuccess) {
+                        resetForm()
+                        setTimeout(() => setFormSubmitSuccess(false), 3000)
+                    }
+                })
+                .catch(() => setFormSubmitSuccess(false))
+                .finally(() => setCallInProgress(false))
+        }
+    }
+
+    const renderSubmitButton = () => {
+        if (callInProgress) {
+            return (
+                <button disabled type="submit">
+                    <I18N blockLevel className="roll-down-1" name="contact.sending" />
+                </button>
+            )
+        }
+        if (formSubmitSuccess) {
+            return (
+                <button className="success" type="submit">
+                    <div className="roll-down-1 sent-success">
+                        <I18N name="contact.sentSuccess" />
+                        <Icon icon="eva:checkmark-fill" width="20"/>
+                    </div>
+                </button>
+            )
+        }
+        if (!formSubmitSuccess && messagesSent) {
+            return (
+                <button className="success" type="submit">
+                    <div className="roll-down-1 sent-success">
+                        <I18N name="contact.sentFail" />
+                        <Icon icon="akar-icons:circle-x-fill" width="20"/>
+                    </div>
+                </button>
+            )
+        }
+        return (
+            <button onClick={async (e: React.FormEvent) => handleSendContactRequest(e) } type="submit">
+                <I18N blockLevel className="roll-up-1" name="contact.submit" />
+            </button>
+        )
+    }
+
+    return (
+        <div className="contact">
+            <div className="contact__header">
+                <I18N className="roll-down-1" markdown name="contact.header" />
+                <I18N className="roll-down-2" blockLevel name="contact.subHeader" />
+            </div>
+            <form onSubmit={async (e:React.FormEvent) => await handleSendContactRequest(e) }>
+                <div className="input-wrapper roll-up-1">
+                    <input aria-label="full name" autoComplete="name" onChange={ handleSenderName } placeholder="Full Name" required value={senderName}/>
+                    {senderNameErrorMessage && <InlineError errorMessage={ senderNameErrorMessage } />}
+                </div>
+                <div className="input-wrapper roll-up-2">
+                    <input aria-label="email address" autoComplete="email" onChange={ handleEmailAddress } placeholder="Email Address" required value={returnEmail}/>
+                    {returnEmailErrorMessage && <InlineError errorMessage={ returnEmailErrorMessage } /> }
+                </div>
+                <div className="input-wrapper roll-up-3">
+                    <input aria-label="subject" onChange={ handleSubject } placeholder="Subject" required value={emailSubject}/>
+                    {emailSubjectErrorMessage && <InlineError errorMessage={ emailSubjectErrorMessage } />}
+                </div>
+                <div className="input-wrapper roll-up-4">
+                    <textarea aria-label="message content" onChange={ handleMessage } placeholder="Message" required value={emailMessage}/>
+                    {emailMessageErrorMessage && <InlineError errorMessage={ emailMessageErrorMessage }/>}
+                </div>
+                <div className="roll-up-5 copy-of-message">
+                    <input checked={ sendConfirmationEmail } id="send-confirmation-email" onChange={() => setSendConfirmationEmail(!sendConfirmationEmail)} type="checkbox" />
+                    <label htmlFor="send-confirmation-email">
+                        <I18N className="uppercase" name="contact.copyOfMessage" />
+                    </label>
+                </div>
+                <div className="roll-up-5">
+                    { renderSubmitButton() }
+                </div>
+            </form>
+        </div>
+    )
+}
+
+export default Contact
+
+const InlineError = ({ errorMessage }) => {
+    return (
+        <div className="inline-error">
+            <Icon icon="bxs:error-alt" />
+            <I18N blockLevel name={ errorMessage } />
+        </div>
+    )
+}

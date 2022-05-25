@@ -9,7 +9,7 @@ import { initReactI18next, useTranslation } from 'react-i18next'
 
 interface LanguageMapInterface {
     resources: {
-        en?: any
+        en: any
     }
 }
 
