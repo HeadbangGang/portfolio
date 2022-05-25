@@ -88,6 +88,10 @@ const Contact = () => {
             setMessagesSent(messagesSent + 1)
             await fetch(`${baseUrl}/contact`, {
                 method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
                 body: JSON.stringify({
                     emailSubject,
                     emailMessage,
