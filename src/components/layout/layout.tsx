@@ -18,12 +18,14 @@ const Layout = ({ children }) => {
         fetchProjectData()
     }, [])
 
-    useEffect(() => { //come back to this. This should scroll to id if hash is in url when navigating pages
+    useEffect(() => {
+        console.log(location.hash)
         if (location.hash) {
-            let elem = document.getElementById(location.hash.slice(1))
-            if (elem) {
-                elem.scrollIntoView({behavior: 'smooth'})
+            const element = document.getElementById(location.hash.slice(1))
+            if (element) {
+                element.scrollIntoView({behavior: 'smooth'})
             }
+            window.history.pushState('', document.title, window.location.pathname + window.location.search) // removes hash from url
         } else {
             window.scrollTo({top:0,left:0, behavior: 'smooth'})
         }

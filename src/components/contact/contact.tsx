@@ -152,7 +152,7 @@ const Contact = () => {
 
     const renderContactCards = () => {
         return [
-            { icon: 'ant-design:phone-filled', name: 'contact.phoneNumber'},
+            {icon: 'ant-design:phone-filled', name: 'contact.phoneNumber'},
             {icon: 'ion:mail', name: 'contact.email' },
             {icon: 'ci:location', name: 'contact.location'}
         ].map(({ icon, name}: { icon: string, name: string}, idx: number) => {
