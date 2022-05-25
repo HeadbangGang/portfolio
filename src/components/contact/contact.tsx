@@ -5,8 +5,8 @@ import {validateEmail, validateName, validateSubject, validateMessage} from '../
 import {NavigationContext} from '../../providers/navigation'
 import {Icon} from '@iconify/react'
 import {LOW_CHARACTER_THRESHOLD, MAX_MESSAGE_LENGTH} from '../../helpers/helpers'
-import './contact.scss'
 import {UIContext} from '../../providers/ui'
+import './contact.scss'
 
 const Contact = () => {
     const [senderName, setSenderName] = useState<string>('')

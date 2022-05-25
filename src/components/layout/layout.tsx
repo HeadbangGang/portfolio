@@ -19,7 +19,6 @@ const Layout = ({ children }) => {
     }, [])
 
     useEffect(() => { //come back to this. This should scroll to id if hash is in url when navigating pages
-        console.log(location)
         if (location.hash) {
             let elem = document.getElementById(location.hash.slice(1))
             if (elem) {
