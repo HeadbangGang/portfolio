@@ -16,6 +16,9 @@ const PorfolioDataProvider = ({ children }) => {
             .then(res => res.json())
             .then(res => setProjectData(res))
             .catch(() => {})
+    }, [])
+
+    const fetchResumeData = () => {
         fetch(`${baseUrl}/asset?fileName=resume.pdf`)
             .then(res => res.json())
             .then(({ url }) => setResumePdfUrl(url))
@@ -24,9 +27,9 @@ const PorfolioDataProvider = ({ children }) => {
             .then(res => res.json())
             .then(({ url }) => setPdfWorkerUrl(url))
             .catch(() => {})
-    }, [])
+    }
 
-    const portfolioData = { projectData, pdfWorkerUrl, resumePdfUrl }
+    const portfolioData = { projectData, pdfWorkerUrl, resumePdfUrl, fetchResumeData }
 
     return (
         <PortfolioDataContext.Provider value={ portfolioData }>

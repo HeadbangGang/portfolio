@@ -10,14 +10,18 @@ import '@react-pdf-viewer/zoom/lib/styles/index.css'
 import I18N from '../I18N/i18n'
 import {PortfolioDataContext} from '../../providers/portfolio-data'
 import './resume.scss'
+import SuspenseLoader from '../suspense-loader/suspense-loader'
 
 const Resume = () => {
     const { setHasMounted } = useContext(NavigationContext)
-    const { pdfWorkerUrl, resumePdfUrl } = useContext(PortfolioDataContext)
+    const { pdfWorkerUrl, resumePdfUrl, fetchResumeData } = useContext(PortfolioDataContext)
 
     useEffect(() => {
-        setHasMounted(true)
-    }, [])
+        fetchResumeData()
+        if (pdfWorkerUrl && resumePdfUrl) {
+            setHasMounted(true)
+        }
+    }, [pdfWorkerUrl, resumePdfUrl])
 
     const fullScreenPluginInstance = fullScreenPlugin({
         onEnterFullScreen: (zoom) => {
@@ -34,6 +38,8 @@ const Resume = () => {
     const { ZoomInButton, ZoomOutButton } = zoomPluginInstance
     const { PrintButton } = printPluginInstance
     const { DownloadButton } = getFilePluginInstance
+
+    if (!pdfWorkerUrl || !resumePdfUrl) return <SuspenseLoader/>
 
     return (
         <div className="resume">
