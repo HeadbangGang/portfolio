@@ -41,7 +41,7 @@ const Resume = () => {
             <I18N className="roll-down-3 uppercase" markdown name="resume.subHeader" />
             <I18N className="roll-down-4 uppercase" markdown name="resume.contactMe" />
             <div className="pdf-container roll-up-4">
-                <Worker workerUrl={`${baseUrl}/pdf-worker`}>
+                <Worker workerUrl={'https://unpkg.com/pdfjs-dist@2.13.216/build/pdf.worker.min.js'}>
                     <div className="pdf-container__toolbar">
                         <div>
                             <EnterFullScreenButton />
