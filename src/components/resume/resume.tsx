@@ -2,7 +2,6 @@ import React, {useContext, useEffect} from 'react'
 import { SpecialZoomLevel, Worker, Viewer } from '@react-pdf-viewer/core'
 import { fullScreenPlugin } from '@react-pdf-viewer/full-screen'
 import { zoomPlugin } from '@react-pdf-viewer/zoom'
-import { printPlugin } from '@react-pdf-viewer/print'
 import { getFilePlugin } from '@react-pdf-viewer/get-file'
 import {NavigationContext} from '../../providers/navigation'
 import '@react-pdf-viewer/core/lib/styles/index.css'
@@ -31,11 +30,9 @@ const Resume = () => {
         }
     })
     const zoomPluginInstance = zoomPlugin()
-    const printPluginInstance = printPlugin()
     const getFilePluginInstance = getFilePlugin({ fileNameGenerator: () => { return 'Flitcroft_Tayden-Software-Engineer' } })
     const { EnterFullScreenButton } = fullScreenPluginInstance
     const { ZoomInButton, ZoomOutButton } = zoomPluginInstance
-    const { PrintButton } = printPluginInstance
     const { DownloadButton } = getFilePluginInstance
 
     if (!resumeBlob || !pdfWorkerBlob) return <SuspenseLoader />
@@ -56,11 +53,10 @@ const Resume = () => {
                             <ZoomOutButton />
                         </div>
                         <div>
-                            <PrintButton />
                             <DownloadButton />
                         </div>
                     </div>
-                    <Viewer fileUrl={ resumeBlob } plugins={[fullScreenPluginInstance, zoomPluginInstance, printPluginInstance, getFilePluginInstance]} />
+                    <Viewer fileUrl={ resumeBlob } plugins={[fullScreenPluginInstance, zoomPluginInstance, getFilePluginInstance]} />
                 </Worker>
             </div>
         </div>
