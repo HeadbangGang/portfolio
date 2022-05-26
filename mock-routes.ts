@@ -7,11 +7,9 @@ const mockRoutes = (app) => {
     app.get('/portfolio/projects', (req, res) => setTimeout(() => res.status(200).send(mockProjects), MOCK_DELAY))
     app.post('/portfolio/contact', (req, res) => setTimeout(() => res.status(200).send({ emailSentSuccess: false }), MOCK_DELAY))
     app.get('/portfolio/asset', (req, res) => setTimeout(() => {
-        if (req.query.fileName === 'resume.pdf') res.status(200).send({ url: '/mock/resume'})
-        if (req.query.fileName === 'pdf-worker.min.js') res.status(200).send({ url: '/mock/pdf-worker'})
+        if (req.query.fileName === 'resume.pdf') res.send(fs.readFileSync(path.join(__dirname,'mocks/resume.pdf')))
+        if (req.query.fileName === 'pdf-worker.min.js') res.send(fs.readFileSync(path.join(__dirname,'mocks/pdf-worker.min.js')))
     } ,MOCK_DELAY))
-    app.get('/mock/resume', (req, res) => res.send(fs.readFileSync(path.join(__dirname,'mocks/resume.pdf'))))
-    app.get('/mock/pdf-worker', (req, res) => res.send(fs.readFileSync(path.join(__dirname, 'mocks/pdf-worker.min.js'))))
 }
 
 module.exports = mockRoutes

@@ -8,15 +8,18 @@ import {NavigationContext} from '../../providers/navigation'
 import '@react-pdf-viewer/core/lib/styles/index.css'
 import '@react-pdf-viewer/zoom/lib/styles/index.css'
 import I18N from '../I18N/i18n'
-import {BaseUrlContext} from '../../providers/base-url'
+import {PortfolioDataContext} from '../../providers/portfolio-data'
 import './resume.scss'
+import SuspenseLoader from '../suspense-loader/suspense-loader'
 
 const Resume = () => {
     const { setHasMounted } = useContext(NavigationContext)
-    const baseUrl = useContext(BaseUrlContext)
+    const { pdfWorkerBlob, resumeBlob } = useContext(PortfolioDataContext)
 
     useEffect(() => {
-        setHasMounted(true)
+        if (resumeBlob && pdfWorkerBlob) {
+            setHasMounted(true)
+        }
     }, [])
 
     const fullScreenPluginInstance = fullScreenPlugin({
@@ -35,6 +38,7 @@ const Resume = () => {
     const { PrintButton } = printPluginInstance
     const { DownloadButton } = getFilePluginInstance
 
+    if (!resumeBlob || !pdfWorkerBlob) return <SuspenseLoader />
 
     return (
         <div className="resume">
@@ -42,7 +46,7 @@ const Resume = () => {
             <I18N className="roll-down-3 uppercase" markdown name="resume.subHeader" />
             <I18N className="roll-down-4 uppercase" markdown name="resume.contactMe" />
             <div className="pdf-container roll-up-4">
-                <Worker workerUrl={ `${baseUrl}/asset?fileName=pdf-worker.min.js` }>
+                <Worker workerUrl={ pdfWorkerBlob }>
                     <div className="pdf-container__toolbar">
                         <div>
                             <EnterFullScreenButton />
@@ -56,7 +60,7 @@ const Resume = () => {
                             <DownloadButton />
                         </div>
                     </div>
-                    <Viewer fileUrl={ `${baseUrl}/asset?fileName=resume.pdf` } plugins={[fullScreenPluginInstance, zoomPluginInstance, printPluginInstance, getFilePluginInstance]} />
+                    <Viewer fileUrl={ resumeBlob } plugins={[fullScreenPluginInstance, zoomPluginInstance, printPluginInstance, getFilePluginInstance]} />
                 </Worker>
             </div>
         </div>
