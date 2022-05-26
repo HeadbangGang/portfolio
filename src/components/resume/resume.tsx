@@ -41,7 +41,7 @@ const Resume = () => {
             <I18N className="roll-down-3 uppercase" markdown name="resume.subHeader" />
             <I18N className="roll-down-4 uppercase" markdown name="resume.contactMe" />
             <div className="pdf-container roll-up-4">
-                <Worker workerUrl={'https://unpkg.com/pdfjs-dist@2.13.216/build/pdf.worker.min.js'}>
+                <Worker workerUrl={`${baseUrl}/asset?fileName=pdf-worker.min.js`}>
                     <div className="pdf-container__toolbar">
                         <div>
                             <EnterFullScreenButton />
@@ -55,7 +55,7 @@ const Resume = () => {
                             <DownloadButton />
                         </div>
                     </div>
-                    <Viewer fileUrl={`${baseUrl}/resume`} plugins={[fullScreenPluginInstance, zoomPluginInstance, printPluginInstance, getFilePluginInstance]} />
+                    <Viewer fileUrl={`${baseUrl}/asset?fileName=resume.pdf`} plugins={[fullScreenPluginInstance, zoomPluginInstance, printPluginInstance, getFilePluginInstance]} />
                 </Worker>
             </div>
         </div>
