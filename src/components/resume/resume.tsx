@@ -7,13 +7,13 @@ import { getFilePlugin } from '@react-pdf-viewer/get-file'
 import {NavigationContext} from '../../providers/navigation'
 import '@react-pdf-viewer/core/lib/styles/index.css'
 import '@react-pdf-viewer/zoom/lib/styles/index.css'
-import './resume.scss'
-import {BaseUrlContext} from '../../providers/base-url'
 import I18N from '../I18N/i18n'
+import {PortfolioDataContext} from '../../providers/portfolio-data'
+import './resume.scss'
 
 const Resume = () => {
     const { setHasMounted } = useContext(NavigationContext)
-    const baseUrl = useContext(BaseUrlContext)
+    const { pdfWorkerUrl, resumePdfUrl } = useContext(PortfolioDataContext)
 
     useEffect(() => {
         setHasMounted(true)
@@ -41,7 +41,7 @@ const Resume = () => {
             <I18N className="roll-down-3 uppercase" markdown name="resume.subHeader" />
             <I18N className="roll-down-4 uppercase" markdown name="resume.contactMe" />
             <div className="pdf-container roll-up-4">
-                <Worker workerUrl={`${baseUrl}/asset?fileName=pdf-worker.min.js`}>
+                <Worker workerUrl={ pdfWorkerUrl }>
                     <div className="pdf-container__toolbar">
                         <div>
                             <EnterFullScreenButton />
@@ -55,7 +55,7 @@ const Resume = () => {
                             <DownloadButton />
                         </div>
                     </div>
-                    <Viewer fileUrl={`${baseUrl}/asset?fileName=resume.pdf`} plugins={[fullScreenPluginInstance, zoomPluginInstance, printPluginInstance, getFilePluginInstance]} />
+                    <Viewer fileUrl={ resumePdfUrl } plugins={[fullScreenPluginInstance, zoomPluginInstance, printPluginInstance, getFilePluginInstance]} />
                 </Worker>
             </div>
         </div>
