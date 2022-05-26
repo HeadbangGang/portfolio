@@ -3,7 +3,11 @@ import I18N from '../I18N/i18n'
 import TypedWrapper from '../typed-wrapper/typed-wrapper'
 
 const HomepageHeader = () => {
-    const scrollToProjects = () => document.getElementById('projects').scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'center'})
+    const scrollToProjects = () => {
+        const { top } = document.getElementById('projects').getBoundingClientRect()
+        const location = window.scrollY + top - 76
+        window.scrollTo({top: location, behavior: 'smooth'})
+    }
 
     const developmentExp = () => {
         const startDate = new Date('10/1/2020') as unknown as number
