@@ -71,6 +71,12 @@ module.exports = {
                     { loader: 'css-loader' },
                     { loader: 'sass-loader' }
                 ]
+            },{
+                test: /\.css$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    { loader: 'css-loader' }
+                ]
             }, {
                 test: /\.jpe?g$|\.ico$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$|\.pdf$|\.webp$/,
                 type: 'asset/resource'
