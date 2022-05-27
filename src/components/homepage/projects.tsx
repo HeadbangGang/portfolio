@@ -13,7 +13,7 @@ const Projects = () => {
     const renderProjectCards = () => {
         return projectData.data.map((data: ProjectDataObject, idx: number) => {
             if (!data.image) return null
-            data.image = require(`/assets/media/${data.title.replaceAll(' ', '-').toLowerCase()}.png`)
+            // data.image = require(`/assets/media/${data.title.replaceAll(' ', '-').toLowerCase()}.png`)
             return <ProjectsCard { ...data } key={ idx }/>
         }
         )
