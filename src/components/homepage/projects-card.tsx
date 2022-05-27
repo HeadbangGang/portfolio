@@ -57,10 +57,7 @@ const ProjectsCard = ({ title, demoUrl, projectUrl, image }: Props) => {
     return (
         <div className={`project-card ${projectCardClassname()}`} ref={ projectCardRef }>
             <div className="project-card__image-wrapper">
-                { image
-                    ? <img src={ image } alt={ title } />
-                    : <div>{ title }</div>
-                }
+                <img src={ image } alt={ title } />
                 <div className="overlay">
                     <div className="project-card__data-wrapper">
                         <div className="project-card__title">{ title }</div>

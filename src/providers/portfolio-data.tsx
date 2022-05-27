@@ -15,13 +15,13 @@ const PorfolioDataProvider = ({ children }) => {
     const fetchProjectData = async () => {
         await fetch(`${baseUrl}/projects`)
             .then(res => res.json())
-            .then(res => {
-                res.data.forEach(async (data:ProjectDataObject) => {
-                    if (data.image) {
-                        data.image = await fetchAsset(baseUrl, data.image)
+            .then(({ data }) => {
+                data.forEach(async (item:ProjectDataObject) => {
+                    if (item.image) {
+                        item.image = await fetchAsset(baseUrl, item.image)
                     }
                 })
-                setProjectData(res)
+                setProjectData(data)
             })
             .catch(() => {})
     }

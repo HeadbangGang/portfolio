@@ -10,7 +10,7 @@ const Projects = () => {
     const { setHasMounted } = useContext(NavigationContext)
 
     useEffect(() => {
-        !isEmpty(projectData) && setHasMounted(true)
+        !projectData.length && setHasMounted(true)
     }, [projectData])
 
     if (isEmpty(projectData)) return <SuspenseLoader />
