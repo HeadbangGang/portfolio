@@ -13,27 +13,15 @@ const PorfolioDataProvider = ({ children }) => {
     const [resumeBlob, setResumeBlob] = useState<string>('')
 
     useEffect(() => {
-        fetch(`${baseUrl}/projects`, {
-            headers: {
-                'Referrer-Policy': 'unsafe-url'
-            }
-        })
+        fetch(`${baseUrl}/projects`)
             .then(res => res.json())
             .then(res => setProjectData(res))
             .catch(() => {})
-        fetch(`${baseUrl}/asset?fileName=resume.pdf`, {
-            headers: {
-                'Referrer-Policy': 'unsafe-url'
-            }
-        })
+        fetch(`${baseUrl}/asset?fileName=resume.pdf`)
             .then(res => res.blob())
             .then(res => setResumeBlob(URL.createObjectURL(res)))
             .catch(() => {})
-        fetch(`${baseUrl}/asset?fileName=pdf-worker.min.js`, {
-            headers: {
-                'Referrer-Policy': 'unsafe-url'
-            }
-        })
+        fetch(`${baseUrl}/asset?fileName=pdf-worker.min.js`)
             .then(res => res.blob())
             .then(res => setPdfWorkerBlob(URL.createObjectURL(res)))
             .catch(() => {})

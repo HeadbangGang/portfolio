@@ -5,7 +5,7 @@ BaseUrlContext.displayName = 'BaseUrl'
 
 const BaseUrlProvider = ({ children }) => {
 
-    const baseUrl = process.env.NODE_ENV === 'development' ? '/portfolio' : 'http://api.taydenflitcroft.com/portfolio'
+    const baseUrl = process.env.NODE_ENV === 'development' ? '/portfolio' : 'https://api.taydenflitcroft.com/portfolio'
 
     return (
         <BaseUrlContext.Provider value={ baseUrl }>

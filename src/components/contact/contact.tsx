@@ -92,8 +92,7 @@ const Contact = () => {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                    'Referrer-Policy': 'unsafe-url'
+                    'Accept': 'application/json'
                 },
                 body: JSON.stringify({
                     emailSubject,
