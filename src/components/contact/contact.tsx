@@ -172,7 +172,7 @@ const Contact = () => {
         <div className="contact">
             <div className="contact__header">
                 <I18N className="roll-down-1" markdown name="contact.header" />
-                <I18N className="roll-down-2" blockLevel name="contact.subHeader" />
+                <I18N className="roll-down-2" markdown name="contact.subHeader" />
             </div>
             <form onSubmit={async (e:React.FormEvent) => await handleSendContactRequest(e) }>
                 <div className="input-wrapper roll-up-1">

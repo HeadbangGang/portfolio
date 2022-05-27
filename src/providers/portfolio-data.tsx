@@ -13,7 +13,11 @@ const PorfolioDataProvider = ({ children }) => {
     const [resumeBlob, setResumeBlob] = useState<string>('')
 
     useEffect(() => {
-        fetch(`${baseUrl}/projects`)
+        fetch(`${baseUrl}/projects`, {
+            headers: {
+                'Referrer-Policy': 'unsafe-url'
+            }
+        })
             .then(res => res.json())
             .then(res => setProjectData(res))
             .catch(() => {})
