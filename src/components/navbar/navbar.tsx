@@ -3,6 +3,7 @@ import {useNavigate} from 'react-router'
 import {PAGE_URL} from '../../helpers/helpers'
 import {UIContext} from '../../providers/ui'
 import './navbar.scss'
+import I18N from '../I18N/i18n'
 
 interface NavigationButtonsInterface {
     text: string
@@ -42,13 +43,13 @@ const Navbar = () => {
     }
 
     const navigationButtons = [
-        { text: 'Home', onClick: () => navigate(PAGE_URL.HOMEPAGE) },
-        { text: 'Resume', onClick: () => navigate(PAGE_URL.RESUME) },
-        { text: 'Work Experience', onClick: () => navigate(PAGE_URL.WORK_EXPERIENCE) },
-        { text: 'Projects', onClick: () => navigate(PAGE_URL.PROJECTS) },
-        { text: 'Contact', onClick: () => navigate(PAGE_URL.CONTACT) }
+        { text: 'home', onClick: () => navigate(PAGE_URL.HOMEPAGE) },
+        { text: 'resume', onClick: () => navigate(PAGE_URL.RESUME) },
+        { text: 'workExperience', onClick: () => navigate(PAGE_URL.WORK_EXPERIENCE) },
+        { text: 'projects', onClick: () => navigate(PAGE_URL.PROJECTS) },
+        { text: 'contact', onClick: () => navigate(PAGE_URL.CONTACT) }
     ].map((attr: NavigationButtonsInterface, idx: number) => (
-        <button className={ `navigation-button-${idx}`} onClick={() => handleOnClick(attr.onClick)} key={ idx }>{ attr.text }</button>
+        <button className={ `navigation-button-${idx}`} onClick={() => handleOnClick(attr.onClick)} key={ idx }><I18N name={`navbar.${attr.text}`} /></button>
     ))
 
     return (

@@ -14,7 +14,7 @@ const Homepage = () => {
     const { projectData } = useContext(PortfolioDataContext)
 
     useEffect(() => {
-        setHasMounted(true)
+        !isEmpty(projectData) && setHasMounted(true)
     }, [])
 
     if (isEmpty(projectData)) return <SuspenseLoader />

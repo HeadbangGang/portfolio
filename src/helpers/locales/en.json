@@ -8,6 +8,13 @@
       "messagePresence": "Please enter a message."
     }
   },
+  "navbar": {
+    "home": "Home",
+    "resume": "Resume",
+    "workExperience": "Work Experience",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
   "resume": {
     "header": "# Resume",
     "subHeader": "Please preview, download, and print my resume.",
