@@ -21,11 +21,19 @@ const PorfolioDataProvider = ({ children }) => {
             .then(res => res.json())
             .then(res => setProjectData(res))
             .catch(() => {})
-        fetch(`${baseUrl}/asset?fileName=resume.pdf`)
+        fetch(`${baseUrl}/asset?fileName=resume.pdf`, {
+            headers: {
+                'Referrer-Policy': 'unsafe-url'
+            }
+        })
             .then(res => res.blob())
             .then(res => setResumeBlob(URL.createObjectURL(res)))
             .catch(() => {})
-        fetch(`${baseUrl}/asset?fileName=pdf-worker.min.js`)
+        fetch(`${baseUrl}/asset?fileName=pdf-worker.min.js`, {
+            headers: {
+                'Referrer-Policy': 'unsafe-url'
+            }
+        })
             .then(res => res.blob())
             .then(res => setPdfWorkerBlob(URL.createObjectURL(res)))
             .catch(() => {})
