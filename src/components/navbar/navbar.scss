@@ -15,8 +15,8 @@ header {
     margin: 0 15px;
 
     &__nav-buttons {
-      align-self: center;
-      justify-self: right;
+      display: flex;
+      justify-content: flex-end;
 
       button {
         color: #838181;
@@ -28,7 +28,8 @@ header {
         }
 
         &:hover {
-          text-shadow: 0 0 1px #000000b3;
+          transform: translateY(-1px);
+          border-bottom: 2px solid #838181;
         }
       }
 

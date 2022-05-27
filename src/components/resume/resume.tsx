@@ -8,8 +8,8 @@ import '@react-pdf-viewer/core/lib/styles/index.css'
 import '@react-pdf-viewer/zoom/lib/styles/index.css'
 import I18N from '../I18N/i18n'
 import {PortfolioDataContext} from '../../providers/portfolio-data'
-import './resume.scss'
 import SuspenseLoader from '../suspense-loader/suspense-loader'
+import './resume.scss'
 
 const Resume = () => {
     const { setHasMounted } = useContext(NavigationContext)
@@ -19,7 +19,7 @@ const Resume = () => {
         if (resumeBlob && pdfWorkerBlob) {
             setHasMounted(true)
         }
-    }, [])
+    }, [resumeBlob, pdfWorkerBlob])
 
     const fullScreenPluginInstance = fullScreenPlugin({
         onEnterFullScreen: (zoom) => {

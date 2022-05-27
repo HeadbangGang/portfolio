@@ -12,11 +12,14 @@ const PorfolioDataProvider = ({ children }) => {
     const [pdfWorkerBlob, setPdfWorkerBlob] = useState<string>('')
     const [resumeBlob, setResumeBlob] = useState<string>('')
 
-    useEffect(() => {
-        fetch(`${baseUrl}/projects`)
+    const fetchProjectData = async () => {
+        await fetch(`${baseUrl}/projects`)
             .then(res => res.json())
             .then(res => setProjectData(res))
             .catch(() => {})
+    }
+
+    const fetchResumeData = async () => {
         fetch(`${baseUrl}/asset?fileName=resume.pdf`)
             .then(res => res.blob())
             .then(res => setResumeBlob(URL.createObjectURL(res)))
@@ -25,6 +28,11 @@ const PorfolioDataProvider = ({ children }) => {
             .then(res => res.blob())
             .then(res => setPdfWorkerBlob(URL.createObjectURL(res)))
             .catch(() => {})
+    }
+
+    useEffect(() => {
+        fetchResumeData()
+        fetchProjectData()
     }, [])
 
     const portfolioData = { projectData, pdfWorkerBlob, resumeBlob }

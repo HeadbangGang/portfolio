@@ -19,6 +19,11 @@ const Resume = lazy(() => Promise.all([
     new Promise(resolve => setTimeout(resolve, SPINNER_DEFAULT))
 ]).then(([moduleExports]) => moduleExports))
 
+const Projects = lazy(() => Promise.all([
+    import('./components/projects/projects'),
+    new Promise(resolve => setTimeout(resolve, SPINNER_DEFAULT))
+]).then(([moduleExports]) => moduleExports))
+
 interface RoutesInterface {
     element: ReactElement
     path: string
@@ -28,7 +33,8 @@ const RoutesController = () => {
     const ROUTES = [
         { element: <Homepage />, path: PAGE_URL.HOMEPAGE },
         { element: <Contact />, path: PAGE_URL.CONTACT },
-        { element: <Resume />, path: PAGE_URL.RESUME},
+        { element: <Resume />, path: PAGE_URL.RESUME },
+        { element: <Projects />, path: PAGE_URL.PROJECTS },
         { element: <Homepage />, path: '*' }
     ]
 
