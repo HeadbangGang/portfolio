@@ -3,19 +3,19 @@ import I18N from '../I18N/i18n'
 import { PortfolioDataContext } from '../../providers/portfolio-data'
 import ProjectsCard from './projects-card'
 import {ProjectDataObject} from '../../interfaces'
+import {isEmpty} from '../../helpers/helpers'
 
 const Projects = () => {
     let { projectData } = useContext(PortfolioDataContext)
-
-    projectData = projectData.filter(item => item.image)
 
     if (!projectData.length) return null
 
     const renderProjectCards = () => {
         return projectData.map((data: ProjectDataObject, idx: number) => {
-            return <ProjectsCard { ...data } key={ idx }/>
-        }
-        )
+            if (!data.image || isEmpty(data.image)) return null
+            const image = require(`/assets/media/${ data.image.name }.${data.image.fileType}`)
+            return <ProjectsCard { ...data } image={ image } key={ idx }/>
+        })
     }
 
     return (

@@ -14,10 +14,10 @@ const Homepage = () => {
     const { projectData } = useContext(PortfolioDataContext)
 
     useEffect(() => {
-        !isEmpty(projectData) && setHasMounted(true)
+        projectData.length && setHasMounted(true)
     }, [])
 
-    if (isEmpty(projectData)) return <SuspenseLoader />
+    if (!projectData.length) return <SuspenseLoader />
 
     return (
         <div className="homepage">

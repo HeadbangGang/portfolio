@@ -13,10 +13,10 @@ const mockRoutes = (app) => {
     app.get('/portfolio/asset', (req, res) => setTimeout(() => {
         if (req.query.fileName === 'resume.pdf') res.send(fs.readFileSync(path.join(__dirname,'mocks/resume.pdf')))
         if (req.query.fileName === 'pdf-worker.min.js') res.send(fs.readFileSync(path.join(__dirname,'mocks/pdf-worker.min.js')))
-        if (req.query.fileName === 'dungeons-and-dragons.png') res.send(fs.readFileSync(path.join(__dirname,'mocks/project-images/dungeons-and-dragons.png')))
-        if (req.query.fileName === 'pokedex.png') res.send(fs.readFileSync(path.join(__dirname,'mocks/project-images/pokedex.png')))
-        if (req.query.fileName === 'plex-dashboard.png') res.send(fs.readFileSync(path.join(__dirname,'mocks/project-images/plex-dashboard.png')))
-        if (req.query.fileName === 'portfolio.png') res.send(fs.readFileSync(path.join(__dirname,'mocks/project-images/portfolio.png')))
+        // if (req.query.fileName === 'dungeons-and-dragons.png') res.send(fs.readFileSync(path.join(__dirname,'mocks/project-images/dungeons-and-dragons.png')))
+        // if (req.query.fileName === 'pokedex.png') res.send(fs.readFileSync(path.join(__dirname,'mocks/project-images/pokedex.png')))
+        // if (req.query.fileName === 'plex-dashboard.png') res.send(fs.readFileSync(path.join(__dirname,'mocks/project-images/plex-dashboard.png')))
+        // if (req.query.fileName === 'portfolio.png') res.send(fs.readFileSync(path.join(__dirname,'mocks/project-images/portfolio.png')))
     } ,MOCK_DELAY))
 }
 

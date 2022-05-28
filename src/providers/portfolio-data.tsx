@@ -16,11 +16,6 @@ const PorfolioDataProvider = ({ children }) => {
         await fetch(`${baseUrl}/projects`)
             .then(res => res.json())
             .then(({ data }) => {
-                data.forEach(async (item:ProjectDataObject) => {
-                    if (item.image) {
-                        item.image = await fetchAsset(baseUrl, item.image)
-                    }
-                })
                 setProjectData(data)
             })
             .catch(() => {})
@@ -34,8 +29,8 @@ const PorfolioDataProvider = ({ children }) => {
     }
 
     useEffect(() => {
-        fetchResumeData()
         fetchProjectData()
+        fetchResumeData()
     }, [])
 
     const portfolioData = { projectData, pdfWorkerBlob, resumeBlob }

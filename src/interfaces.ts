@@ -6,5 +6,8 @@ export interface ProjectDataObject {
     title: string
     demoUrl?: string
     projectUrl?:string
-    image?: string
+    image?: {
+        name: string
+        fileType: string
+    }
 }

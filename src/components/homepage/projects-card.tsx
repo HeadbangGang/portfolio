@@ -25,8 +25,6 @@ const ProjectsCard = ({ title, demoUrl, projectUrl, image }: Props) => {
         window.location.hash = title.replaceAll(' ', '-').toLowerCase()
     }
 
-    if (!image) return null
-
     useEffect(() => {
         projectCardRef.current.addEventListener('animationstart', handleAnimationStart)
         projectCardRef.current.addEventListener('animationend', handleAnimationEnd)
