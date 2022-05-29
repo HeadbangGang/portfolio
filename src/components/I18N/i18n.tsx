@@ -18,6 +18,7 @@ interface I18NProps extends LanguageMapVariableProps {
     className?: string,
     markdown?: boolean,
     name: string,
+    target?: string
 }
 
 interface LanguageMapVariableProps {
@@ -76,11 +77,11 @@ export const changeCurrentLanguage = async (language, callback) => {
 const I18N = (props: I18NProps) => {
     const { t } = useTranslation()
 
-    const { blockLevel, className, markdown, name, ...options } = props
+    const { blockLevel, className, markdown, name, target, ...options } = props
 
     const text = t(name, options)
     if (markdown) {
-        return <ReactMarkdown className={ className }>{ text }</ReactMarkdown>
+        return <ReactMarkdown className={ className } linkTarget={ target }>{ text }</ReactMarkdown>
     }
     if (blockLevel) {
         return <div className={ className }>{ text }</div>

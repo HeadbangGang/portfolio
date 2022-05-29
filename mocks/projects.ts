@@ -6,7 +6,8 @@ module.exports = {
         image: {
             name: 'pokedex',
             fileType: 'png'
-        }
+        },
+        description: '[Pokédex](https://www.pokedex.taydenflitcroft.com) is a web app that generates all Pokémon currently included in The Pokémon Company\'s "National Pokédex" with their Pokédex index, type(s), and both standard and "Shiny" sprites. Pokédex leverages my [Global Backend](https://github.com/HeadbangGang/global-backend) project by acting as an API layer between the front end project and the fully open-sourced [PokéAPI](https://pokeapi.co/) that the data originates from.'
     }, {
         title: 'Dungeons and Dragons',
         demoUrl: 'https://www.dnd.taydenflitcroft.com',
@@ -14,18 +15,18 @@ module.exports = {
         image: {
             name: 'dungeons-and-dragons',
             fileType: 'png'
-        }
+        },
     }, {
         title: 'Plex Dashboard',
         projectUrl: 'https://github.com/HeadbangGang/plex-dashboard',
         image: {
             name: 'plex-dashboard',
             fileType: 'png'
-        }
+        },
     }, {
         title: 'Global Backend',
         projectUrl: 'https://github.com/HeadbangGang/global-backend',
-        image: null
+        image: null,
     }, {
         title: 'Portfolio',
         projectUrl: 'https://github.com/HeadbangGang/portfolio',
@@ -33,6 +34,6 @@ module.exports = {
         image: {
             name: 'portfolio',
             fileType: 'png'
-        }
+        },
     }]
 }

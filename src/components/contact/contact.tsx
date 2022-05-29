@@ -2,7 +2,6 @@ import React, {useContext, useEffect, useState} from 'react'
 import I18N from '../I18N/i18n'
 import {BaseUrlContext} from '../../providers/base-url'
 import {validateEmail, validateName, validateSubject, validateMessage} from '../../helpers/validators'
-import {NavigationContext} from '../../providers/navigation'
 import {Icon} from '@iconify/react'
 import {LOW_CHARACTER_THRESHOLD, MAX_MESSAGE_LENGTH} from '../../helpers/helpers'
 import {UIContext} from '../../providers/ui'
@@ -23,15 +22,10 @@ const Contact = () => {
     const [messagesSent, setMessagesSent] = useState<number>(0)
 
     const baseUrl = useContext(BaseUrlContext)
-    const { setHasMounted } = useContext(NavigationContext)
     const { isSmallView } = useContext(UIContext)
 
     const messageCharactersLeft = MAX_MESSAGE_LENGTH - emailMessage.length
     const lowRemainingCharacters = messageCharactersLeft <= LOW_CHARACTER_THRESHOLD
-
-    useEffect(() => {
-        setHasMounted(true)
-    }, [])
 
     const scrollToFirstError = () => document.getElementsByClassName('inline-error')?.[0]?.scrollIntoView({behavior: 'smooth', inline: 'center', block: 'center'})
 

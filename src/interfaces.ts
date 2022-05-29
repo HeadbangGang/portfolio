@@ -9,5 +9,6 @@ export interface ProjectDataObject {
     image?: {
         name: string
         fileType: string
-    }
+    },
+    description: string
 }

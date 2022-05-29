@@ -18,7 +18,7 @@
   "resume": {
     "header": "# Resume",
     "subHeader": "Please preview, download, and print my resume.",
-    "contactMe": "If I meet your companies needs and you would like to discuss further opportunities; please [contact me](/contact)."
+    "contactMe": "If I meet your companies needs and you would like to discuss further opportunities, please [contact me here](/contact)."
   },
   "contact": {
     "header": "# Contact Me",
@@ -40,15 +40,15 @@
     "viewProjects": "View Projects",
     "aboutMe": {
       "header": "## About Me",
-      "aboutMe": "I am a Software Engineer located in San Antonio, Texas. I have worked with many different technologies; JavaScript, TypeScript, Node.js, React, and SASS are just a few examples. I have experience working on both personal as well as enterprise-level projects."
+      "aboutMe": "I am a Software Engineer located in San Antonio, Texas. I have worked with many different technologies: JavaScript, TypeScript, Node.js, React, and SASS are just a few examples. I have experience working on both personal as well as enterprise-level projects."
     },
     "contactMe": {
       "contactMe": "Contact Me",
-      "disclaimer": "If I sound like a good fit for your company; Please contact me by clicking below."
+      "disclaimer": "If I sound like a good fit for your company, Please contact me by clicking below."
     },
     "projects": {
       "header": "## Latest Projects",
-      "subHeader": "### Below are a few personal projects that I have each been created for a different need. They all include many diverse technologies such as **React**, **Redux**, **Hooks**, **Docker Containers**, **OAuth**, and more.",
+      "subHeader": "### Below are a few personal projects that have each been created to resolve a different need. They all include many diverse technologies such as **React**, **Context**, **Redux**, **Hooks**, **Docker Containers**, **OAuth**, and more.",
       "viewDemo": "View Demo",
       "viewRepo": "View Repository",
       "viewRepoSV": "View Repo",

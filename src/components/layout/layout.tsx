@@ -1,5 +1,4 @@
-import React, {useContext, useEffect} from 'react'
-import { NavigationContext } from '../../providers/navigation'
+import React, { useEffect } from 'react'
 import Navbar from '../navbar/navbar'
 import Footer from '../footer/footer'
 import {useLocation} from 'react-router'
@@ -7,11 +6,10 @@ import './layout.scss'
 
 const Layout = ({ children }) => {
     const location = useLocation()
-    const { hasMounted } = useContext(NavigationContext)
 
     useEffect(() => {
         setTimeout(() =>{
-            window.scrollTo(0, 0)
+            window.scroll(0, 0)
         }, 100)
     }, [])
 
@@ -23,7 +21,7 @@ const Layout = ({ children }) => {
             }
             window.history.pushState('', document.title, window.location.pathname + window.location.search) // removes hash from url
         } else {
-            window.scrollTo({top:0,left:0, behavior: 'smooth'})
+            window.scroll(0,0)
         }
     }, [location])
 
@@ -32,8 +30,8 @@ const Layout = ({ children }) => {
             <Navbar />
             <div id="main-content">
                 { children }
+                <Footer />
             </div>
-            { hasMounted && <Footer /> }
         </div>
     )
 }

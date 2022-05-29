@@ -6,7 +6,7 @@ import {fetchAsset} from '../helpers/fetchAsset'
 export const PortfolioDataContext = createContext(null)
 PortfolioDataContext.displayName = 'PortfolioData'
 
-const PorfolioDataProvider = ({ children }) => {
+const PortfolioDataProvider = ({ children }) => {
     const baseUrl = useContext(BaseUrlContext)
     const [projectData, setProjectData] = useState<ProjectDataInterface>({})
     const [pdfWorkerBlob, setPdfWorkerBlob] = useState<string>('')
@@ -42,4 +42,4 @@ const PorfolioDataProvider = ({ children }) => {
     )
 }
 
-export default PorfolioDataProvider
+export default PortfolioDataProvider

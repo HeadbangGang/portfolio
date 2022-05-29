@@ -1,23 +1,35 @@
-import React, {useContext, useEffect} from 'react'
-import {isEmpty} from '../../helpers/helpers'
+import React, {useContext} from 'react'
 import {PortfolioDataContext} from '../../providers/portfolio-data'
-import {NavigationContext} from '../../providers/navigation'
-import SuspenseLoader from '../suspense-loader/suspense-loader'
+import {ProjectDataObject} from '../../interfaces'
+import I18N from '../I18N/i18n'
 import './projects.scss'
+import SuspenseLoader from '../suspense-loader/suspense-loader'
 
 const Projects = () => {
     const { projectData } = useContext(PortfolioDataContext)
-    const { setHasMounted } = useContext(NavigationContext)
 
-    useEffect(() => {
-        !projectData.length && setHasMounted(true)
-    }, [projectData])
+    const renderProjects = () => {
+        return projectData.map((item: ProjectDataObject) => {
+            let image
+            if (item.image) {
+                image = require(`/assets/media/${item.image.name}.${item.image.fileType}`)
+            }
+            return ( <div key={item.title}>
+                { image && <img src={ image } alt={ item.title } width={50}/> }
+                <div>
+                    {item.title}
+                    <I18N name={ item.description } markdown target="_blank" />
+                </div>
+            </div>
+            )
+        })
+    }
 
-    if (isEmpty(projectData)) return <SuspenseLoader />
+    if (!projectData.length) return <SuspenseLoader />
 
     return (
         <div className="projects">
-            projects
+            { renderProjects() }
         </div>
     )
 }
