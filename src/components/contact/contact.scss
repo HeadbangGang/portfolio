@@ -12,9 +12,6 @@
   form {
     display: flex;
     flex-direction: column;
-    margin: 0 auto;
-    min-width: 300px;
-    width: 50vw;
 
     .input-wrapper {
       display: flex;
@@ -104,6 +101,11 @@
       div {
         margin-left: 4px;
       }
+    }
+
+    @media screen and (min-width: 993px) {
+      margin: 0 auto;
+      width: 50vw;
     }
   }
 
