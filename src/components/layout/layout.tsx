@@ -8,7 +8,9 @@ const Layout = ({ children }) => {
     const location = useLocation()
 
     useEffect(() => {
-        if (!location.hash) window.scroll(0, 0)
+        if (!location.hash) {
+            window.scroll(0, 0)
+        }
     }, [location])
 
     return (

@@ -45,7 +45,7 @@ const Navbar = () => {
     const navigationButtons = [
         { text: 'home', onClick: () => navigate(PAGE_URL.HOMEPAGE) },
         { text: 'resume', onClick: () => navigate(PAGE_URL.RESUME) },
-        { text: 'workExperience', onClick: () => navigate(PAGE_URL.WORK_EXPERIENCE) },
+        // { text: 'workExperience', onClick: () => navigate(PAGE_URL.WORK_EXPERIENCE) },
         { text: 'projects', onClick: () => navigate(PAGE_URL.PROJECTS) },
         { text: 'contact', onClick: () => navigate(PAGE_URL.CONTACT) }
     ].map((attr: NavigationButtonsInterface, idx: number) => (

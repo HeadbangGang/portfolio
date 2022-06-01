@@ -92,9 +92,14 @@ const ProjectsCard = ({ image, demoUrl, description, projectUrl, title, id }: Pr
                 <div className="projects__content">
                     <h2 className="projects__content__title">{ title }</h2>
                     <ReactMarkdown className='projects__content__description' linkTarget="_blank">{ description }</ReactMarkdown>
-                    <button onClick={() => openUrl(projectUrl)}>
-                        <I18N name="projects.repo" />
-                    </button>
+                    <div className="projects__links">
+                        <button disabled={ !demoUrl} onClick={() => openUrl(demoUrl)}>
+                            <I18N name="projects.demo" />
+                        </button>
+                        <button disabled={ !projectUrl } onClick={() => openUrl(projectUrl)}>
+                            <I18N name="projects.repo" />
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
