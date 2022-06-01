@@ -8,20 +8,16 @@ const Layout = ({ children }) => {
     const location = useLocation()
 
     useEffect(() => {
-        setTimeout(() =>{
-            window.scroll(0, 0)
-        }, 100)
-    }, [])
-
-    useEffect(() => {
         if (location.hash) {
             const element = document.getElementById(location.hash.slice(1))
             if (element) {
-                element.scrollIntoView({behavior: 'smooth'})
+                const { top } = element.getBoundingClientRect()
+                const location = window.scrollY + top - 80
+                window.scrollTo({top: location, behavior: 'smooth'})
             }
             window.history.pushState('', document.title, window.location.pathname + window.location.search) // removes hash from url
         } else {
-            window.scroll(0,0)
+            setTimeout(() => window.scroll(0, 0), 100)
         }
     }, [location])
 

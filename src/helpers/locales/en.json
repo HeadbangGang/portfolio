@@ -55,6 +55,12 @@
       "viewDetails": "View Details"
     }
   },
+  "projects": {
+    "header": "# Projects",
+    "subHeader": "Below are a few personal projects that have each been created to resolve a different need.  \nThey all include many diverse technologies such as **React**, **Context**, **Redux**, **Hooks**, **Docker Containers**, **OAuth**, and more.",
+    "demo": "Demo",
+    "repo": "Repository"
+  },
   "footer": {
     "copyright": "&copy; {{- year}}.",
     "credit": "Designed and Developed by [Tayden Flitcroft](https://github.com/HeadbangGang)"

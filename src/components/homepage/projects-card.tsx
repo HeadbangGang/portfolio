@@ -5,9 +5,16 @@ import isVisible from '../../helpers/isVisible'
 import I18N from '../I18N/i18n'
 import {UIContext} from '../../providers/ui'
 
-interface Props extends ProjectDataObject {}
+interface Props {
+    title: string
+    demoUrl?: string
+    projectUrl?:string
+    image?: string,
+    description: string
+    id: string
+}
 
-const ProjectsCard = ({ title, demoUrl, projectUrl, image }: Props) => {
+const ProjectsCard = ({ title, demoUrl, projectUrl, image, id }: Props) => {
     const projectCardRef = useRef(null)
     const navigate = useNavigate()
 
@@ -22,7 +29,7 @@ const ProjectsCard = ({ title, demoUrl, projectUrl, image }: Props) => {
 
     const navigateToProjects = () => {
         navigate('/projects')
-        window.location.hash = title.replaceAll(' ', '-').toLowerCase()
+        window.location.hash = id
     }
 
     useEffect(() => {
@@ -60,15 +67,21 @@ const ProjectsCard = ({ title, demoUrl, projectUrl, image }: Props) => {
                     <div className="project-card__data-wrapper">
                         <div className="project-card__title">{ title }</div>
                         <div className="project-card__buttons">
-                            <div><button disabled={ !demoUrl } onClick={ () => openUrl(demoUrl) }>
-                                <I18N name="homepage.projects.viewDemo" />
-                            </button></div>
-                            <div><button disabled={ !projectUrl } onClick={ () => openUrl(projectUrl) }>
-                                <I18N name={`homepage.projects.viewRepo${isSmallView ? 'SV' : ''}`} />
-                            </button></div>
-                            <div><button onClick={ navigateToProjects }>
-                                <I18N name="homepage.projects.viewDetails" />
-                            </button></div>
+                            <div>
+                                <button disabled={ !demoUrl } onClick={ () => openUrl(demoUrl) }>
+                                    <I18N name="homepage.projects.viewDemo" />
+                                </button>
+                            </div>
+                            <div>
+                                <button disabled={ !projectUrl } onClick={ () => openUrl(projectUrl) }>
+                                    <I18N name={`homepage.projects.viewRepo${isSmallView ? 'SV' : ''}`} />
+                                </button>
+                            </div>
+                            <div>
+                                <button onClick={ navigateToProjects }>
+                                    <I18N name="homepage.projects.viewDetails" />
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>

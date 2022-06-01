@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react'
+import React, {useContext} from 'react'
 import { SpecialZoomLevel, Worker, Viewer } from '@react-pdf-viewer/core'
 import { fullScreenPlugin } from '@react-pdf-viewer/full-screen'
 import { zoomPlugin } from '@react-pdf-viewer/zoom'

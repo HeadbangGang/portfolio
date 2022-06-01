@@ -19,10 +19,7 @@ const Resume = lazy(() => Promise.all([
     new Promise(resolve => setTimeout(resolve, SPINNER_DEFAULT))
 ]).then(([moduleExports]) => moduleExports))
 
-const Projects = lazy(() => Promise.all([
-    import('./components/projects/projects'),
-    new Promise(resolve => setTimeout(resolve, SPINNER_DEFAULT))
-]).then(([moduleExports]) => moduleExports))
+import Projects from './components/projects/projects'
 
 interface RoutesInterface {
     element: ReactElement

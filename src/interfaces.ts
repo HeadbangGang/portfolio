@@ -6,9 +6,18 @@ export interface ProjectDataObject {
     title: string
     demoUrl?: string
     projectUrl?:string
-    image?: {
+    image?: ImageContent,
+    description: string
+    id: string
+}
+
+interface ImageContent {
+    screenshot?: {
         name: string
         fileType: string
     },
-    description: string
+    icon?: {
+        name: string
+        fileType: string
+    }
 }

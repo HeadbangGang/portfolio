@@ -12,8 +12,9 @@ const Projects = () => {
 
     const renderProjectCards = () => {
         return projectData.map((data: ProjectDataObject, idx: number) => {
-            if (!data.image || isEmpty(data.image)) return null
-            const image = require(`/assets/media/${ data.image.name }.${data.image.fileType}`)
+            if (!data?.image?.screenshot || isEmpty(data.image)) return null
+            const { name, fileType } = data.image.screenshot
+            const image = require(`/assets/media/${ name }.${fileType}`)
             return <ProjectsCard { ...data } image={ image } key={ idx }/>
         })
     }

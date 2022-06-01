@@ -1,6 +1,6 @@
 import React, {createContext, useContext, useEffect, useState} from 'react'
 import {BaseUrlContext} from './base-url'
-import {ProjectDataInterface, ProjectDataObject} from '../interfaces'
+import {ProjectDataInterface} from '../interfaces'
 import {fetchAsset} from '../helpers/fetchAsset'
 
 export const PortfolioDataContext = createContext(null)

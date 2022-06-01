@@ -1,9 +1,11 @@
 import React, {useContext} from 'react'
 import {PortfolioDataContext} from '../../providers/portfolio-data'
 import {ProjectDataObject} from '../../interfaces'
-import I18N from '../I18N/i18n'
-import './projects.scss'
 import SuspenseLoader from '../suspense-loader/suspense-loader'
+import './projects.scss'
+import I18N from '../I18N/i18n'
+import ProjectsCard from './project-card'
+import {isEmpty} from '../../helpers/helpers'
 
 const Projects = () => {
     const { projectData } = useContext(PortfolioDataContext)
@@ -11,16 +13,12 @@ const Projects = () => {
     const renderProjects = () => {
         return projectData.map((item: ProjectDataObject) => {
             let image
-            if (item.image) {
-                image = require(`/assets/media/${item.image.name}.${item.image.fileType}`)
+            if (!isEmpty(item?.image?.icon)) {
+                const { name, fileType } = item.image.icon
+                image = require(`/assets/media/${name}.${fileType}`)
             }
-            return ( <div key={item.title}>
-                { image && <img src={ image } alt={ item.title } width={50}/> }
-                <div>
-                    {item.title}
-                    <I18N name={ item.description } markdown target="_blank" />
-                </div>
-            </div>
+            return (
+                <ProjectsCard { ...item } image={image} key={ item.title }/>
             )
         })
     }
@@ -29,6 +27,8 @@ const Projects = () => {
 
     return (
         <div className="projects">
+            <I18N className="roll-down-2" name="projects.header" markdown />
+            <I18N className="roll-down-3" name="projects.subHeader" markdown/>
             { renderProjects() }
         </div>
     )
