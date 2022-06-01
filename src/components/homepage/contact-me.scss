@@ -1,0 +1,32 @@
+#contact-me {
+  background-color: white;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  font-family: RobotoCondensed, sans-serif;
+  font-size: 16px;
+  height: 50vh;
+  justify-content: center;
+  text-align: center;
+  text-transform: uppercase;
+
+  .content {
+    background-color: #6a6fff;
+    display: flex;
+    flex-direction: column;
+    height: 50%;
+    justify-content: space-evenly;
+
+    button {
+      border-radius: 50px;
+      font-size: 16px;
+      padding: 20px;
+      background-color: white;
+      color: #6a6fff;
+
+      &:active {
+        transform: scale(0.9);
+      }
+    }
+  }
+}

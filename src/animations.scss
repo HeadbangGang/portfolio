@@ -1,0 +1,133 @@
+@for $item from 1 through 10 {
+  .roll-up-#{$item} {
+    animation: roll-up calc(500ms * #{$item}) ease-in-out;
+  }
+}
+
+@keyframes roll-up {
+  0% {
+    transform: translateY(25px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@for $item from 1 through 10 {
+  .roll-down-#{$item} {
+    animation: roll-down calc(500ms * #{$item}) ease-in-out;
+  }
+}
+
+@keyframes roll-down {
+  0% {
+    transform: translateY(-25px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@for $item from 1 through 10 {
+  .slide-right-#{$item} {
+    animation: slide-right calc(500ms * #{$item}) ease-in-out;
+  }
+}
+
+@keyframes slide-right {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+@for $item from 1 through 10 {
+  .slide-left-#{$item} {
+    animation: slide-left calc(500ms * #{$item}) ease-in-out;
+  }
+}
+
+@keyframes slide-left {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+@for $item from 1 through 10 {
+  .spinning-#{$item} {
+    animation: spinning calc(1000ms * #{$item}) linear infinite;
+  }
+}
+
+@keyframes spinning {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+@for $item from 1 through 10 {
+  .fade-in-#{$item} {
+    animation: spinning calc(500ms * #{$item}) linear;
+  }
+}
+
+@keyframes spinning {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.zoom-in {
+  animation: zoom-in 1s linear;
+}
+
+@keyframes zoom-in {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  background: rgb(0 0 0 / 70%);
+  opacity: 0;
+  transition: opacity 400ms;
+
+  &:hover {
+    opacity: 1;
+  }
+}

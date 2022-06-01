@@ -1,0 +1,77 @@
+#homepage-header {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-family: RobotoCondensed, sans-serif;
+  font-weight: bolder;
+  height: calc(100vh - 76px);
+  justify-content: center;
+  text-align: center;
+  text-transform: uppercase;
+
+  div {
+    margin: 10px;
+  }
+
+  .hello {
+    font-size: 48px;
+    margin: 0 0 35px;
+  }
+
+  .my-name-is {
+    font-size: 32px;
+  }
+
+  .i-am-a-engineer {
+    font-size: 32px;
+  }
+
+  .subheader {
+    color: #878787;
+    font-family: RobotoCondensed, sans-serif;
+    font-size: 24px;
+    font-weight: lighter;
+    max-width: 600px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .view-projects-button {
+    margin-top: 40px;
+    text-align: center;
+
+    button {
+      color: white;
+      background-color: #cf9090;
+      border: 1px solid #cf9090;
+      border-radius: 50px;
+      font-size: 17px;
+      padding: 15px 20px;
+
+      &:active {
+        transform: scale(0.9);
+      }
+    }
+  }
+
+  @media screen and (max-width: 992px) {
+    padding: 0;
+    justify-content: center;
+
+    .hello {
+      font-size: 32px;
+    }
+
+    .subheader {
+      font-size: 18px;
+    }
+
+    .my-name-is {
+      font-size: 20px;
+    }
+
+    .i-am-a-engineer {
+      font-size: 20px;
+    }
+  }
+}
