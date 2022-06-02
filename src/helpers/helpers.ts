@@ -2,8 +2,7 @@ export const PAGE_URL = {
     CONTACT: '/contact',
     HOMEPAGE: '/',
     PROJECTS: '/projects',
-    RESUME: '/resume',
-    WORK_EXPERIENCE: '/work-experience'
+    RESUME: '/resume'
 }
 
 export const I_AM_STRINGS = ['Software Engineer', 'Developer', 'Computer Scientist', 'IT Professional', 'Technology Enthusiast']
