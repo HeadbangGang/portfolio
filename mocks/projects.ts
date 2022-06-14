@@ -69,6 +69,17 @@ module.exports = {
         },
         description: '[Owen Wilson Buttons](https://chrome.google.com/webstore/detail/owen-wilson-buttons/bjmcjbjbipaaobcedgdpejjfnlgiojon?hl=en&authuser=0) is a novelty Chrome Extension that adds event listeners to all buttons and anchor elements in the DOM which, when pressed, displays a confetti animation and plays one of 8 variations of Owen Wilson\'s iconic "Wow". Owen Wilson Buttons is currently published and publically available on the Chrome Web Store [here](https://chrome.google.com/webstore/detail/owen-wilson-buttons/bjmcjbjbipaaobcedgdpejjfnlgiojon?hl=en&authuser=0).'
     }, {
+        title: 'Caffeinate',
+        projectUrl: 'https://github.com/HeadbangGang/caffeinate',
+        id: 'caffeinate',
+        image: {
+            icon: {
+                name: 'caffeinate',
+                fileType: 'png'
+            }
+        },
+        description: '[Caffeinate](https://github.com/HeadbangGang/caffeinate) is a MacOS Application, written in AppleScript, that temporarily keeps the system display on without changing the system\'s settings. Default behavior is to permanently keep the display on until the application is closed, but timed options ranging from 10 minutes to 24 hours are available.'
+    }, {
         title: 'Portfolio',
         projectUrl: 'https://github.com/HeadbangGang/portfolio',
         demoUrl: 'https://www.taydenflitcroft.com',
