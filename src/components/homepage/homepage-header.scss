@@ -8,9 +8,18 @@
   justify-content: center;
   text-align: center;
   text-transform: uppercase;
+  position: relative;
 
   div {
     margin: 10px;
+  }
+
+  .caret-icon {
+    position: absolute;
+    bottom: 25px;
+    right: 25px;
+    color: white;
+    animation: popup 1.5s ease 0s infinite normal none;
   }
 
   .hello {
@@ -26,8 +35,19 @@
     font-size: 32px;
   }
 
+  .background-video {
+    height: 100%;
+    left: 0;
+    object-fit: cover;
+    opacity: 0.8;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: -1;
+  }
+
   .subheader {
-    color: #878787;
+    color: #5a5a5a;
     font-family: RobotoCondensed, sans-serif;
     font-size: 24px;
     font-weight: lighter;
@@ -42,8 +62,7 @@
 
     button {
       color: white;
-      background-color: #cf9090;
-      border: 1px solid #cf9090;
+      background-color: #6a6fff;
       border-radius: 50px;
       font-size: 17px;
       padding: 15px 20px;
@@ -73,5 +92,11 @@
     .i-am-a-engineer {
       font-size: 20px;
     }
+  }
+}
+
+@keyframes popup {
+  49.5%{
+    transform: translate(0, -10px);
   }
 }

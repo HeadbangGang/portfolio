@@ -1,6 +1,7 @@
 import React from 'react'
 import I18N from '../I18N/i18n'
 import TypedWrapper from '../typed-wrapper/typed-wrapper'
+import {Icon} from '@iconify/react'
 
 const HomepageHeader = () => {
     const scrollToProjects = () => {
@@ -31,6 +32,10 @@ const HomepageHeader = () => {
                     <I18N name="homepage.viewProjects" />
                 </button>
             </div>
+            <video loop muted autoPlay className="background-video">
+                <source src="assets/media/water-background.mp4" type="video/mp4" />
+            </video>
+            <Icon className="caret-icon" icon="fa-solid:caret-down" width="50" />
         </section>
     )
 }

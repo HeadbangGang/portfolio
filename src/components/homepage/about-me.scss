@@ -6,7 +6,8 @@
   .content {
     display: flex;
     justify-content: space-evenly;
-    background-color: #1f6a73;
+    background: rgb(2 0 36);
+    background: linear-gradient(180deg, rgb(2 0 36 / 100%) 0%, rgb(106 111 255 / 100%), rgb(31 106 115 / 100%) 100%);
     place-items: center;
     text-align: center;
     height: 100%;

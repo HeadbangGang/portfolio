@@ -146,17 +146,19 @@ const Contact = () => {
 
     const renderContactCards = () => {
         return [
-            {icon: 'ant-design:phone-filled', name: 'contact.phoneNumber'},
-            {icon: 'ion:mail', name: 'contact.email' },
+            {icon: 'ant-design:phone-filled', name: 'contact.phoneNumber', href: 'tel:+1503-569-7894'},
+            {icon: 'ion:mail', name: 'contact.email', href: 'mailto:tayden.contact@gmail.com'},
             {icon: 'ci:location', name: 'contact.location'}
-        ].map(({ icon, name}: { icon: string, name: string}, idx: number) => {
+        ].map(({ href, icon, name}: {href?: string, icon: string, name: string}, idx: number) => {
             const animationClassname = isSmallView ? 'roll-up' : 'slide-right'
             return (
                 <div className={`card ${animationClassname}-${idx + 2}`} key={ idx }>
-                    <div className="card__content">
-                        <Icon icon={icon} width="100"/>
-                        <I18N blockLevel name={name}/>
-                    </div>
+                    <a href={href}>
+                        <div className="card__content">
+                            <Icon icon={icon} width="100"/>
+                            <I18N blockLevel name={name}/>
+                        </div>
+                    </a>
                 </div>
             )
         })

@@ -78,7 +78,7 @@ module.exports = {
                     { loader: 'css-loader' }
                 ]
             }, {
-                test: /\.jpe?g$|\.ico$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$|\.pdf$|\.webp$/,
+                test: /\.jpe?g$|\.ico$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$|\.pdf$|\.mp4$|\.webp$/,
                 type: 'asset/resource'
             }
         ]
