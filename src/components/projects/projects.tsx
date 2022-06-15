@@ -2,21 +2,20 @@ import React, {useContext, useEffect} from 'react'
 import {PortfolioDataContext} from '../../providers/portfolio-data'
 import {ProjectDataObject} from '../../interfaces'
 import SuspenseLoader from '../suspense-loader/suspense-loader'
-import './projects.scss'
 import I18N from '../I18N/i18n'
 import ProjectsCard from './project-card'
-import {isEmpty} from '../../helpers/helpers'
+import {isEmpty, scrollToId} from '../../helpers/helpers'
+import './projects.scss'
 
 const Projects = () => {
     const { projectData } = useContext(PortfolioDataContext)
 
     useEffect(() => {
         if (location.hash) {
-            const element = document.getElementById(location.hash.slice(1))
+            const id = location.hash.slice(1)
+            const element = document.getElementById(id)
             if (element) {
-                const { top } = element.getBoundingClientRect()
-                const location = window.scrollY + top - 80
-                window.scrollTo({top: location, behavior: 'smooth'})
+                scrollToId(id)
             }
             window.history.pushState('', document.title, window.location.pathname + window.location.search) // removes hash from url
         }

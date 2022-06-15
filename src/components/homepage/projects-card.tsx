@@ -1,5 +1,4 @@
 import React, {useContext, useEffect, useRef, useState} from 'react'
-import {ProjectDataObject} from '../../interfaces'
 import {useNavigate} from 'react-router'
 import isVisible from '../../helpers/isVisible'
 import I18N from '../I18N/i18n'

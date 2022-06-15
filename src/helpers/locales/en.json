@@ -1,5 +1,6 @@
 {
   "common": {
+    "name": "Tayden Flitcroft",
     "validators": {
       "namePresence": "Please enter your full name.",
       "emailPresence": "Please enter your email address.",
@@ -17,16 +18,18 @@
   },
   "resume": {
     "header": "# Resume",
+    "fullScreen": "Fullscreen",
+    "download": "Download",
     "subHeader": "Please preview, download, and print my resume.",
     "contactMe": "If I meet your companies needs and you would like to discuss further opportunities, please [contact me here](/contact)."
   },
   "contact": {
     "header": "# Contact Me",
     "subHeader": "Fill out the form below and I will get back to you within 24 hours.  \n\nI look forward to speaking with you.",
-    "copyOfMessage": "Receive copy of message",
+    "copyOfMessage": "Receive a copy of your message",
     "submit": "Submit",
     "sentSuccess": "Sent Successfully",
-    "sentFail": "Error Occured. Try Again.",
+    "sentFail": "Error Occurred. Try Again.",
     "sending": ". . . Sending",
     "location": "San Antonio, Texas",
     "email": "tayden.contact@gmail.com",
@@ -34,9 +37,9 @@
   },
   "homepage": {
     "hello": "Hello!",
-    "myNameIs": "My name is Tayden Flitcroft",
+    "myNameIs": "My name is ",
     "iAmA": "I am a ",
-    "subheader": "I have {{- years}}+ years experience as a Software Engineer and a Web App Developer. This website showcases some of my projects.",
+    "subheader": "I have over {{- years}} years experience as a Software Engineer and a Web App Developer.  \n\nThis website showcases some of my projects.",
     "viewProjects": "View Projects",
     "aboutMe": {
       "header": "## About Me",

@@ -1,3 +1,5 @@
+import { toWords } from 'number-to-words'
+
 export const PAGE_URL = {
     CONTACT: '/contact',
     HOMEPAGE: '/',
@@ -26,4 +28,30 @@ export const LOW_CHARACTER_THRESHOLD = 25
 
 export const isEmpty = (obj) => {
     return !!(obj === undefined || obj === null || typeof obj !== 'object' || !Object.keys(obj).length)
+}
+
+export const isiOS = () => {
+    return [
+        'iPad Simulator',
+        'iPhone Simulator',
+        'iPod Simulator',
+        'iPad',
+        'iPhone',
+        'iPod'
+    ].includes(navigator.platform)
+        || (navigator.userAgent.includes('Mac') && 'ontouchend' in document)
+}
+
+export const scrollToId = (id) => {
+    const { top } = document.getElementById(id).getBoundingClientRect()
+    const location = window.scrollY + top - 76
+    window.scrollTo({top: location, behavior: 'smooth'})
+}
+
+export const developmentExp = () => {
+    const startDate = new Date('10/1/2020') as unknown as number
+    const todaysData = new Date() as unknown as number
+    const diffTime = Math.abs(startDate - todaysData)
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+    return toWords(Math.ceil(diffDays / 365))
 }

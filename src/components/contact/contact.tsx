@@ -16,7 +16,7 @@ const Contact = () => {
     const [emailSubjectErrorMessage, setEmailSubjectErrorMessage] = useState<string>('')
     const [emailMessage, setEmailMessage] = useState<string>('')
     const [emailMessageErrorMessage, setEmailMessageErrorMessage] = useState<string>('')
-    const [sendConfirmationEmail, setSendConfirmationEmail] = useState<boolean>(true)
+    const [sendConfirmationEmail, setSendConfirmationEmail] = useState<boolean>(false)
     const [callInProgress, setCallInProgress] = useState<boolean>(false)
     const [formSubmitSuccess, setFormSubmitSuccess] = useState<boolean|null>(null)
     const [messagesSent, setMessagesSent] = useState<number>(0)

@@ -1,3 +1,5 @@
+@import "src/animations";
+
 .contact {
   display: flex;
   flex-direction: column;
@@ -88,8 +90,82 @@
     .copy-of-message {
       align-items: center;
       display: flex;
-      font-size: 13px;
+      font-size: 16px;
       justify-content: right;
+
+      input[type=checkbox] {
+        display: none;
+
+        + label {
+          align-items: center;
+          cursor: pointer;
+          display: flex;
+          position: relative;
+
+          &::after {
+            content: "\2714";
+            font: {
+              family: fontawesome;
+              size: 22px;
+            }
+
+            align-items: center;
+            color: #6a6fff;
+            display: flex;
+            height: 100%;
+            left: 2px;
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            transform-origin: center center;
+
+            @include transition-mix;
+          }
+
+          &::before {
+            border-radius: 3px;
+            border: 2px solid black;
+            box-sizing: border-box;
+            content: "";
+            display: inline-block;
+            height: 16px;
+            margin-right: 10px;
+            width: 16px;
+
+            @include transition-mix($delay: 0.2s);
+          }
+        }
+
+        &:not(:checked) {
+          + label {
+            &::after {
+              transform: scale(0);
+            }
+          }
+        }
+
+        &:checked {
+          + label {
+            &::before {
+              transform: scale(0);
+              opacity: 0;
+
+              @include transition-mix;
+            }
+
+            &::after {
+              transform: scale(1);
+              opacity: 1;
+
+              @include transition-mix($delay: 0.2s, $timing: cubic-bezier(0.57, 1.9, 0, 1.52));
+            }
+          }
+        }
+      }
+
+      @media screen and (max-width: 992px) {
+        justify-content: center;
+      }
     }
 
     .inline-error {
