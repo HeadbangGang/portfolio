@@ -9,9 +9,11 @@ const Homepage = () => {
     return (
         <div className="homepage">
             <HomepageHeader />
-            <AboutMe />
-            <Projects />
-            <ContactMe />
+            <div className="homepage__content">
+                <AboutMe />
+                <Projects />
+                <ContactMe />
+            </div>
         </div>
     )
 }
