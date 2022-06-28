@@ -1,17 +1,18 @@
-import { initializeApp } from 'firebase/app'
-import { getAnalytics, logEvent as gLogEvent} from 'firebase/analytics'
+import ReactGA from 'react-ga'
+import {PAGE_NAME} from './helpers/constants'
 
-const firebaseConfig = {
-    apiKey: 'AIzaSyApob5KnftxoULGxKE2pIV9UeBxGuuE-pQ',
-    authDomain: 'portfolio-2198.firebaseapp.com',
-    projectId: 'portfolio-2198',
-    storageBucket: 'portfolio-2198.appspot.com',
-    messagingSenderId: '695901436436',
-    appId: '1:695901436436:web:42857357762b6ad2138501',
-    measurementId: 'G-P2P3YXM4H5'
+export const initializeGA = () => {
+    ReactGA.initialize('G-P2P3YXM4H5', {
+        debug: process.env.NODE_ENV === 'development'
+    })
 }
 
-const app = initializeApp(firebaseConfig)
-const analytics = getAnalytics(app)
+export const logPage = () => ReactGA.pageview(PAGE_NAME[window.location.pathname])
 
-export const logEvent = (eventName, eventData) => gLogEvent(analytics, eventName, eventData)
+export const logEvent = ({ eventName, eventData }) => ReactGA.event({
+    category: eventName,
+    action: eventData
+})
+
+
+
