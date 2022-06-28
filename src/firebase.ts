@@ -14,4 +14,4 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig)
 const analytics = getAnalytics(app)
 
-export const logEvent = (eventData) => gLogEvent(analytics, eventData)
+export const logEvent = (eventName, eventData) => gLogEvent(analytics, eventName, eventData)
