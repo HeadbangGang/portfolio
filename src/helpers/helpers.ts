@@ -1,5 +1,10 @@
 import { toWords } from 'number-to-words'
 
+interface TokenResponse {
+    access_token: string,
+    token_type: string,
+}
+
 export const PAGE_URL = {
     CONTACT: '/contact',
     HOMEPAGE: '/',
@@ -54,4 +59,25 @@ export const developmentExp = () => {
     const diffTime = Math.abs(startDate - todaysData)
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
     return toWords(Math.ceil(diffDays / 365))
+}
+
+export const getAccessToken = async () => {
+    const url = process.env.NODE_ENV === 'production' ? 'https://dev-fsldf8y6.us.auth0.com' : ''
+    return await fetch(`${url}/oauth/token`, {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify({
+            'audience': 'https://api.taydenflitcroft.com',
+            'client_id': 'fyn0XzFOdRbvA8XxcP2ggI8kJ18TQNSD',
+            'client_secret': 'o5Am1OWHJkaVtBm-2puy9D8pRea2ekmxIVIxKfIjh7ddZH-sp62biVfbbE_K5x9R',
+            'grant_type': 'client_credentials'
+        })
+    })
+        .then(res => res.json())
+        .then(res => {
+            return res.access_token
+        })
+        .catch(() => {})
 }

@@ -14,6 +14,13 @@ const mockRoutes = (app) => {
         if (req.query.fileName === 'resume.pdf') res.send(fs.readFileSync(path.join(__dirname,'mocks/resume.pdf')))
         if (req.query.fileName === 'pdf-worker.min.js') res.send(fs.readFileSync(path.join(__dirname,'mocks/pdf-worker.min.js')))
     } ,MOCK_DELAY))
+    app.post('/oauth/token', ( req, res) => {
+        setTimeout(() => {
+            res.send({
+                access_token: 'fjkldsajfkldsajflka'
+            })
+        }, MOCK_DELAY)
+    })
 }
 
 module.exports = mockRoutes
