@@ -3,7 +3,7 @@ import I18N from '../I18N/i18n'
 import {BaseUrlContext} from '../../providers/base-url'
 import {validateEmail, validateName, validateSubject, validateMessage} from '../../helpers/validators'
 import {Icon} from '@iconify/react'
-import {LOW_CHARACTER_THRESHOLD, MAX_MESSAGE_LENGTH} from '../../helpers/helpers'
+import {getAccessToken, LOW_CHARACTER_THRESHOLD, MAX_MESSAGE_LENGTH} from '../../helpers/helpers'
 import {UIContext} from '../../providers/ui'
 import './contact.scss'
 
@@ -82,11 +82,13 @@ const Contact = () => {
         if (validate() && !formSubmitSuccess) {
             setCallInProgress(true)
             setMessagesSent(messagesSent + 1)
+            const accessToken = await getAccessToken()
             await fetch(`${baseUrl}/contact`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Accept': 'application/json'
+                    'Accept': 'application/json',
+                    authorization: `Bearer ${accessToken}`
                 },
                 body: JSON.stringify({
                     emailSubject,
