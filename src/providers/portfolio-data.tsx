@@ -2,6 +2,7 @@ import React, {createContext, useContext, useEffect, useState} from 'react'
 import {BaseUrlContext} from './base-url'
 import {ProjectDataInterface} from '../interfaces'
 import {fetchAsset} from '../helpers/fetchAsset'
+import { useAuth0 } from '@auth0/auth0-react'
 
 export const PortfolioDataContext = createContext(null)
 PortfolioDataContext.displayName = 'PortfolioData'
@@ -12,8 +13,15 @@ const PortfolioDataProvider = ({ children }) => {
     const [pdfWorkerBlob, setPdfWorkerBlob] = useState<string>('')
     const [resumeBlob, setResumeBlob] = useState<string>('')
 
+    const { getAccessTokenSilently } = useAuth0()
+
     const fetchProjectData = async () => {
-        await fetch(`${baseUrl}/projects`)
+        const accessToken = await getAccessTokenSilently()
+        await fetch(`${baseUrl}/projects`, {
+            headers: {
+                Authorization: `Bearer ${accessToken}`
+            }
+        })
             .then(res => res.json())
             .then(({ data }) => {
                 setProjectData(data)

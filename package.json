@@ -15,6 +15,7 @@
   "author": "Tayden Flitcroft",
   "license": "ISC",
   "dependencies": {
+    "@auth0/auth0-react": "^1.10.2",
     "@react-pdf-viewer/core": "^3.3.2",
     "@react-pdf-viewer/full-screen": "^3.3.2",
     "@react-pdf-viewer/get-file": "^3.3.2",
