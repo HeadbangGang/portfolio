@@ -21,6 +21,22 @@ const mockRoutes = (app) => {
             })
         }, MOCK_DELAY)
     })
+    app.get('/mock/client-data', (req, res) => {
+        setTimeout(() => {
+            res.send({
+                Parameters: [
+                    {
+                        Name: 'Auth0_Global_Backend_Client_ID',
+                        Value: 'local client id'
+                    },
+                    {
+                        Name: 'Auth0_Global_Backend_Client_Secret',
+                        Value: 'local client secret'
+                    }
+                ]
+            })
+        }, MOCK_DELAY)
+    })
 }
 
 module.exports = mockRoutes

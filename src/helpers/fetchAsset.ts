@@ -1,10 +1,16 @@
 import { getAccessToken } from './helpers'
-export const fetchAsset = async (baseUrl: string, asset:string) => {
-    const token = await getAccessToken()
+
+interface ClientTokenData {
+    client_id: string
+    client_secret: string
+}
+
+export const fetchAsset = async (baseUrl: string, asset:string, clientTokenData: ClientTokenData) => {
+    const token = await getAccessToken(clientTokenData)
     try {
         let res: any = await fetch(`${baseUrl}/asset?fileName=${asset}`, {
             headers: {
-                authorization: `Bearer ${token}`
+                Authorization: `Bearer ${token}`
             }
         })
         res = await res.blob() as Promise<Blob>
