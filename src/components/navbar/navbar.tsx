@@ -56,12 +56,12 @@ const Navbar = () => {
             <div className="navbar">
                 <div className="navbar__logo">
                     <button onClick={() => navigate(PAGE_URL.HOMEPAGE)}>
-                        <img alt="html-tag" src="assets/media/html-tag.png" />
+                        <img alt="html-tag" src="assets/media/html-tag.webp" />
                     </button>
                 </div>
                 <div className="navbar__toggle">
                     <button onClick={() => setShowNavigationDropdown(!showNavigationButtonDropdown)}>
-                        <img alt="menu-icon" src="assets/media/menu-icon.png" />
+                        <img alt="menu-icon" src="assets/media/menu-icon.webp" />
                     </button>
                 </div>
                 <div className="navbar__nav-buttons">
