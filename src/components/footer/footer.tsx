@@ -16,7 +16,7 @@ const Footer = () => {
     return (
         <footer>
             <div className="credits">
-                <I18N className="copyright" name="footer.credit" markdown />
+                <I18N className="copyright" name="footer.credit" markdown target="_blank" />
                 <I18N name="footer.copyright" year={ date.getFullYear() } markdown />
             </div>
             <div className="icons">

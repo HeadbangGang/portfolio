@@ -19,11 +19,11 @@ export const TECHNOLOGIES_LOGOS = ['logos:typescript-icon', 'logos:jenkins', 'lo
 export const TECHNOLOGIES_PER_ROW = 5
 
 export const LOGO_URLS = {
-    'logo-github': 'https://www.github.com/HeadbangGang',
+    'logo-github': 'https://www.github.com/tayden-flitcroft',
     'logo-linkedin': 'https://www.linkedin.com/in/tayden-flitcroft/',
     'logo-facebook': 'https://www.facebook.com/tayden.flitcroftgoodeill',
     'logo-twitter': 'https://twitter.com/TaydenPaul',
-    'mail': 'mailto:taydengoodeill@gmail.com'
+    'mail': 'mailto:tayden.contact@gmail.com'
 }
 
 export const SPINNER_DEFAULT = 750
