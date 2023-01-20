@@ -23,7 +23,7 @@ export const LOGO_URLS = {
     'logo-linkedin': 'https://www.linkedin.com/in/tayden-flitcroft/',
     'logo-facebook': 'https://www.facebook.com/tayden.flitcroftgoodeill',
     'logo-twitter': 'https://twitter.com/TaydenPaul',
-    'mail': 'mailto:tayden.contact@gmail.com'
+    'mail': 'mailto:contact@taydenflitcroft.com'
 }
 
 export const SPINNER_DEFAULT = 750

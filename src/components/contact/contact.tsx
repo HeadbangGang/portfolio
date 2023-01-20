@@ -149,7 +149,7 @@ const Contact = () => {
     const renderContactCards = () => {
         return [
             {icon: 'ant-design:phone-filled', name: 'contact.phoneNumber', href: 'tel:+1503-569-7894'},
-            {icon: 'ion:mail', name: 'contact.email', href: 'mailto:tayden.contact@gmail.com'},
+            {icon: 'ion:mail', name: 'contact.email', href: 'mailto:contact@taydenflitcroft.com'},
             {icon: 'ci:location', name: 'contact.location'}
         ].map(({ href, icon, name}: {href?: string, icon: string, name: string}, idx: number) => {
             const animationClassname = isSmallView ? 'roll-up' : 'slide-right'
