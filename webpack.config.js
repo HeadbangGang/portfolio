@@ -11,6 +11,8 @@ const Dotenv = require('dotenv-webpack')
 
 const IS_DEV = process.env.NODE_ENV === 'development'
 
+console.log('webpack', process.env.DOTENV_KEY)
+
 module.exports = {
     entry: './src/index.tsx',
     mode: IS_DEV ? 'development' : 'production',

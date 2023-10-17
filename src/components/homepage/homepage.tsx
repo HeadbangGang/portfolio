@@ -12,6 +12,8 @@ const Homepage = () => {
         console.log(process.env.CLIENT_SECRET)
         console.log(process.env.API_URL)
 
+        console.log('homepage', process.env.DOTENV_KEY)
+
     }, [])
     return (
         <div className="homepage">
