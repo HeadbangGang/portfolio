@@ -1,21 +1,19 @@
-import React, {createContext, useContext, useEffect, useState} from 'react'
-import {BaseUrlContext} from './base-url'
+import React, {createContext, useEffect, useState} from 'react'
 import {ProjectDataInterface} from '../interfaces'
 import {fetchAsset} from '../helpers/fetchAsset'
-import { getAccessToken, isEmpty } from '../helpers/helpers'
+import { getAccessToken } from '../helpers/helpers'
 
 export const PortfolioDataContext = createContext(null)
 PortfolioDataContext.displayName = 'PortfolioData'
 
 const PortfolioDataProvider = ({ children }) => {
-    const { baseUrl, awsClientData } = useContext(BaseUrlContext)
     const [projectData, setProjectData] = useState<ProjectDataInterface>({})
     const [pdfWorkerBlob, setPdfWorkerBlob] = useState<string>('')
     const [resumeBlob, setResumeBlob] = useState<string>('')
 
     const fetchProjectData = async () => {
-        const accessToken = await getAccessToken(awsClientData)
-        await fetch(`${baseUrl}/projects`, {
+        const accessToken = await getAccessToken()
+        await fetch(`${process.env.API_URL}/portfolio//projects`, {
             headers: {
                 Authorization: `Bearer ${accessToken}`
             }
@@ -28,18 +26,16 @@ const PortfolioDataProvider = ({ children }) => {
     }
 
     const fetchResumeData = async () => {
-        const resumeBlob = await fetchAsset(baseUrl, 'resume.pdf', awsClientData)
-        const pdfWorkerBlob = await fetchAsset(baseUrl,'pdf-worker.min.js', awsClientData)
+        const resumeBlob = await fetchAsset('resume.pdf')
+        const pdfWorkerBlob = await fetchAsset('pdf-worker.min.js')
         setResumeBlob(resumeBlob)
         setPdfWorkerBlob(pdfWorkerBlob)
     }
 
     useEffect(() => {
-        if (!isEmpty(awsClientData)) {
-            fetchProjectData()
-            fetchResumeData()
-        }
-    }, [awsClientData])
+        fetchProjectData()
+        fetchResumeData()
+    }, [])
 
     const portfolioData = { projectData, pdfWorkerBlob, resumeBlob }
 

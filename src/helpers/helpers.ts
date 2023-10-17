@@ -1,10 +1,5 @@
 import { toWords } from 'number-to-words'
 
-interface ClientTokenData {
-    client_id: string,
-    client_secret: string
-}
-
 export const PAGE_URL = {
     CONTACT: '/contact',
     HOMEPAGE: '/',
@@ -61,24 +56,16 @@ export const developmentExp = () => {
     return toWords(Math.ceil(diffDays / 365))
 }
 
-export const getAccessToken = async (clientTokenData: ClientTokenData) => {
-    let tokenUrl: string = ''
-
-    if (process.env.NODE_ENV === 'production') {
-        tokenUrl = 'https://dev-fsldf8y6.us.auth0.com'
-    }
-
-    const { client_id, client_secret } = clientTokenData
-
-    return await fetch(`${tokenUrl}/oauth/token`, {
+export const getAccessToken = async () => {
+    return await fetch(`${process.env.ACCESS_TOKEN_URL}/oauth/token`, {
         method: 'POST',
         headers: {
             'content-type': 'application/json'
         },
         body: JSON.stringify({
             'audience': 'https://api.taydenflitcroft.com',
-            'client_id': client_id,
-            'client_secret': client_secret,
+            'client_id': process.env.CLIENT_ID,
+            'client_secret': process.env.CLIENT_SECRET,
             'grant_type': 'client_credentials'
         })
     })

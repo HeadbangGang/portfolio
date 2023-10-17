@@ -6,6 +6,13 @@ import ContactMe from './contact-me'
 import './homepage.scss'
 
 const Homepage = () => {
+
+    React.useEffect(() => {
+        console.log(process.env.CLIENT_ID)
+        console.log(process.env.CLIENT_SECRET)
+        console.log(process.env.API_URL)
+
+    }, [])
     return (
         <div className="homepage">
             <HomepageHeader />

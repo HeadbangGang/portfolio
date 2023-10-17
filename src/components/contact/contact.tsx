@@ -1,6 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react'
 import I18N from '../I18N/i18n'
-import {BaseUrlContext} from '../../providers/base-url'
 import {validateEmail, validateName, validateSubject, validateMessage} from '../../helpers/validators'
 import {Icon} from '@iconify/react'
 import {getAccessToken, LOW_CHARACTER_THRESHOLD, MAX_MESSAGE_LENGTH} from '../../helpers/helpers'
@@ -21,7 +20,6 @@ const Contact = () => {
     const [formSubmitSuccess, setFormSubmitSuccess] = useState<boolean|null>(null)
     const [messagesSent, setMessagesSent] = useState<number>(0)
 
-    const { baseUrl, awsClientData } = useContext(BaseUrlContext)
     const { isSmallView } = useContext(UIContext)
 
     const messageCharactersLeft = MAX_MESSAGE_LENGTH - emailMessage.length
@@ -82,8 +80,8 @@ const Contact = () => {
         if (validate() && !formSubmitSuccess) {
             setCallInProgress(true)
             setMessagesSent(messagesSent + 1)
-            const accessToken = await getAccessToken(awsClientData)
-            await fetch(`${baseUrl}/contact`, {
+            const accessToken = await getAccessToken()
+            await fetch(`${process.env.API_URL}/portfolio/contact`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -1,14 +1,9 @@
 import { getAccessToken } from './helpers'
 
-interface ClientTokenData {
-    client_id: string
-    client_secret: string
-}
-
-export const fetchAsset = async (baseUrl: string, asset:string, clientTokenData: ClientTokenData) => {
-    const token = await getAccessToken(clientTokenData)
+export const fetchAsset = async (asset:string) => {
+    const token = await getAccessToken()
     try {
-        let res: any = await fetch(`${baseUrl}/asset?fileName=${asset}`, {
+        let res: any = await fetch(`${process.env.API_URL}/portfolio/asset?fileName=${asset}`, { // check this
             headers: {
                 Authorization: `Bearer ${token}`
             }

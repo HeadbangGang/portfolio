@@ -32,3 +32,8 @@ ui-debug.log
 package-lock.json
 .firebase
 stats.json
+
+.env*
+.flaskenv*
+!.env.project
+!.env.vault

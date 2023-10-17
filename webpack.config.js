@@ -7,6 +7,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const mockRoutes = require('./mock-routes.ts')
+const Dotenv = require('dotenv-webpack')
 
 const IS_DEV = process.env.NODE_ENV === 'development'
 
@@ -51,7 +52,8 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: 'css/styles.min.css'
         }),
-        new CssMinimizerPlugin()
+        new CssMinimizerPlugin(),
+        new Dotenv()
     ],
     module: {
         rules: [
