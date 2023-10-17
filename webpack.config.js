@@ -53,7 +53,7 @@ module.exports = {
         }),
         new CssMinimizerPlugin(),
         new Webpack.DefinePlugin({
-            'process.env': JSON.stringify(require('dotenv'.config().parsed))
+            'process.env': JSON.stringify(require('dotenv').config().parsed)
         })
     ],
     module: {
