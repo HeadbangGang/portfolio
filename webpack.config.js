@@ -1,5 +1,7 @@
 const path = require('path')
 const Webpack = require('webpack')
+require('dotenv').config()
+
 const autoprefixer = require('autoprefixer')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
@@ -7,7 +9,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const mockRoutes = require('./mock-routes.ts')
-const Dotenv = require('dotenv-webpack')
 
 const IS_DEV = process.env.NODE_ENV === 'development'
 
@@ -54,8 +55,7 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: 'css/styles.min.css'
         }),
-        new CssMinimizerPlugin(),
-        new Dotenv()
+        new CssMinimizerPlugin()
     ],
     module: {
         rules: [
