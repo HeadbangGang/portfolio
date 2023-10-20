@@ -1,17 +1,24 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
-import RoutesController from './routes'
-import {BrowserRouter} from 'react-router-dom'
-import { PAGE_URL } from './helpers/helpers'
-import ProviderWrapper from './providers/provider-wrapper'
-import './index.scss'
+import { BrowserRouter } from 'react-router-dom'
+import PageLayout from './components/template'
+import VisibleSectionProvider from './providers/section-refs'
+import MainContent from './components/main-content'
+import { QueryClient, QueryClientProvider } from 'react-query'
+import './styles/global.scss'
 
-const root = createRoot(document.getElementById('portfolio'))
+const client = new QueryClient()
+
+const root = createRoot(document.querySelector('#portfolio'))
 
 root.render(
-    <BrowserRouter basename={ PAGE_URL.HOMEPAGE}>
-        <ProviderWrapper>
-            <RoutesController />
-        </ProviderWrapper>
+  <QueryClientProvider client={client}>
+    <BrowserRouter basename="/">
+      <VisibleSectionProvider>
+        <PageLayout>
+          <MainContent />
+        </PageLayout>
+      </VisibleSectionProvider>
     </BrowserRouter>
+  </QueryClientProvider>
 )
