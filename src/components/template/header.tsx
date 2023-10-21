@@ -51,8 +51,8 @@ const Header = memo(({ sectionRefs }: { sectionRefs: HTMLElement[] }): JSX.Eleme
           zIndex: 9999
         }}
       >
-        <button className="flex items-center justify-center opacity-100" onClick={toggleMobileNavigation}>
-          <Hamburger direction="right" />
+        <button className="flex items-center justify-center" onClick={toggleMobileNavigation}>
+          <Hamburger direction="right" rounded toggled={showMobileNavigation} />
         </button>
       </motion.div>
       <nav className="fixed bottom-0 left-0 top-0 z-[999]">
@@ -71,7 +71,7 @@ const Header = memo(({ sectionRefs }: { sectionRefs: HTMLElement[] }): JSX.Eleme
               className={`w-[75px] h-[75px] ${showMobileNavigationButton ? 'w-full' : ''}`}
               key={title}
               variants={showMobileNavigationButton ? mobileItem : desktopItem}
-              transition={{ duration: 0.3, type: 'spring' }}
+              transition={{ duration: 0.3, type: 'spring', stiffness: 40 }}
             >
               <motion.button
                 data-is-visible={visibleSectionId === title}
