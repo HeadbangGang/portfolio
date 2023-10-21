@@ -26,7 +26,7 @@ const Header = memo(({ sectionRefs }: { sectionRefs: HTMLElement[] }): JSX.Eleme
 
   const mobileGroup = {
     hidden: { backgroundColor: ' color-mix(in srgb, var(--black), transparent 100%)' },
-    show: { backgroundColor: ' color-mix(in srgb, var(--black), transparent 33%)', overflow: 'hidden' }
+    show: { backgroundColor: ' color-mix(in srgb, var(--black), transparent 33%)' }
   }
   const mobileItem = {
     hidden: { x: 'calc(-100vw - 100px)' },
@@ -42,8 +42,8 @@ const Header = memo(({ sectionRefs }: { sectionRefs: HTMLElement[] }): JSX.Eleme
     <header>
       <motion.div
         className="hidden sm:fixed sm:right-3 sm:top-3 sm:block rounded-full over"
-        initial={{ backgroundColor: 'var(--white)' }}
-        animate={{ backgroundColor: showMobileNavigation ? 'var(--complementary)' : 'var(--white)' }}
+        initial={{ backgroundColor: 'var(--accent)' }}
+        animate={{ backgroundColor: showMobileNavigation ? 'var(--complementary)' : 'var(--accent)' }}
         transition={{
           duration: 0.3
         }}

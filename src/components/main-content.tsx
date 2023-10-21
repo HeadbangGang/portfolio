@@ -4,7 +4,7 @@ import Resume from './sections/resume'
 
 const MainContent = memo(() => {
   return (
-    <main className="sm:pl-0 pl-60">
+    <main>
       <LandingPage />
       <Resume />
     </main>

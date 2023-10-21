@@ -12,6 +12,7 @@ const Resume = memo(() => {
   const { addSectionRef } = useContext(SectionRefsContext)
 
   const { data: token, isLoading: isTokenLoading } = useQuery('accessToken', getAccessToken)
+
   const {
     data: resume,
     isLoading: isResumeLoading,
@@ -47,7 +48,11 @@ const Resume = memo(() => {
 
   return (
     <section id={SECTION_TITLE.RESUME} ref={resumeRef}>
-      <canvas className="border" ref={canvasRef} style={{ maxHeight: '100vh', maxWidth: '100vw' }} />
+      <div className="w-full max-w-[100vw] relative pb-[177.78%]">
+        <div className="sm:px-2">
+          <canvas className="w-full max-w-[800px] max-h-[calc(800px * (9 / 16)) mx-auto border" ref={canvasRef} />
+        </div>
+      </div>
     </section>
   )
 })

@@ -27,7 +27,7 @@ const LandingPage = memo(() => {
   }, [])
 
   return (
-    <section id={SECTION_TITLE.HOME} className="flex h-screen flex-col justify-center" ref={landingPageRef}>
+    <section id={SECTION_TITLE.HOME} className="flex h-screen flex-col justify-center sm:pl-0 pl-60" ref={landingPageRef}>
       <div className="flex flex-col justify-center gap-4 sm:items-center sm:text-center">
         <h1 className="text-6xl sm:text-4xl">Tayden Flitcroft</h1>
         <div className="typed-wrapper poppins text-2xl">
