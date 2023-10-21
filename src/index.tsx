@@ -7,7 +7,13 @@ import MainContent from './components/main-content'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import './styles/global.scss'
 
-const client = new QueryClient()
+const client = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false
+    }
+  }
+})
 
 const root = createRoot(document.querySelector('#portfolio'))
 

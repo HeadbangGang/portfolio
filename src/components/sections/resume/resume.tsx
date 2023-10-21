@@ -2,31 +2,38 @@ import React, { memo, useContext, useEffect, useRef } from 'react'
 import { SECTION_TITLE } from '../../../helpers/constants'
 import { SectionRefsContext } from '../../../providers/section-refs'
 import getAccessToken from '../../../helpers/fetch-token'
+import { useQuery } from 'react-query'
 
 const Resume = memo(() => {
   const resumeRef = useRef(null)
   const canvasRef = useRef(null)
+
   const { addSectionRef } = useContext(SectionRefsContext)
+
+  const { data: token, isLoading } = useQuery('accessToken', getAccessToken)
 
   useEffect(() => {
     addSectionRef(resumeRef)
-    ;(async () => {
-      const token = await getAccessToken()
-
-      const pdfJS = await import('pdfjs-dist/build/pdf')
-      pdfJS.GlobalWorkerOptions.workerSrc = window.location.origin + '/js/pdf.worker.min.js'
-      const pdf = await pdfJS.getDocument({ url: `${process.env.API_URL}/portfolio/asset?fileName=resume.pdf`, httpHeaders: { Authorization: `Bearer ${token}` } }).promise
-      const page = await pdf.getPage(1)
-      const viewport = page.getViewport({ scale: 5 })
-
-      const canvas = canvasRef.current
-      const canvasContext = canvas.getContext('2d')
-      canvas.height = viewport.height
-      canvas.width = viewport.width
-
-      page.render({ canvasContext, viewport })
-    })()
   }, [])
+
+  useEffect(() => {
+    if (!isLoading && token) {
+      ;(async () => {
+        const pdfJS = await import('pdfjs-dist/build/pdf')
+        pdfJS.GlobalWorkerOptions.workerSrc = window.location.origin + '/js/pdf.worker.min.js'
+        const pdf = await pdfJS.getDocument({ url: `${process.env.API_URL}/portfolio/asset?fileName=resume.pdf`, httpHeaders: { Authorization: `Bearer ${token}` } }).promise
+        const page = await pdf.getPage(1)
+        const viewport = page.getViewport({ scale: 5 })
+
+        const canvas = canvasRef.current
+        const canvasContext = canvas.getContext('2d')
+        canvas.height = viewport.height
+        canvas.width = viewport.width
+
+        page.render({ canvasContext, viewport })
+      })()
+    }
+  }, [isLoading])
 
   return (
     <section id={SECTION_TITLE.RESUME} ref={resumeRef}>

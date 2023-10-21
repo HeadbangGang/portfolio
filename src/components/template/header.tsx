@@ -2,7 +2,7 @@ import React, { memo, useEffect, useState, useContext } from 'react'
 import { Spin as Hamburger } from 'hamburger-react'
 import { SECTION } from '../../helpers/constants'
 import { Icon } from '@iconify/react'
-import { motion, useAnimation, stagger, animate } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { SectionRefsContext } from '../../providers/section-refs'
 
 const Header = memo(({ sectionRefs }: { sectionRefs: HTMLElement[] }): JSX.Element => {
@@ -11,12 +11,11 @@ const Header = memo(({ sectionRefs }: { sectionRefs: HTMLElement[] }): JSX.Eleme
 
   const { visibleSectionId } = useContext(SectionRefsContext)
 
-  const controls = useAnimation()
-
   const toggleMobileNavigation = async (): Promise<void> => {
-    setShowMobileNavigation(prevState => !prevState)
-
-    await controls.start({ backgroundColor: ['white', 'var(--complementary)'] })
+    setShowMobileNavigation(prevState => {
+      prevState ? document.body.classList.remove('overflow-hidden') : document.body.classList.add('overflow-hidden')
+      return !prevState
+    })
   }
 
   useEffect((): void => {
@@ -25,49 +24,61 @@ const Header = memo(({ sectionRefs }: { sectionRefs: HTMLElement[] }): JSX.Eleme
     })
   }, [])
 
-  const animationClass = (): string | undefined => {
-    if (showMobileNavigationButton) {
-      if (showMobileNavigation) {
-        return 'translate-x-full'
-      }
-      return '-translate-x-full'
-    }
-    return
+  const mobileGroup = {
+    hidden: { backgroundColor: ' color-mix(in srgb, var(--black), transparent 100%)' },
+    show: { backgroundColor: ' color-mix(in srgb, var(--black), transparent 33%)', overflow: 'hidden' }
+  }
+  const mobileItem = {
+    hidden: { x: 'calc(-100vw - 100px)' },
+    show: { x: 0 }
+  }
+
+  const desktopItem = {
+    hidden: { x: -350 },
+    show: { x: 0 }
   }
 
   return (
     <header>
       <motion.div
-        className="hidden sm:fixed sm:right-3 sm:top-3 sm:block rounded-full"
+        className="hidden sm:fixed sm:right-3 sm:top-3 sm:block rounded-full over"
         initial={{ backgroundColor: 'var(--white)' }}
         animate={{ backgroundColor: showMobileNavigation ? 'var(--complementary)' : 'var(--white)' }}
         transition={{
-          duration: 0.3,
-          repeatType: 'reverse'
+          duration: 0.3
+        }}
+        style={{
+          zIndex: 9999
         }}
       >
         <button className="flex items-center justify-center opacity-100" onClick={toggleMobileNavigation}>
           <Hamburger direction="right" />
         </button>
       </motion.div>
-      <nav className={`fixed bottom-0 left-0 top-0 z-[999] transition-all duration-300 ease-linear sm:-left-[300px] sm:w-[300px] ${animationClass()}`}>
-        <motion.ul className="fixed flex h-screen flex-col justify-center gap-7 pl-4 sm:w-[calc(100vw/1.5)] sm:max-w-[300px] sm:border-r sm:border-gray-400 sm:bg-white sm:pr-4">
+      <nav className="fixed bottom-0 left-0 top-0 z-[999]">
+        <motion.ul
+          className="fixed flex h-screen flex-col justify-center sm:justify-end sm:pb-5 gap-7 pl-4 sm:px-4 sm:w-screen"
+          initial="hidden"
+          animate={(showMobileNavigation && showMobileNavigationButton) || !showMobileNavigationButton ? 'show' : 'hidden'}
+          variants={showMobileNavigationButton ? mobileGroup : {}}
+          transition={{
+            duration: 0.75,
+            staggerChildren: 0.15
+          }}
+        >
           {SECTION.map(({ title, icon }) => (
             <motion.li
-              animate={{ x: 0 }}
               className={`w-[75px] h-[75px] ${showMobileNavigationButton ? 'w-full' : ''}`}
-              initial={{ x: -200 }}
               key={title}
-              transition={{
-                duration: 1,
-                type: 'spring'
-              }}
+              variants={showMobileNavigationButton ? mobileItem : desktopItem}
+              transition={{ duration: 0.3, type: 'spring' }}
             >
               <motion.button
                 data-is-visible={visibleSectionId === title}
                 className="text-primary w-full h-full flex items-center gap-5 overflow-hidden rounded-full pl-[17px] text-base"
                 onClick={(): void => {
                   sectionRefs.find((el: HTMLElement) => el.id === title)?.scrollIntoView({ behavior: 'smooth' })
+                  toggleMobileNavigation()
                 }}
                 style={{
                   width: showMobileNavigationButton ? '100%' : 75
@@ -76,7 +87,7 @@ const Header = memo(({ sectionRefs }: { sectionRefs: HTMLElement[] }): JSX.Eleme
                   color: visibleSectionId === title ? 'var(--white)' : 'var(--black)',
                   backgroundColor: visibleSectionId === title ? 'var(--complementary)' : 'var(--secondary)'
                 }}
-                transition={{ type: 'spring', ease: 'linear', stiffness: 125, duration: 0.5 }}
+                transition={{ type: 'tween', stiffness: 20 }}
                 whileHover={{
                   backgroundColor: 'var(--complementary)',
                   color: 'var(--white)',
