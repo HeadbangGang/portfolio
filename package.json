@@ -4,16 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=development webpack serve",
-    "build": "webpack"
+    "start": "firebase emulators:start & NODE_ENV=development webpack serve"
   },
   "author": "Tayden Flitcroft",
   "license": "ISC",
   "dependencies": {
+    "firebase": "^10.7.0",
     "framer-motion": "^10.16.4",
     "pdfjs-dist": "^3.11.174",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-query": "^3.39.3",
     "react-router": "^6.17.0",
     "react-router-dom": "^6.17.0",
     "typed.js": "^2.0.16"
@@ -46,7 +47,6 @@
     "postcss": "^8.4.31",
     "postcss-loader": "^7.3.3",
     "prettier-eslint": "^16.1.1",
-    "react-query": "^3.39.3",
     "rimraf": "^5.0.5",
     "sass": "^1.69.3",
     "sass-loader": "^13.3.2",

@@ -11,7 +11,7 @@ const LandingPage = memo(() => {
 
   const { addSectionRef } = useContext(SectionRefsContext)
 
-  useEffect(() => {
+  useEffect((): (() => void) => {
     const typed = new Typed(typedRef.current, {
       backDelay: 2500,
       backSpeed: 75,
@@ -23,15 +23,17 @@ const LandingPage = memo(() => {
 
     addSectionRef(landingPageRef)
 
-    return () => typed.destroy()
+    return (): void => {
+      typed.destroy()
+    }
   }, [])
 
   return (
-    <section id={SECTION_TITLE.HOME} className="flex h-screen flex-col justify-center sm:pl-0 pl-60" ref={landingPageRef}>
+    <section id={SECTION_TITLE.HOME} className="flex h-screen flex-col justify-center" ref={landingPageRef}>
       <div className="flex flex-col justify-center gap-4 sm:items-center sm:text-center">
         <h1 className="text-6xl sm:text-4xl">Tayden Flitcroft</h1>
         <div className="typed-wrapper poppins text-2xl">
-          I'm a <span ref={typedRef} />
+          I'm a <span className="text-[var(--main)]" ref={typedRef} />
         </div>
         <ul className="mt-5 flex gap-6">
           {SOCIAL_MEDIA.map((item, idx) => (

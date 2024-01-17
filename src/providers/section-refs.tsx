@@ -21,9 +21,12 @@ const SectionRefsProvider = ({ children }): JSX.Element => {
     setVisibleSection(visibleSection)
   }
 
-  useEffect((): void => {
+  useEffect((): (() => void) => {
     if (sectionRefs.length) {
       window.addEventListener('scroll', setVisibleSectionElement)
+      return () => {
+        window.removeEventListener('scroll', setVisibleSectionElement)
+      }
     }
   }, [sectionRefs.length])
 

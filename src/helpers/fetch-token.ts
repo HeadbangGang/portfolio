@@ -1,4 +1,4 @@
-const getAccessToken = async (): Promise<string> => {
+export const getAccessToken = async () => {
   const res = await fetch(`${process.env.ACCESS_TOKEN_URL}/oauth/token`, {
     method: 'POST',
     headers: {

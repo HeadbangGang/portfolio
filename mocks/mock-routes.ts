@@ -1,8 +1,10 @@
 const MOCK_DELAY = 1000
+// const mockProjects = require('./mocks/projects')
 const fs = require('fs')
 const path = require('path')
 
 const mockRoutes = app => {
+  //   app.get('/portfolio/projects', (req, res) => setTimeout(() => res.status(200).send(mockProjects), MOCK_DELAY))
   app.post('/portfolio/contact', (req, res) =>
     setTimeout(() => {
       Math.random() < 0.5 ? res.status(200).send({ emailSentSuccess: true }) : res.status(200).send({ emailSentSuccess: false })

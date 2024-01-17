@@ -69,3 +69,5 @@ export const SECTION: SectionData[] = [
 ]
 
 export const I_AM_STRINGS = ['Software Engineer.', 'Developer.', 'Designer.', 'Computer Scientist.', 'Technology Enthusiast.']
+export const MAX_MESSAGE_LENGTH = 1000
+export const MAX_SUBJECT_LENGTH = 100
