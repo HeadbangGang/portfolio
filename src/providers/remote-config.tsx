@@ -8,10 +8,9 @@ RemoteConfigContext.displayName = 'EnabledSections'
 const RemoteConfigProvider = ({ children }) => {
   const [enabledSections, setEnabledSections] = useState<string[]>([])
 
-  useEffect(() => {
+  useEffect((): void => {
     fetchAndActivate(remoteConfig)
       .then(() => {
-        console.log('Remote Config values fetched and activated!')
         const fetchedEnabledSections = getValue(remoteConfig, 'enabledSections')['_value']
 
         if (fetchedEnabledSections) {
@@ -21,7 +20,7 @@ const RemoteConfigProvider = ({ children }) => {
       .catch(error => {
         console.error('Error fetching or activating remote config: ', error)
       })
-  })
+  }, [])
 
   return <RemoteConfigContext.Provider value={{ enabledSections }}>{children}</RemoteConfigContext.Provider>
 }
