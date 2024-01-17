@@ -16,10 +16,13 @@ const RemoteConfigProvider = ({ children }) => {
 
     fetchAndActivate(remoteConfig)
       .then(() => {
-        const fetchedEnabledSections = getValue(remoteConfig, 'enabledSections').asString()
+        const fetchedEnabledSections = getValue(remoteConfig, 'enabledSections')
+
+        console.log(fetchedEnabledSections.getSource())
+        console.log(fetchedEnabledSections.asString())
 
         if (fetchedEnabledSections) {
-          setEnabledSections(JSON.parse(fetchedEnabledSections))
+          setEnabledSections(JSON.parse(fetchedEnabledSections.asString()))
         }
       })
       .catch(error => {

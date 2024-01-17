@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app'
 import { getAnalytics } from 'firebase/analytics'
-import { getRemoteConfig, getValue } from 'firebase/remote-config'
+import { getRemoteConfig } from 'firebase/remote-config'
 
 const firebaseConfig = {
   apiKey: process.env.FIREBASE_API_KEY,
