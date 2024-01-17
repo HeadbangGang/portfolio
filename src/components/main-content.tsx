@@ -1,9 +1,9 @@
-import React, { memo } from 'react'
+import React, { memo, useContext } from 'react'
 import LandingPage from './sections/landing-page'
 import Resume from './sections/resume'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import Contact from './sections/contact'
-import { getEnabledSections } from '../helpers/firebase'
+import { RemoteConfigContext } from '../providers/remote-config'
 
 interface Section {
   id: string
@@ -11,6 +11,7 @@ interface Section {
 }
 
 const MainContent = memo(() => {
+  const { enabledSections } = useContext(RemoteConfigContext)
   const queryClient = new QueryClient()
 
   const sections: Section[] = [
@@ -20,7 +21,7 @@ const MainContent = memo(() => {
   ]
 
   const renderEnabledSections = () => {
-    return getEnabledSections.map((sectionId: string, idx: number) => {
+    return enabledSections.map((sectionId: string, idx: number) => {
       const sectionObj = sections.find(item => item.id === sectionId)
       if (sectionObj) {
         return (

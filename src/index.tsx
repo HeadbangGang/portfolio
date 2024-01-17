@@ -5,15 +5,18 @@ import PageLayout from './components/template'
 import VisibleSectionProvider from './providers/section-refs'
 import MainContent from './components/main-content'
 import './styles/global.scss'
+import RemoteConfigProvider from './providers/remote-config'
 
 const root = createRoot(document.querySelector('#portfolio'))
 
 root.render(
   <BrowserRouter basename="/">
-    <VisibleSectionProvider>
-      <PageLayout>
-        <MainContent />
-      </PageLayout>
-    </VisibleSectionProvider>
+    <RemoteConfigProvider>
+      <VisibleSectionProvider>
+        <PageLayout>
+          <MainContent />
+        </PageLayout>
+      </VisibleSectionProvider>
+    </RemoteConfigProvider>
   </BrowserRouter>
 )
