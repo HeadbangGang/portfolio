@@ -2,6 +2,8 @@ import { initializeApp } from 'firebase/app'
 import { getAnalytics } from 'firebase/analytics'
 import { getRemoteConfig, getValue } from 'firebase/remote-config'
 
+console.log(process.env.FIREBASE_API_KEY)
+
 const firebaseConfig = {
   apiKey: process.env.FIREBASE_API_KEY,
   authDomain: 'portfolio-2198.firebaseapp.com',
