@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "firebase emulators:start & NODE_ENV=development webpack serve"
+    "start": "firebase emulators:start & NODE_ENV=development webpack serve",
+    "build": "rimraf dist && webpack"
   },
   "author": "Tayden Flitcroft",
   "license": "ISC",
