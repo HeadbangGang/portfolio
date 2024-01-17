@@ -9,12 +9,17 @@ const RemoteConfigProvider = ({ children }) => {
   const [enabledSections, setEnabledSections] = useState<string[]>([])
 
   useEffect((): void => {
+    if (process.env.NODE_ENV === 'development') {
+      setEnabledSections(JSON.parse(remoteConfig.defaultConfig.enabledSections as string))
+      return
+    }
+
     fetchAndActivate(remoteConfig)
       .then(() => {
-        const fetchedEnabledSections = getValue(remoteConfig, 'enabledSections')['_value']
+        const fetchedEnabledSections = getValue(remoteConfig, 'enabledSections').asString()
 
         if (fetchedEnabledSections) {
-          setEnabledSections(fetchedEnabledSections.split(','))
+          setEnabledSections(JSON.parse(fetchedEnabledSections))
         }
       })
       .catch(error => {
