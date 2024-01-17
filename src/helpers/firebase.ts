@@ -17,7 +17,3 @@ const app = initializeApp(firebaseConfig)
 const analytics = getAnalytics(app)
 export const remoteConfig = getRemoteConfig(app)
 remoteConfig.defaultConfig = require(`./config/${process.env.NODE_ENV}.json`)
-
-export const getFlag = (key: string) => getValue(remoteConfig, key)['_value']
-
-export const getEnabledSections = getFlag('enabledSections')?.split(',')

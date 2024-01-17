@@ -1,13 +1,15 @@
-import React, { memo, useEffect, useState } from 'react'
+import React, { memo, useContext, useEffect, useState } from 'react'
 import { Spin as Hamburger } from 'hamburger-react'
 import { SECTION } from '../../helpers/constants'
 import { Icon } from '@iconify/react'
 import { motion, useAnimation } from 'framer-motion'
-import { getEnabledSections } from '../../helpers/firebase'
+import { RemoteConfigContext } from '../../providers/remote-config'
 
 const Header = memo(({ sectionRefs }: { sectionRefs: HTMLElement[] }): JSX.Element => {
   const [showMobileNavigationButton, setShowMobileNavigationButton] = useState<boolean>(window.innerWidth < 993)
   const [showMobileNavigation, setShowMobileNavigation] = useState<boolean>(false)
+
+  const { enabledSections } = useContext(RemoteConfigContext)
 
   const controls = useAnimation()
 
@@ -56,7 +58,7 @@ const Header = memo(({ sectionRefs }: { sectionRefs: HTMLElement[] }): JSX.Eleme
       <nav className={`fixed bottom-0 left-0 top-0 z-[999] transition-all duration-300 ease-linear sm:-left-[300px] sm:w-[300px] ${animationClass()}`}>
         <motion.ul className="fixed flex h-screen flex-col justify-center gap-7 pl-4 sm:w-[calc(100vw/1.5)] sm:max-w-[300px] sm:border-r sm:border-gray-400 sm:bg-white sm:pr-4">
           {SECTION.map(({ title, icon, id }) => {
-            if (getEnabledSections.find((enabledId: string) => enabledId === id)) {
+            if (enabledSections.find((enabledId: string) => enabledId === id)) {
               return (
                 <motion.li
                   animate={{ x: 0 }}
