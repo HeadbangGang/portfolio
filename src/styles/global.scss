@@ -7,6 +7,12 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Raleway&family=Poppins&family=Open+Sans');
 
+*:not(hr) {
+    margin: unset;
+    padding: unset;
+    scroll-behavior: smooth;
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-family: Raleway, 'sans-serif';
     font-weight: 700;
@@ -17,13 +23,11 @@ h1 {
 }
 
 h2 {
-	font-size: 32px;
-}
-
-*:not(hr){
-    margin: unset;
-    padding: unset;
-    scroll-behavior: smooth;
+    font-size: calc(1.375rem + 1.5vw - 10px);
+    font-weight: 800;
+    border-bottom: 7px solid var(--complementary);
+    margin-bottom: 30px;
+    width: fit-content;
 }
 
 .open-sans {

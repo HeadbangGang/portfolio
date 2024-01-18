@@ -1,4 +1,4 @@
-import React, { memo, useContext, useEffect, useRef } from 'react'
+import React, { memo, useContext, useEffect, useRef, useState } from 'react'
 import { SECTION_TITLE } from '../../../helpers/constants'
 import { SectionRefsContext } from '../../../providers/section-refs'
 import getAccessToken from '../../../helpers/fetch-token'
@@ -6,32 +6,36 @@ import getAccessToken from '../../../helpers/fetch-token'
 const Resume = memo(() => {
   const resumeRef = useRef(null)
   const canvasRef = useRef(null)
+  const [isLoading, setIsLoading] = useState(true) // Add loading state
 
   const { addSectionRef } = useContext(SectionRefsContext)
 
   useEffect(() => {
     addSectionRef(resumeRef)
+    const canvas = canvasRef.current
+    const context = canvas.getContext('2d')
+
     ;(async () => {
       const token = await getAccessToken()
-
       const pdfJS = await import('pdfjs-dist/build/pdf')
       pdfJS.GlobalWorkerOptions.workerSrc = window.location.origin + '/js/pdf.worker.min.js'
       const pdf = await pdfJS.getDocument({ url: `${process.env.API_URL}/portfolio/asset?fileName=resume.pdf`, httpHeaders: { Authorization: `Bearer ${token}` } }).promise
       const page = await pdf.getPage(1)
       const viewport = page.getViewport({ scale: 5 })
 
-      const canvas = canvasRef.current
-      const canvasContext = canvas.getContext('2d')
       canvas.height = viewport.height
       canvas.width = viewport.width
 
-      page.render({ canvasContext, viewport })
+      page.render({ canvasContext: context, viewport })
+      setIsLoading(false)
     })()
   }, [])
 
   return (
     <section id={SECTION_TITLE.RESUME} ref={resumeRef}>
-      <canvas className="border" ref={canvasRef} style={{ maxHeight: '100vh', maxWidth: '100vw' }} />
+      <h2>Resume</h2>
+      {isLoading && <img src={require('../../../../assets/loading.gif')} alt="Loading..." className="loading-spinner" />}
+      <canvas className={`border max-h-screen max-w-[100vw] ${isLoading ? 'hidden' : ''}`} ref={canvasRef} />
     </section>
   )
 })
