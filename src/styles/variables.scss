@@ -1,0 +1,13 @@
+$small: 993px;
+
+:root{
+    --grey:#45505b;
+    --main:#6A6FFD;
+    --secondary:#B6AEE5;
+    --accent:#F3ECFF;
+    --complementary:#6bbaa3;
+
+    // hex/rgb definition is required to work properly with framer motion opacity animations
+    --white:#FFF;
+    --black:#000;
+}

@@ -1,0 +1,54 @@
+@import "./variables.scss";
+@import "./animations.scss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway&family=Poppins&family=Open+Sans');
+
+*:not(hr) {
+    margin: unset;
+    padding: unset;
+    scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: Raleway, 'sans-serif';
+    font-weight: 700;
+}
+
+h1 {
+    font-size: calc(1.375rem + 1.5vw);
+}
+
+h2 {
+    font-size: calc(1.375rem + 1.5vw - 5%);
+    font-weight: 800;
+    border-bottom: 7px solid var(--complementary);
+    margin-bottom: 30px;
+    width: fit-content;
+}
+
+section {
+    margin-bottom: 24px;
+}
+
+.open-sans {
+    font-family: 'Open Sans';
+}
+
+.raleway {
+    font-family: Raleway;
+}
+
+.poppins {
+    font-family: Poppins
+}
+
+
+@media screen and (max-width: $small) {
+    h1 {
+        font-size: 32px;
+    }
+}
