@@ -127,6 +127,13 @@ const Contact = () => {
     }
   }
 
+  const resetForm = () => {
+    setFormSubmissionState(FormSubmissionState.INITIAL)
+    setFormHasBeenSubmitted(false)
+    setErrorMessages(initialState)
+    setData(initialState)
+  }
+
   useEffect((): void => {
     addSectionRef(contactRef)
   }, [])
@@ -137,10 +144,16 @@ const Contact = () => {
     }
   }, [errorMessages])
 
+  useEffect((): void => {
+    if (formSubmissionState === FormSubmissionState.SUCCESS) {
+      setTimeout(resetForm, 1500)
+    }
+  }, [formSubmissionState])
+
   return (
     <section id={SECTION_TITLE.CONTACT} ref={contactRef}>
       <h2>Contact Me</h2>
-      <div className="flex justify-around gap-3 sm:flex-col sm:gap-10">
+      <div className="flex gap-16 sm:flex-col sm:gap-10">
         <div className="flex flex-col sm:w-fit sm:self-start">
           <a
             href={`https://maps.google.com/?q=${personalInfo.address.city}, ${personalInfo.address.state}`}

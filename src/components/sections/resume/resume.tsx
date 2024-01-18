@@ -35,7 +35,7 @@ const Resume = memo(() => {
     <section id={SECTION_TITLE.RESUME} ref={resumeRef}>
       <h2>Resume</h2>
       {isLoading && <img src={require('../../../../assets/loading.gif')} alt="Loading..." className="loading-spinner" />}
-      <canvas className={`border max-h-screen max-w-[100vw] ${isLoading ? 'hidden' : ''}`} ref={canvasRef} />
+      <canvas className={`border max-h-screen sm:w-full ${isLoading ? 'hidden' : ''}`} ref={canvasRef} />
     </section>
   )
 })

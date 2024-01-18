@@ -7,7 +7,7 @@ import { RemoteConfigContext } from '../providers/remote-config'
 
 interface Section {
   id: string
-  component: (props?: { key: number }) => React.ReactElement
+  component: (props?: { key: any }) => React.ReactElement
 }
 
 const MainContent = memo(() => {
@@ -20,21 +20,10 @@ const MainContent = memo(() => {
     { id: 'contact', component: props => <Contact {...props} /> }
   ]
 
-  const renderEnabledSections = () => {
-    return enabledSections.map((sectionId: string, idx: number) => {
-      const sectionObj = sections.find(item => item.id === sectionId)
-      if (sectionObj) {
-        return (
-          <div className="mb-7" key={idx}>
-            {sectionObj.component()}
-          </div>
-        )
-      }
-    })
-  }
+  const renderEnabledSections = () => sections.filter(({ id }) => enabledSections.includes(id)).map(({ component, id }) => component({ key: id }))
 
   return (
-    <main className="sm:pl-0 pl-60">
+    <main className="sm:px-6 pl-60 pr-6">
       <QueryClientProvider client={queryClient}>{renderEnabledSections()}</QueryClientProvider>
     </main>
   )

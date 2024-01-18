@@ -23,11 +23,15 @@ h1 {
 }
 
 h2 {
-    font-size: calc(1.375rem + 1.5vw - 10px);
+    font-size: calc(1.375rem + 1.5vw - 5%);
     font-weight: 800;
     border-bottom: 7px solid var(--complementary);
     margin-bottom: 30px;
     width: fit-content;
+}
+
+section {
+    margin-bottom: 24px;
 }
 
 .open-sans {
