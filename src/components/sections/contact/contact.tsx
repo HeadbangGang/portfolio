@@ -110,7 +110,9 @@ const Contact = () => {
             }
           })
 
-          if (res.ok) {
+          const json = await res.json()
+
+          if (res.ok && json.emailSentSuccess === true) {
             setFormSubmissionState(FormSubmissionState.SUCCESS)
             setFormHasBeenSubmitted(true)
           } else {
@@ -127,7 +129,7 @@ const Contact = () => {
     }
   }
 
-  const resetForm = () => {
+  const resetForm = (): void => {
     setFormSubmissionState(FormSubmissionState.INITIAL)
     setFormHasBeenSubmitted(false)
     setErrorMessages(initialState)
@@ -138,16 +140,21 @@ const Contact = () => {
     addSectionRef(contactRef)
   }, [])
 
-  useEffect(() => {
+  useEffect((): void => {
     if (Object.values(errorMessages).find(item => !!item)) {
       scrollToFirstError()
     }
   }, [errorMessages])
 
   useEffect((): void => {
-    if (formSubmissionState === FormSubmissionState.SUCCESS) {
-      setTimeout(resetForm, 1500)
-    }
+    setTimeout((): void => {
+      if (formSubmissionState === FormSubmissionState.SUCCESS) {
+        resetForm()
+      }
+      if (formSubmissionState === FormSubmissionState.ERROR) {
+        setFormSubmissionState(FormSubmissionState.INITIAL)
+      }
+    }, 1500)
   }, [formSubmissionState])
 
   return (
