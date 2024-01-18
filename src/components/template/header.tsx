@@ -62,7 +62,7 @@ const Header = memo(({ sectionRefs }: { sectionRefs: HTMLElement[] }): JSX.Eleme
               return (
                 <motion.li
                   animate={{ x: 0 }}
-                  className={`w-[75px] h-[75px] ${showMobileNavigationButton ? 'w-full' : ''}`}
+                  className={`h-[65px] ${showMobileNavigationButton ? 'w-full' : 'w-[65px]'}`}
                   initial={{ x: -200 }}
                   key={title}
                   transition={{
@@ -71,18 +71,18 @@ const Header = memo(({ sectionRefs }: { sectionRefs: HTMLElement[] }): JSX.Eleme
                   }}
                 >
                   <motion.button
-                    className="text-primary w-full h-full flex items-center gap-5 overflow-hidden rounded-full pl-[17px] text-base"
+                    className="text-primary w-full h-full flex items-center gap-5 overflow-hidden rounded-full pl-3 text-base"
                     onClick={(): void => {
                       sectionRefs.find((el: HTMLButtonElement) => el.id === title)?.scrollIntoView({ behavior: 'smooth' })
                     }}
                     style={{
-                      width: showMobileNavigationButton ? '100%' : 75
+                      width: showMobileNavigationButton ? '100%' : 65
                     }}
                     initial={{
                       color: 'var(--black)',
                       backgroundColor: 'var(--secondary)'
                     }}
-                    transition={{ type: 'spring', ease: 'linear', stiffness: 125, duration: 0.5 }}
+                    transition={{ type: 'spring', ease: 'linear', stiffness: 90, duration: 0.5 }}
                     whileHover={{
                       backgroundColor: 'var(--complementary)',
                       color: 'var(--white)',

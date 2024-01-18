@@ -36,7 +36,7 @@ export const SOCIAL_MEDIA: SocialMedia[] = [
   {
     title: 'mail',
     icon: 'ion:mail',
-    href: 'mailto:contact@taydenflitcroft.com'
+    href: 'mailto:{{email}}'
   }
 ]
 

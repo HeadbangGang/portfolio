@@ -5,6 +5,8 @@ import { MAX_MESSAGE_LENGTH, MAX_SUBJECT_LENGTH, SECTION_TITLE } from '../../../
 import Input from '../../shared/input'
 import validator from '../../../helpers/validator'
 import getAccessToken from '../../../helpers/fetch-token'
+import { RemoteConfigContext } from '../../../providers/remote-config'
+import { formatPhoneNumber } from '../../../helpers/formatters'
 
 interface FormData {
   email: string
@@ -38,15 +40,7 @@ const Contact = () => {
   const [formHasBeenSubmitted, setFormHasBeenSubmitted] = useState<boolean>(false)
 
   const { addSectionRef } = useContext(SectionRefsContext)
-
-  const contactInformation = {
-    address: {
-      city: 'salem',
-      state: 'oregon'
-    },
-    email: 'taydengoodeill@gmail.com',
-    phoneNumber: '5035697894'
-  }
+  const { personalInfo } = useContext(RemoteConfigContext)
 
   const scrollToFirstError = (): void => {
     const inputs = [
@@ -147,7 +141,7 @@ const Contact = () => {
     <section id={SECTION_TITLE.CONTACT} className="flex justify-around gap-3 sm:flex-col sm:gap-10" ref={contactRef}>
       <div className="flex flex-col sm:w-fit sm:self-start">
         <a
-          href={`https://maps.google.com/?q=${contactInformation?.address.city}, ${contactInformation?.address.state}`}
+          href={`https://maps.google.com/?q=${personalInfo.address.city}, ${personalInfo.address.state}`}
           target="_blank"
           className="open-sans group flex items-center gap-4 text-lg"
           rel="noreferrer"
@@ -158,16 +152,16 @@ const Contact = () => {
             icon="material-symbols:location-on-outline"
           />
           <span className="text-gray-600">
-            {contactInformation?.address.city}, {contactInformation?.address.state}
+            {personalInfo.address.city}, {personalInfo.address.state}
           </span>
         </a>
-        <a className="open-sans group my-11 flex items-center gap-4 text-lg" href="mailto:{contactInformation?.email}">
+        <a className="open-sans group my-11 flex items-center gap-4 text-lg" href={`mailto:${personalInfo.email}`}>
           <Icon
             className="rounded-full border border-transparent bg-accent p-3 transition duration-300 ease-in-out group-hover:bg-main group-hover:text-white"
             height="60"
             icon="mdi:email-outline"
           />
-          <span className="text-gray-600"> {contactInformation?.email} </span>
+          <span className="text-gray-600"> {personalInfo.email} </span>
         </a>
         <a href="tel:{contactInformation?.phoneNumber}" className="open-sans group flex items-center gap-4 text-lg">
           <Icon
@@ -175,7 +169,7 @@ const Contact = () => {
             height="60"
             icon="material-symbols:phone-android-outline-rounded"
           />
-          <span className="text-gray-600"> {contactInformation?.phoneNumber} </span>
+          <span className="text-gray-600"> {formatPhoneNumber(personalInfo.phoneNumber)} </span>
         </a>
       </div>
       <form className="flex w-full max-w-2xl flex-col gap-4 sm:max-w-full" onSubmit={submitContactForm}>

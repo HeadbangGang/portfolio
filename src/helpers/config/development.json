@@ -1,3 +1,4 @@
 {
-    "enabledSections": "[\"home\", \"resume\", \"contact\"]"
+    "enabledSections": "[\"home\", \"resume\", \"contact\"]",
+    "personalInfo": "{\"email\": \"test@test.com\",\"phoneNumber\": \"1111111111\", \"address\": {\"city\": \"Orlando\",\"state\": \"Florida\"}}"
 }

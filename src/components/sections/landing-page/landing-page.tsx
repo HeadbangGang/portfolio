@@ -4,12 +4,14 @@ import { I_AM_STRINGS, SECTION_TITLE, SOCIAL_MEDIA } from '../../../helpers/cons
 import { Icon } from '@iconify/react'
 import { SectionRefsContext } from '../../../providers/section-refs'
 import { motion } from 'framer-motion'
+import { RemoteConfigContext } from '../../../providers/remote-config'
 
 const LandingPage = memo(() => {
   const typedRef = useRef(null)
   const landingPageRef = useRef(null)
 
   const { addSectionRef } = useContext(SectionRefsContext)
+  const { personalInfo } = useContext(RemoteConfigContext)
 
   useEffect((): (() => void) => {
     const typed = new Typed(typedRef.current, {
@@ -36,15 +38,20 @@ const LandingPage = memo(() => {
           I'm a <span className="text-[var(--main)]" ref={typedRef} />
         </div>
         <ul className="mt-5 flex gap-6">
-          {SOCIAL_MEDIA.map((item, idx) => (
-            <li key={item.title}>
-              <motion.div initial={{ y: 30 }} animate={{ y: 0 }} transition={{ delay: 0.2 + idx * 0.1, type: 'spring' }}>
-                <a rel="noreferrer" href={item.href} target="_blank">
-                  <Icon icon={item.icon} height="25px" className="text-grey transition duration-300 ease-in-out hover:text-complementary" />
-                </a>
-              </motion.div>
-            </li>
-          ))}
+          {SOCIAL_MEDIA.map((item, idx) => {
+            if (item.title === 'mail') {
+              item.href = item.href.replace('{{email}}', personalInfo.email)
+            }
+            return (
+              <li key={item.title}>
+                <motion.div initial={{ y: 30 }} animate={{ y: 0 }} transition={{ delay: 0.2 + idx * 0.1, type: 'spring' }}>
+                  <a rel="noreferrer" href={item.href} target="_blank">
+                    <Icon icon={item.icon} height="25px" className="text-grey transition duration-300 ease-in-out hover:text-complementary" />
+                  </a>
+                </motion.div>
+              </li>
+            )
+          })}
         </ul>
       </div>
     </section>

@@ -1,3 +1,4 @@
 {
-    "enabledSections": ["home", "resume"]
+    "enabledSections": ["home", "resume"],
+    "personalInfo": {}
 }
