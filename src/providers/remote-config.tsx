@@ -19,12 +19,11 @@ const RemoteConfigProvider = ({ children }) => {
   const [personalInfo, setPersonalInfo] = useState<PersonalInfo>(null)
 
   useEffect((): void => {
-    // if (process.env.NODE_ENV === 'development') {
-    //   debugger
-    //   setEnabledSections(JSON.parse(remoteConfig.defaultConfig.enabledSections as string))
-    //   setPersonalInfo(JSON.parse(remoteConfig.defaultConfig.personalInfo as string))
-    //   return
-    // }
+    if (process.env.NODE_ENV === 'development') {
+      setEnabledSections(JSON.parse(remoteConfig.defaultConfig.enabledSections as string))
+      setPersonalInfo(JSON.parse(remoteConfig.defaultConfig.personalInfo as string))
+      return
+    }
 
     fetchAndActivate(remoteConfig)
       .then(() => {
