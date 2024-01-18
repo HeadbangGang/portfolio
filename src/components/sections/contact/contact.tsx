@@ -110,9 +110,7 @@ const Contact = () => {
             }
           })
 
-          const json = await res.json()
-
-          if (res.ok && json.emailSentSuccess === true) {
+          if (res.ok) {
             setFormSubmissionState(FormSubmissionState.SUCCESS)
             setFormHasBeenSubmitted(true)
           } else {
