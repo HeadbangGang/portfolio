@@ -20,8 +20,11 @@ const RemoteConfigProvider = ({ children }) => {
 
   useEffect((): void => {
     if (process.env.NODE_ENV === 'development') {
-      setEnabledSections(JSON.parse(remoteConfig.defaultConfig.enabledSections as string))
-      setPersonalInfo(JSON.parse(remoteConfig.defaultConfig.personalInfo as string))
+      setTimeout(() => {
+        setEnabledSections(JSON.parse(remoteConfig.defaultConfig.enabledSections as string))
+        setPersonalInfo(JSON.parse(remoteConfig.defaultConfig.personalInfo as string))
+      }, 1500)
+
       return
     }
 

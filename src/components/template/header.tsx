@@ -40,6 +40,8 @@ const Header = memo(({ sectionRefs }: { sectionRefs: HTMLElement[] }): JSX.Eleme
     return ''
   }
 
+  if (!enabledSections.length) return null
+
   return (
     <header>
       <motion.div

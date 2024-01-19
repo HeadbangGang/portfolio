@@ -20,11 +20,22 @@ const MainContent = memo(() => {
     { id: 'contact', component: props => <Contact {...props} /> }
   ]
 
-  const renderEnabledSections = () => sections.filter(({ id }) => enabledSections.includes(id)).map(({ component, id }) => component({ key: id }))
+  const enabledSectionsComponents = sections.filter(({ id }) => enabledSections.includes(id)).map(({ component, id }) => component({ key: id }))
+
+  const renderContent = () => {
+    if (enabledSectionsComponents.length) {
+      return enabledSectionsComponents
+    }
+    return (
+      <div className="h-screen flex items-center justify-center">
+        <img src={require('../../assets/loading.gif')} alt="loading" />
+      </div>
+    )
+  }
 
   return (
-    <main className="sm:px-6 pl-60 pr-6">
-      <QueryClientProvider client={queryClient}>{renderEnabledSections()}</QueryClientProvider>
+    <main className={`sm:pl-6 px-6 ${enabledSectionsComponents.length ? 'pl-60' : ''}`}>
+      <QueryClientProvider client={queryClient}>{renderContent()}</QueryClientProvider>
     </main>
   )
 })
